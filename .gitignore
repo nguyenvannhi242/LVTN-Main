@@ -62,3 +62,6 @@ test_gemini/
 behavioral_insights_rewrite.txt
 
 tests/
+
+# Thesis scripts datasets
+Tong hop script/5. Datasets/
