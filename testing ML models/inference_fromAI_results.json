@@ -1,0 +1,4465 @@
+{
+    "dataset": "C:\\Users\\2\\Desktop\\WORKSPACE\\LVTN-Main\\testing ML models\\FromAI-Dataset",
+    "total_evaluated": 10000,
+    "results": {
+        "LightGBM": {
+            "overall_accuracy": 0.9816,
+            "total_samples": 10000,
+            "correct_predictions": 9816,
+            "incorrect_predictions": 184,
+            "source_breakdown": {
+                "FromAI-v1": {
+                    "accuracy": 0.969,
+                    "total_samples": 1000,
+                    "correct_predictions": 969,
+                    "incorrect_predictions": 31,
+                    "false_negatives": [
+                        {
+                            "filename": "FormAI_102169.cpp",
+                            "probability": 0.32926900017699356
+                        },
+                        {
+                            "filename": "FormAI_102995.cpp",
+                            "probability": 0.44704420112673376
+                        },
+                        {
+                            "filename": "FormAI_103224.cpp",
+                            "probability": 0.29345054958400896
+                        },
+                        {
+                            "filename": "FormAI_110964.cpp",
+                            "probability": 0.2802026812154538
+                        },
+                        {
+                            "filename": "FormAI_12958.cpp",
+                            "probability": 0.2165963466085116
+                        },
+                        {
+                            "filename": "FormAI_13824.cpp",
+                            "probability": 0.2015195220369698
+                        },
+                        {
+                            "filename": "FormAI_13943.cpp",
+                            "probability": 0.1013917493839639
+                        },
+                        {
+                            "filename": "FormAI_14986.cpp",
+                            "probability": 0.08490326420913202
+                        },
+                        {
+                            "filename": "FormAI_18982.cpp",
+                            "probability": 0.14528903666567586
+                        },
+                        {
+                            "filename": "FormAI_25108.cpp",
+                            "probability": 0.2562456211560312
+                        },
+                        {
+                            "filename": "FormAI_27210.cpp",
+                            "probability": 0.3582715039251485
+                        },
+                        {
+                            "filename": "FormAI_29262.cpp",
+                            "probability": 0.27535669755805686
+                        },
+                        {
+                            "filename": "FormAI_29785.cpp",
+                            "probability": 0.07094306990474648
+                        },
+                        {
+                            "filename": "FormAI_31634.cpp",
+                            "probability": 0.46920710651902203
+                        },
+                        {
+                            "filename": "FormAI_3508.cpp",
+                            "probability": 0.32172663928730993
+                        },
+                        {
+                            "filename": "FormAI_3623.cpp",
+                            "probability": 0.37147857527095857
+                        },
+                        {
+                            "filename": "FormAI_37976.cpp",
+                            "probability": 0.37530518259977536
+                        },
+                        {
+                            "filename": "FormAI_39275.cpp",
+                            "probability": 0.3196486648533898
+                        },
+                        {
+                            "filename": "FormAI_4601.cpp",
+                            "probability": 0.3480566701911407
+                        },
+                        {
+                            "filename": "FormAI_53448.cpp",
+                            "probability": 0.41271891931599014
+                        },
+                        {
+                            "filename": "FormAI_53583.cpp",
+                            "probability": 0.2783247475500956
+                        },
+                        {
+                            "filename": "FormAI_55603.cpp",
+                            "probability": 0.40154314997076795
+                        },
+                        {
+                            "filename": "FormAI_63115.cpp",
+                            "probability": 0.43412418021402294
+                        },
+                        {
+                            "filename": "FormAI_73400.cpp",
+                            "probability": 0.2626740472328642
+                        },
+                        {
+                            "filename": "FormAI_81878.cpp",
+                            "probability": 0.2562546327592199
+                        },
+                        {
+                            "filename": "FormAI_82540.cpp",
+                            "probability": 0.4262697672625943
+                        },
+                        {
+                            "filename": "FormAI_82672.cpp",
+                            "probability": 0.4016607879743968
+                        },
+                        {
+                            "filename": "FormAI_83343.cpp",
+                            "probability": 0.08810843150155623
+                        },
+                        {
+                            "filename": "FormAI_92037.cpp",
+                            "probability": 0.33117645962143777
+                        },
+                        {
+                            "filename": "FormAI_93829.cpp",
+                            "probability": 0.3505314068916284
+                        },
+                        {
+                            "filename": "FormAI_98728.cpp",
+                            "probability": 0.36880498208800305
+                        }
+                    ]
+                },
+                "codellama_13b": {
+                    "accuracy": 0.993,
+                    "total_samples": 1000,
+                    "correct_predictions": 993,
+                    "incorrect_predictions": 7,
+                    "false_negatives": [
+                        {
+                            "filename": "codellama_13b-1479.c",
+                            "probability": 0.29279382969028406
+                        },
+                        {
+                            "filename": "codellama_13b-2155.c",
+                            "probability": 0.4802096294406969
+                        },
+                        {
+                            "filename": "codellama_13b-366.c",
+                            "probability": 0.4463800601585136
+                        },
+                        {
+                            "filename": "codellama_13b-5025.c",
+                            "probability": 0.36112751165372964
+                        },
+                        {
+                            "filename": "codellama_13b-552.c",
+                            "probability": 0.49780470759383133
+                        },
+                        {
+                            "filename": "codellama_13b-5605.c",
+                            "probability": 0.3721480648906467
+                        },
+                        {
+                            "filename": "codellama_13b-8315.c",
+                            "probability": 0.4011690717404902
+                        }
+                    ]
+                },
+                "falcon180b": {
+                    "accuracy": 0.993,
+                    "total_samples": 1000,
+                    "correct_predictions": 993,
+                    "incorrect_predictions": 7,
+                    "false_negatives": [
+                        {
+                            "filename": "falcon180b-21139.c",
+                            "probability": 0.4223154891865094
+                        },
+                        {
+                            "filename": "falcon180b-25643.c",
+                            "probability": 0.19911187991163826
+                        },
+                        {
+                            "filename": "falcon180b-37824.c",
+                            "probability": 0.3371919803702401
+                        },
+                        {
+                            "filename": "falcon180b-53402.c",
+                            "probability": 0.3742398318757756
+                        },
+                        {
+                            "filename": "falcon180b-56628.c",
+                            "probability": 0.4913626468160317
+                        },
+                        {
+                            "filename": "falcon180b-57995.c",
+                            "probability": 0.34163882805090706
+                        },
+                        {
+                            "filename": "falcon180b-59336.c",
+                            "probability": 0.2907701296725178
+                        }
+                    ]
+                },
+                "falcon2-11B": {
+                    "accuracy": 0.982,
+                    "total_samples": 1000,
+                    "correct_predictions": 982,
+                    "incorrect_predictions": 18,
+                    "false_negatives": [
+                        {
+                            "filename": "falcon2-11B-10203.c",
+                            "probability": 0.3291287129518571
+                        },
+                        {
+                            "filename": "falcon2-11B-10368.c",
+                            "probability": 0.1676345588514752
+                        },
+                        {
+                            "filename": "falcon2-11B-10490.c",
+                            "probability": 0.3494849843962592
+                        },
+                        {
+                            "filename": "falcon2-11B-11258.c",
+                            "probability": 0.02017737134819076
+                        },
+                        {
+                            "filename": "falcon2-11B-11841.c",
+                            "probability": 0.4257531194561715
+                        },
+                        {
+                            "filename": "falcon2-11B-1527.c",
+                            "probability": 0.4467446487156245
+                        },
+                        {
+                            "filename": "falcon2-11B-1677.c",
+                            "probability": 0.2815685671535443
+                        },
+                        {
+                            "filename": "falcon2-11B-2170.c",
+                            "probability": 0.41344645441528344
+                        },
+                        {
+                            "filename": "falcon2-11B-3056.c",
+                            "probability": 0.3945155653137147
+                        },
+                        {
+                            "filename": "falcon2-11B-412.c",
+                            "probability": 0.3149445692623738
+                        },
+                        {
+                            "filename": "falcon2-11B-4590.c",
+                            "probability": 0.4992556837236821
+                        },
+                        {
+                            "filename": "falcon2-11B-5889.c",
+                            "probability": 0.058640540104672796
+                        },
+                        {
+                            "filename": "falcon2-11B-714.c",
+                            "probability": 0.45427540863262406
+                        },
+                        {
+                            "filename": "falcon2-11B-7402.c",
+                            "probability": 0.07228409322530019
+                        },
+                        {
+                            "filename": "falcon2-11B-7508.c",
+                            "probability": 0.2753337903735682
+                        },
+                        {
+                            "filename": "falcon2-11B-8312.c",
+                            "probability": 0.10441953624299992
+                        },
+                        {
+                            "filename": "falcon2-11B-848.c",
+                            "probability": 0.42652358619106695
+                        },
+                        {
+                            "filename": "falcon2-11B-8784.c",
+                            "probability": 0.3792615235017878
+                        }
+                    ]
+                },
+                "gemini_pro": {
+                    "accuracy": 0.98,
+                    "total_samples": 1000,
+                    "correct_predictions": 980,
+                    "incorrect_predictions": 20,
+                    "false_negatives": [
+                        {
+                            "filename": "gemini_pro-13342.c",
+                            "probability": 0.10821485391460516
+                        },
+                        {
+                            "filename": "gemini_pro-14538.c",
+                            "probability": 0.21648759088684502
+                        },
+                        {
+                            "filename": "gemini_pro-14771.c",
+                            "probability": 0.3057607731969501
+                        },
+                        {
+                            "filename": "gemini_pro-15724.c",
+                            "probability": 0.4357809220912545
+                        },
+                        {
+                            "filename": "gemini_pro-18016.c",
+                            "probability": 0.10807123146189053
+                        },
+                        {
+                            "filename": "gemini_pro-19058.c",
+                            "probability": 0.1788642626322237
+                        },
+                        {
+                            "filename": "gemini_pro-21058.c",
+                            "probability": 0.39229371079422287
+                        },
+                        {
+                            "filename": "gemini_pro-23004.c",
+                            "probability": 0.35037009169967337
+                        },
+                        {
+                            "filename": "gemini_pro-23322.c",
+                            "probability": 0.036193204786104105
+                        },
+                        {
+                            "filename": "gemini_pro-26975.c",
+                            "probability": 0.37953522356483466
+                        },
+                        {
+                            "filename": "gemini_pro-27196.c",
+                            "probability": 0.41661669564344683
+                        },
+                        {
+                            "filename": "gemini_pro-29069.c",
+                            "probability": 0.34985003862116787
+                        },
+                        {
+                            "filename": "gemini_pro-30967.c",
+                            "probability": 0.291440886500853
+                        },
+                        {
+                            "filename": "gemini_pro-32157.c",
+                            "probability": 0.37313054016765274
+                        },
+                        {
+                            "filename": "gemini_pro-3358.c",
+                            "probability": 0.4958928944512109
+                        },
+                        {
+                            "filename": "gemini_pro-3511.c",
+                            "probability": 0.4398064755297834
+                        },
+                        {
+                            "filename": "gemini_pro-37651.c",
+                            "probability": 0.035907358718216514
+                        },
+                        {
+                            "filename": "gemini_pro-39437.c",
+                            "probability": 0.27797880838715444
+                        },
+                        {
+                            "filename": "gemini_pro-8712.c",
+                            "probability": 0.19986595445493402
+                        },
+                        {
+                            "filename": "gemini_pro-940.c",
+                            "probability": 0.2358919859689428
+                        }
+                    ]
+                },
+                "gemma7b": {
+                    "accuracy": 0.943,
+                    "total_samples": 1000,
+                    "correct_predictions": 943,
+                    "incorrect_predictions": 57,
+                    "false_negatives": [
+                        {
+                            "filename": "gemma7b-11467.c",
+                            "probability": 0.3362480182062161
+                        },
+                        {
+                            "filename": "gemma7b-11586.c",
+                            "probability": 0.14164479619401804
+                        },
+                        {
+                            "filename": "gemma7b-12362.c",
+                            "probability": 0.3410726799405487
+                        },
+                        {
+                            "filename": "gemma7b-12942.c",
+                            "probability": 0.2658063579283117
+                        },
+                        {
+                            "filename": "gemma7b-13201.c",
+                            "probability": 0.38202352389371086
+                        },
+                        {
+                            "filename": "gemma7b-13275.c",
+                            "probability": 0.4010527062132486
+                        },
+                        {
+                            "filename": "gemma7b-15169.c",
+                            "probability": 0.43554828466718526
+                        },
+                        {
+                            "filename": "gemma7b-1519.c",
+                            "probability": 0.47435487475995813
+                        },
+                        {
+                            "filename": "gemma7b-16439.c",
+                            "probability": 0.22476450202292172
+                        },
+                        {
+                            "filename": "gemma7b-16775.c",
+                            "probability": 0.4097806330710639
+                        },
+                        {
+                            "filename": "gemma7b-17282.c",
+                            "probability": 0.2499023862889435
+                        },
+                        {
+                            "filename": "gemma7b-17694.c",
+                            "probability": 0.08551730406573838
+                        },
+                        {
+                            "filename": "gemma7b-18345.c",
+                            "probability": 0.4417134364019504
+                        },
+                        {
+                            "filename": "gemma7b-18683.c",
+                            "probability": 0.45417032799140306
+                        },
+                        {
+                            "filename": "gemma7b-19161.c",
+                            "probability": 0.11488210377333513
+                        },
+                        {
+                            "filename": "gemma7b-19930.c",
+                            "probability": 0.4711959926784137
+                        },
+                        {
+                            "filename": "gemma7b-20403.c",
+                            "probability": 0.4887885165461884
+                        },
+                        {
+                            "filename": "gemma7b-2055.c",
+                            "probability": 0.30282236738357926
+                        },
+                        {
+                            "filename": "gemma7b-21546.c",
+                            "probability": 0.16903765312235233
+                        },
+                        {
+                            "filename": "gemma7b-22274.c",
+                            "probability": 0.20575064209863314
+                        },
+                        {
+                            "filename": "gemma7b-22372.c",
+                            "probability": 0.1325633318608298
+                        },
+                        {
+                            "filename": "gemma7b-23477.c",
+                            "probability": 0.3034159499104549
+                        },
+                        {
+                            "filename": "gemma7b-23733.c",
+                            "probability": 0.37123851700589106
+                        },
+                        {
+                            "filename": "gemma7b-24236.c",
+                            "probability": 0.3098112159512397
+                        },
+                        {
+                            "filename": "gemma7b-24422.c",
+                            "probability": 0.022763907086971725
+                        },
+                        {
+                            "filename": "gemma7b-25391.c",
+                            "probability": 0.2440715887936983
+                        },
+                        {
+                            "filename": "gemma7b-27261.c",
+                            "probability": 0.4769595027258741
+                        },
+                        {
+                            "filename": "gemma7b-28807.c",
+                            "probability": 0.467017615082995
+                        },
+                        {
+                            "filename": "gemma7b-29952.c",
+                            "probability": 0.15872784984862012
+                        },
+                        {
+                            "filename": "gemma7b-300.c",
+                            "probability": 0.19317278071206825
+                        },
+                        {
+                            "filename": "gemma7b-30913.c",
+                            "probability": 0.4917348131364661
+                        },
+                        {
+                            "filename": "gemma7b-31835.c",
+                            "probability": 0.48537702210893124
+                        },
+                        {
+                            "filename": "gemma7b-32127.c",
+                            "probability": 0.4439684175802068
+                        },
+                        {
+                            "filename": "gemma7b-32561.c",
+                            "probability": 0.08952145484422384
+                        },
+                        {
+                            "filename": "gemma7b-32789.c",
+                            "probability": 0.4445025328113205
+                        },
+                        {
+                            "filename": "gemma7b-34415.c",
+                            "probability": 0.17560763460889459
+                        },
+                        {
+                            "filename": "gemma7b-35386.c",
+                            "probability": 0.3544448217387842
+                        },
+                        {
+                            "filename": "gemma7b-35753.c",
+                            "probability": 0.12223336233995438
+                        },
+                        {
+                            "filename": "gemma7b-35939.c",
+                            "probability": 0.4804949447717832
+                        },
+                        {
+                            "filename": "gemma7b-36723.c",
+                            "probability": 0.3976797604050647
+                        },
+                        {
+                            "filename": "gemma7b-38398.c",
+                            "probability": 0.3357528857930668
+                        },
+                        {
+                            "filename": "gemma7b-40289.c",
+                            "probability": 0.3990182389248005
+                        },
+                        {
+                            "filename": "gemma7b-40445.c",
+                            "probability": 0.2942294634876312
+                        },
+                        {
+                            "filename": "gemma7b-41296.c",
+                            "probability": 0.43977952646502005
+                        },
+                        {
+                            "filename": "gemma7b-42882.c",
+                            "probability": 0.1495872501773148
+                        },
+                        {
+                            "filename": "gemma7b-43123.c",
+                            "probability": 0.4658079731565535
+                        },
+                        {
+                            "filename": "gemma7b-43946.c",
+                            "probability": 0.3525177300908236
+                        },
+                        {
+                            "filename": "gemma7b-44825.c",
+                            "probability": 0.27791096422659284
+                        },
+                        {
+                            "filename": "gemma7b-45353.c",
+                            "probability": 0.3103910556570617
+                        },
+                        {
+                            "filename": "gemma7b-46685.c",
+                            "probability": 0.4532032024003867
+                        },
+                        {
+                            "filename": "gemma7b-5185.c",
+                            "probability": 0.47160136408612136
+                        },
+                        {
+                            "filename": "gemma7b-7478.c",
+                            "probability": 0.4021753676365169
+                        },
+                        {
+                            "filename": "gemma7b-8112.c",
+                            "probability": 0.24106753180343277
+                        },
+                        {
+                            "filename": "gemma7b-8598.c",
+                            "probability": 0.25531171723090457
+                        },
+                        {
+                            "filename": "gemma7b-8819.c",
+                            "probability": 0.18602295272225078
+                        },
+                        {
+                            "filename": "gemma7b-9504.c",
+                            "probability": 0.35326704350340643
+                        },
+                        {
+                            "filename": "gemma7b-9593.c",
+                            "probability": 0.24742791824036525
+                        }
+                    ]
+                },
+                "gpt35": {
+                    "accuracy": 0.961,
+                    "total_samples": 1000,
+                    "correct_predictions": 961,
+                    "incorrect_predictions": 39,
+                    "false_negatives": [
+                        {
+                            "filename": "gpt35-11134.c",
+                            "probability": 0.00949038395240092
+                        },
+                        {
+                            "filename": "gpt35-11651.c",
+                            "probability": 0.20791708523597754
+                        },
+                        {
+                            "filename": "gpt35-13124.c",
+                            "probability": 0.04768739129734683
+                        },
+                        {
+                            "filename": "gpt35-15496.c",
+                            "probability": 0.4722676101095637
+                        },
+                        {
+                            "filename": "gpt35-15533.c",
+                            "probability": 0.367981225619944
+                        },
+                        {
+                            "filename": "gpt35-16930.c",
+                            "probability": 0.4169625176537067
+                        },
+                        {
+                            "filename": "gpt35-18383.c",
+                            "probability": 0.3363421352174091
+                        },
+                        {
+                            "filename": "gpt35-21024.c",
+                            "probability": 0.4787138015153435
+                        },
+                        {
+                            "filename": "gpt35-21690.c",
+                            "probability": 0.0388192895224915
+                        },
+                        {
+                            "filename": "gpt35-22748.c",
+                            "probability": 0.38398000382835823
+                        },
+                        {
+                            "filename": "gpt35-25814.c",
+                            "probability": 0.41132340822757263
+                        },
+                        {
+                            "filename": "gpt35-2900.c",
+                            "probability": 0.43549480774657817
+                        },
+                        {
+                            "filename": "gpt35-31903.c",
+                            "probability": 0.31003464970604105
+                        },
+                        {
+                            "filename": "gpt35-3292.c",
+                            "probability": 0.08193943723039517
+                        },
+                        {
+                            "filename": "gpt35-35613.c",
+                            "probability": 0.3756270135914797
+                        },
+                        {
+                            "filename": "gpt35-37352.c",
+                            "probability": 0.4387973144149548
+                        },
+                        {
+                            "filename": "gpt35-44208.c",
+                            "probability": 0.3746050224769132
+                        },
+                        {
+                            "filename": "gpt35-45479.c",
+                            "probability": 0.4032397654309554
+                        },
+                        {
+                            "filename": "gpt35-45704.c",
+                            "probability": 0.012848928773429313
+                        },
+                        {
+                            "filename": "gpt35-46425.c",
+                            "probability": 0.30014198002002995
+                        },
+                        {
+                            "filename": "gpt35-46760.c",
+                            "probability": 0.482849635790755
+                        },
+                        {
+                            "filename": "gpt35-49276.c",
+                            "probability": 0.46670241568476933
+                        },
+                        {
+                            "filename": "gpt35-50945.c",
+                            "probability": 0.4310187902399703
+                        },
+                        {
+                            "filename": "gpt35-52013.c",
+                            "probability": 0.29049316047047274
+                        },
+                        {
+                            "filename": "gpt35-53997.c",
+                            "probability": 0.06778825679990934
+                        },
+                        {
+                            "filename": "gpt35-54708.c",
+                            "probability": 0.1391197843953455
+                        },
+                        {
+                            "filename": "gpt35-55003.c",
+                            "probability": 0.3596193432860013
+                        },
+                        {
+                            "filename": "gpt35-56038.c",
+                            "probability": 0.3994600200922613
+                        },
+                        {
+                            "filename": "gpt35-60115.c",
+                            "probability": 0.1066575471822053
+                        },
+                        {
+                            "filename": "gpt35-60183.c",
+                            "probability": 0.08646315487766744
+                        },
+                        {
+                            "filename": "gpt35-60913.c",
+                            "probability": 0.26880802063791254
+                        },
+                        {
+                            "filename": "gpt35-67487.c",
+                            "probability": 0.4551233834278314
+                        },
+                        {
+                            "filename": "gpt35-70192.c",
+                            "probability": 0.45538645170730124
+                        },
+                        {
+                            "filename": "gpt35-70669.c",
+                            "probability": 0.4474693886218223
+                        },
+                        {
+                            "filename": "gpt35-70743.c",
+                            "probability": 0.16282405170892825
+                        },
+                        {
+                            "filename": "gpt35-76425.c",
+                            "probability": 0.3337006060203949
+                        },
+                        {
+                            "filename": "gpt35-76578.c",
+                            "probability": 0.20005665870513584
+                        },
+                        {
+                            "filename": "gpt35-76656.c",
+                            "probability": 0.3544504141071355
+                        },
+                        {
+                            "filename": "gpt35-77233.c",
+                            "probability": 0.2862907254405491
+                        }
+                    ]
+                },
+                "gpt4o_mini": {
+                    "accuracy": 0.998,
+                    "total_samples": 1000,
+                    "correct_predictions": 998,
+                    "incorrect_predictions": 2,
+                    "false_negatives": [
+                        {
+                            "filename": "gpt4o_mini-13118.c",
+                            "probability": 0.2073594117334089
+                        },
+                        {
+                            "filename": "gpt4o_mini-7372.c",
+                            "probability": 0.39705046276423145
+                        }
+                    ]
+                },
+                "llama2-13B": {
+                    "accuracy": 0.998,
+                    "total_samples": 1000,
+                    "correct_predictions": 998,
+                    "incorrect_predictions": 2,
+                    "false_negatives": [
+                        {
+                            "filename": "llama2-13B-11682.c",
+                            "probability": 0.10755193047279807
+                        },
+                        {
+                            "filename": "llama2-13B-1272.c",
+                            "probability": 0.009655855387675657
+                        }
+                    ]
+                },
+                "mistral_7b": {
+                    "accuracy": 0.999,
+                    "total_samples": 1000,
+                    "correct_predictions": 999,
+                    "incorrect_predictions": 1,
+                    "false_negatives": [
+                        {
+                            "filename": "mistral_7b-2808.c",
+                            "probability": 0.37792096889038135
+                        }
+                    ]
+                }
+            }
+        },
+        "RandomForest": {
+            "overall_accuracy": 0.9346,
+            "total_samples": 10000,
+            "correct_predictions": 9346,
+            "incorrect_predictions": 654,
+            "source_breakdown": {
+                "FromAI-v1": {
+                    "accuracy": 0.928,
+                    "total_samples": 1000,
+                    "correct_predictions": 928,
+                    "incorrect_predictions": 72,
+                    "false_negatives": [
+                        {
+                            "filename": "FormAI_102169.cpp",
+                            "probability": 0.3767153469359099
+                        },
+                        {
+                            "filename": "FormAI_102995.cpp",
+                            "probability": 0.48618824516782716
+                        },
+                        {
+                            "filename": "FormAI_103224.cpp",
+                            "probability": 0.40078881030425834
+                        },
+                        {
+                            "filename": "FormAI_105303.cpp",
+                            "probability": 0.4632781831806569
+                        },
+                        {
+                            "filename": "FormAI_110964.cpp",
+                            "probability": 0.34858018787383294
+                        },
+                        {
+                            "filename": "FormAI_111612.cpp",
+                            "probability": 0.4594273524155824
+                        },
+                        {
+                            "filename": "FormAI_12043.cpp",
+                            "probability": 0.3802815406112294
+                        },
+                        {
+                            "filename": "FormAI_12958.cpp",
+                            "probability": 0.4480081345311914
+                        },
+                        {
+                            "filename": "FormAI_13677.cpp",
+                            "probability": 0.472027291630147
+                        },
+                        {
+                            "filename": "FormAI_13824.cpp",
+                            "probability": 0.4004075987305116
+                        },
+                        {
+                            "filename": "FormAI_13943.cpp",
+                            "probability": 0.43131557047563984
+                        },
+                        {
+                            "filename": "FormAI_14986.cpp",
+                            "probability": 0.2349870643546469
+                        },
+                        {
+                            "filename": "FormAI_18982.cpp",
+                            "probability": 0.4505386367656496
+                        },
+                        {
+                            "filename": "FormAI_25108.cpp",
+                            "probability": 0.4096066248377376
+                        },
+                        {
+                            "filename": "FormAI_25154.cpp",
+                            "probability": 0.37110213539806175
+                        },
+                        {
+                            "filename": "FormAI_25472.cpp",
+                            "probability": 0.4869369177705111
+                        },
+                        {
+                            "filename": "FormAI_27210.cpp",
+                            "probability": 0.45708525716336956
+                        },
+                        {
+                            "filename": "FormAI_27764.cpp",
+                            "probability": 0.4490616168735178
+                        },
+                        {
+                            "filename": "FormAI_28654.cpp",
+                            "probability": 0.4325540790280611
+                        },
+                        {
+                            "filename": "FormAI_29262.cpp",
+                            "probability": 0.4166430309710327
+                        },
+                        {
+                            "filename": "FormAI_29283.cpp",
+                            "probability": 0.4663414338929936
+                        },
+                        {
+                            "filename": "FormAI_29345.cpp",
+                            "probability": 0.33129058335514605
+                        },
+                        {
+                            "filename": "FormAI_29785.cpp",
+                            "probability": 0.36663403934997907
+                        },
+                        {
+                            "filename": "FormAI_31634.cpp",
+                            "probability": 0.4426239254712864
+                        },
+                        {
+                            "filename": "FormAI_32379.cpp",
+                            "probability": 0.48126886313967193
+                        },
+                        {
+                            "filename": "FormAI_32414.cpp",
+                            "probability": 0.45141588108078984
+                        },
+                        {
+                            "filename": "FormAI_32704.cpp",
+                            "probability": 0.4753145396186507
+                        },
+                        {
+                            "filename": "FormAI_34391.cpp",
+                            "probability": 0.46715419005764963
+                        },
+                        {
+                            "filename": "FormAI_3508.cpp",
+                            "probability": 0.4588029965037299
+                        },
+                        {
+                            "filename": "FormAI_35176.cpp",
+                            "probability": 0.38984908504211596
+                        },
+                        {
+                            "filename": "FormAI_35507.cpp",
+                            "probability": 0.48637057963880514
+                        },
+                        {
+                            "filename": "FormAI_3623.cpp",
+                            "probability": 0.4650693026710791
+                        },
+                        {
+                            "filename": "FormAI_36932.cpp",
+                            "probability": 0.4993302493399033
+                        },
+                        {
+                            "filename": "FormAI_37976.cpp",
+                            "probability": 0.4439722387826106
+                        },
+                        {
+                            "filename": "FormAI_38582.cpp",
+                            "probability": 0.4783744422859999
+                        },
+                        {
+                            "filename": "FormAI_39275.cpp",
+                            "probability": 0.3620478483823925
+                        },
+                        {
+                            "filename": "FormAI_4601.cpp",
+                            "probability": 0.3885900544524876
+                        },
+                        {
+                            "filename": "FormAI_52215.cpp",
+                            "probability": 0.4918787517031065
+                        },
+                        {
+                            "filename": "FormAI_53448.cpp",
+                            "probability": 0.44345267151239576
+                        },
+                        {
+                            "filename": "FormAI_53583.cpp",
+                            "probability": 0.3642122168772199
+                        },
+                        {
+                            "filename": "FormAI_5469.cpp",
+                            "probability": 0.39134013298793724
+                        },
+                        {
+                            "filename": "FormAI_55150.cpp",
+                            "probability": 0.37995709508916675
+                        },
+                        {
+                            "filename": "FormAI_55603.cpp",
+                            "probability": 0.4580435501325036
+                        },
+                        {
+                            "filename": "FormAI_55759.cpp",
+                            "probability": 0.4654882110970749
+                        },
+                        {
+                            "filename": "FormAI_60813.cpp",
+                            "probability": 0.41955304211126804
+                        },
+                        {
+                            "filename": "FormAI_61352.cpp",
+                            "probability": 0.46155394689574203
+                        },
+                        {
+                            "filename": "FormAI_62390.cpp",
+                            "probability": 0.47532358660507207
+                        },
+                        {
+                            "filename": "FormAI_63115.cpp",
+                            "probability": 0.36930324659406477
+                        },
+                        {
+                            "filename": "FormAI_6360.cpp",
+                            "probability": 0.46614446319701186
+                        },
+                        {
+                            "filename": "FormAI_63615.cpp",
+                            "probability": 0.48293969606376486
+                        },
+                        {
+                            "filename": "FormAI_66838.cpp",
+                            "probability": 0.4696772119429522
+                        },
+                        {
+                            "filename": "FormAI_6771.cpp",
+                            "probability": 0.3904342871195002
+                        },
+                        {
+                            "filename": "FormAI_68204.cpp",
+                            "probability": 0.4828780873717301
+                        },
+                        {
+                            "filename": "FormAI_68422.cpp",
+                            "probability": 0.41677998627207746
+                        },
+                        {
+                            "filename": "FormAI_68870.cpp",
+                            "probability": 0.4607652672319072
+                        },
+                        {
+                            "filename": "FormAI_69759.cpp",
+                            "probability": 0.44485706537136355
+                        },
+                        {
+                            "filename": "FormAI_70457.cpp",
+                            "probability": 0.4597831005471097
+                        },
+                        {
+                            "filename": "FormAI_71588.cpp",
+                            "probability": 0.43297002428934017
+                        },
+                        {
+                            "filename": "FormAI_73400.cpp",
+                            "probability": 0.4204629247323437
+                        },
+                        {
+                            "filename": "FormAI_75939.cpp",
+                            "probability": 0.48110693568916785
+                        },
+                        {
+                            "filename": "FormAI_81878.cpp",
+                            "probability": 0.4400443819547999
+                        },
+                        {
+                            "filename": "FormAI_82540.cpp",
+                            "probability": 0.46546138020173006
+                        },
+                        {
+                            "filename": "FormAI_82672.cpp",
+                            "probability": 0.49592413399987073
+                        },
+                        {
+                            "filename": "FormAI_83343.cpp",
+                            "probability": 0.2040281990321875
+                        },
+                        {
+                            "filename": "FormAI_85492.cpp",
+                            "probability": 0.4094661391356542
+                        },
+                        {
+                            "filename": "FormAI_90037.cpp",
+                            "probability": 0.49481282923513714
+                        },
+                        {
+                            "filename": "FormAI_93829.cpp",
+                            "probability": 0.4587079640258306
+                        },
+                        {
+                            "filename": "FormAI_94540.cpp",
+                            "probability": 0.49359357056035824
+                        },
+                        {
+                            "filename": "FormAI_95866.cpp",
+                            "probability": 0.4869345361934313
+                        },
+                        {
+                            "filename": "FormAI_98393.cpp",
+                            "probability": 0.3705205191638242
+                        },
+                        {
+                            "filename": "FormAI_98542.cpp",
+                            "probability": 0.4520016020140885
+                        },
+                        {
+                            "filename": "FormAI_98728.cpp",
+                            "probability": 0.4151439820752633
+                        }
+                    ]
+                },
+                "codellama_13b": {
+                    "accuracy": 0.965,
+                    "total_samples": 1000,
+                    "correct_predictions": 965,
+                    "incorrect_predictions": 35,
+                    "false_negatives": [
+                        {
+                            "filename": "codellama_13b-10942.c",
+                            "probability": 0.4432861141010923
+                        },
+                        {
+                            "filename": "codellama_13b-11875.c",
+                            "probability": 0.4793592689978009
+                        },
+                        {
+                            "filename": "codellama_13b-122.c",
+                            "probability": 0.493383386868799
+                        },
+                        {
+                            "filename": "codellama_13b-1479.c",
+                            "probability": 0.23823086886404918
+                        },
+                        {
+                            "filename": "codellama_13b-1511.c",
+                            "probability": 0.35625011143987234
+                        },
+                        {
+                            "filename": "codellama_13b-16.c",
+                            "probability": 0.4668492589118657
+                        },
+                        {
+                            "filename": "codellama_13b-1639.c",
+                            "probability": 0.44384555809597115
+                        },
+                        {
+                            "filename": "codellama_13b-1894.c",
+                            "probability": 0.49150114115025095
+                        },
+                        {
+                            "filename": "codellama_13b-2557.c",
+                            "probability": 0.3916072474714974
+                        },
+                        {
+                            "filename": "codellama_13b-2599.c",
+                            "probability": 0.4379137159333943
+                        },
+                        {
+                            "filename": "codellama_13b-3280.c",
+                            "probability": 0.3963098601748122
+                        },
+                        {
+                            "filename": "codellama_13b-3550.c",
+                            "probability": 0.31877636921936203
+                        },
+                        {
+                            "filename": "codellama_13b-366.c",
+                            "probability": 0.4592282315301543
+                        },
+                        {
+                            "filename": "codellama_13b-418.c",
+                            "probability": 0.4712850731197276
+                        },
+                        {
+                            "filename": "codellama_13b-4279.c",
+                            "probability": 0.3981561066710739
+                        },
+                        {
+                            "filename": "codellama_13b-453.c",
+                            "probability": 0.4723756688802288
+                        },
+                        {
+                            "filename": "codellama_13b-4555.c",
+                            "probability": 0.44838656305304936
+                        },
+                        {
+                            "filename": "codellama_13b-4899.c",
+                            "probability": 0.49043313369789826
+                        },
+                        {
+                            "filename": "codellama_13b-5025.c",
+                            "probability": 0.3702573633462763
+                        },
+                        {
+                            "filename": "codellama_13b-521.c",
+                            "probability": 0.4955295347226205
+                        },
+                        {
+                            "filename": "codellama_13b-5229.c",
+                            "probability": 0.4635293687329421
+                        },
+                        {
+                            "filename": "codellama_13b-552.c",
+                            "probability": 0.44774186207623484
+                        },
+                        {
+                            "filename": "codellama_13b-5605.c",
+                            "probability": 0.39008218946843554
+                        },
+                        {
+                            "filename": "codellama_13b-5688.c",
+                            "probability": 0.2958512123898111
+                        },
+                        {
+                            "filename": "codellama_13b-6094.c",
+                            "probability": 0.48469851639529965
+                        },
+                        {
+                            "filename": "codellama_13b-6095.c",
+                            "probability": 0.477565164842572
+                        },
+                        {
+                            "filename": "codellama_13b-6270.c",
+                            "probability": 0.4986985125331631
+                        },
+                        {
+                            "filename": "codellama_13b-6434.c",
+                            "probability": 0.34770610392819795
+                        },
+                        {
+                            "filename": "codellama_13b-6755.c",
+                            "probability": 0.37492560951994897
+                        },
+                        {
+                            "filename": "codellama_13b-6778.c",
+                            "probability": 0.49829803860094085
+                        },
+                        {
+                            "filename": "codellama_13b-6886.c",
+                            "probability": 0.46392670684844944
+                        },
+                        {
+                            "filename": "codellama_13b-6950.c",
+                            "probability": 0.425514403653209
+                        },
+                        {
+                            "filename": "codellama_13b-7269.c",
+                            "probability": 0.4690398569937193
+                        },
+                        {
+                            "filename": "codellama_13b-8315.c",
+                            "probability": 0.4392719479611416
+                        },
+                        {
+                            "filename": "codellama_13b-9520.c",
+                            "probability": 0.3947219090830148
+                        }
+                    ]
+                },
+                "falcon180b": {
+                    "accuracy": 0.983,
+                    "total_samples": 1000,
+                    "correct_predictions": 983,
+                    "incorrect_predictions": 17,
+                    "false_negatives": [
+                        {
+                            "filename": "falcon180b-16269.c",
+                            "probability": 0.47532783705227444
+                        },
+                        {
+                            "filename": "falcon180b-16939.c",
+                            "probability": 0.3661259703452142
+                        },
+                        {
+                            "filename": "falcon180b-18099.c",
+                            "probability": 0.41034891413416835
+                        },
+                        {
+                            "filename": "falcon180b-21139.c",
+                            "probability": 0.26995369397968594
+                        },
+                        {
+                            "filename": "falcon180b-24150.c",
+                            "probability": 0.4658364729414648
+                        },
+                        {
+                            "filename": "falcon180b-25643.c",
+                            "probability": 0.4337246008053492
+                        },
+                        {
+                            "filename": "falcon180b-28578.c",
+                            "probability": 0.48887059937796473
+                        },
+                        {
+                            "filename": "falcon180b-32411.c",
+                            "probability": 0.49363589120723966
+                        },
+                        {
+                            "filename": "falcon180b-37824.c",
+                            "probability": 0.35946494680368923
+                        },
+                        {
+                            "filename": "falcon180b-40959.c",
+                            "probability": 0.3594061095993049
+                        },
+                        {
+                            "filename": "falcon180b-53402.c",
+                            "probability": 0.24381388889118086
+                        },
+                        {
+                            "filename": "falcon180b-56628.c",
+                            "probability": 0.3917853742610532
+                        },
+                        {
+                            "filename": "falcon180b-57995.c",
+                            "probability": 0.39773793387746686
+                        },
+                        {
+                            "filename": "falcon180b-59336.c",
+                            "probability": 0.4496759834516983
+                        },
+                        {
+                            "filename": "falcon180b-61154.c",
+                            "probability": 0.48988791550583444
+                        },
+                        {
+                            "filename": "falcon180b-64655.c",
+                            "probability": 0.4262319260023061
+                        },
+                        {
+                            "filename": "falcon180b-7501.c",
+                            "probability": 0.4208421552909955
+                        }
+                    ]
+                },
+                "falcon2-11B": {
+                    "accuracy": 0.941,
+                    "total_samples": 1000,
+                    "correct_predictions": 941,
+                    "incorrect_predictions": 59,
+                    "false_negatives": [
+                        {
+                            "filename": "falcon2-11B-10179.c",
+                            "probability": 0.4212948692381665
+                        },
+                        {
+                            "filename": "falcon2-11B-10203.c",
+                            "probability": 0.32986441956126505
+                        },
+                        {
+                            "filename": "falcon2-11B-10368.c",
+                            "probability": 0.29652262888803105
+                        },
+                        {
+                            "filename": "falcon2-11B-10399.c",
+                            "probability": 0.45174275648824364
+                        },
+                        {
+                            "filename": "falcon2-11B-10467.c",
+                            "probability": 0.4800961814484384
+                        },
+                        {
+                            "filename": "falcon2-11B-10756.c",
+                            "probability": 0.4562293782766299
+                        },
+                        {
+                            "filename": "falcon2-11B-10838.c",
+                            "probability": 0.3015157125914255
+                        },
+                        {
+                            "filename": "falcon2-11B-11258.c",
+                            "probability": 0.36609050513355923
+                        },
+                        {
+                            "filename": "falcon2-11B-11475.c",
+                            "probability": 0.4758339116734217
+                        },
+                        {
+                            "filename": "falcon2-11B-11836.c",
+                            "probability": 0.39813970301090285
+                        },
+                        {
+                            "filename": "falcon2-11B-11841.c",
+                            "probability": 0.3979017117663051
+                        },
+                        {
+                            "filename": "falcon2-11B-11881.c",
+                            "probability": 0.29193798650035463
+                        },
+                        {
+                            "filename": "falcon2-11B-11906.c",
+                            "probability": 0.4489151183184553
+                        },
+                        {
+                            "filename": "falcon2-11B-1354.c",
+                            "probability": 0.468987545984797
+                        },
+                        {
+                            "filename": "falcon2-11B-1454.c",
+                            "probability": 0.4827424283583999
+                        },
+                        {
+                            "filename": "falcon2-11B-148.c",
+                            "probability": 0.25561770409261425
+                        },
+                        {
+                            "filename": "falcon2-11B-1527.c",
+                            "probability": 0.2612925515916509
+                        },
+                        {
+                            "filename": "falcon2-11B-1560.c",
+                            "probability": 0.4958853289679076
+                        },
+                        {
+                            "filename": "falcon2-11B-1677.c",
+                            "probability": 0.19389145289186704
+                        },
+                        {
+                            "filename": "falcon2-11B-2170.c",
+                            "probability": 0.3872261141879869
+                        },
+                        {
+                            "filename": "falcon2-11B-2432.c",
+                            "probability": 0.4013698763723834
+                        },
+                        {
+                            "filename": "falcon2-11B-244.c",
+                            "probability": 0.4965059552374619
+                        },
+                        {
+                            "filename": "falcon2-11B-2458.c",
+                            "probability": 0.2949157391018713
+                        },
+                        {
+                            "filename": "falcon2-11B-2582.c",
+                            "probability": 0.4727981622101617
+                        },
+                        {
+                            "filename": "falcon2-11B-2718.c",
+                            "probability": 0.2594528358641831
+                        },
+                        {
+                            "filename": "falcon2-11B-2811.c",
+                            "probability": 0.4276327624279251
+                        },
+                        {
+                            "filename": "falcon2-11B-3056.c",
+                            "probability": 0.40291131704281885
+                        },
+                        {
+                            "filename": "falcon2-11B-3127.c",
+                            "probability": 0.48190260018672965
+                        },
+                        {
+                            "filename": "falcon2-11B-3194.c",
+                            "probability": 0.4681340832415959
+                        },
+                        {
+                            "filename": "falcon2-11B-326.c",
+                            "probability": 0.4622099196508479
+                        },
+                        {
+                            "filename": "falcon2-11B-3460.c",
+                            "probability": 0.46811402396040647
+                        },
+                        {
+                            "filename": "falcon2-11B-3574.c",
+                            "probability": 0.394413885236409
+                        },
+                        {
+                            "filename": "falcon2-11B-3718.c",
+                            "probability": 0.41405729109752315
+                        },
+                        {
+                            "filename": "falcon2-11B-3792.c",
+                            "probability": 0.49738109131241837
+                        },
+                        {
+                            "filename": "falcon2-11B-3801.c",
+                            "probability": 0.4845698280169287
+                        },
+                        {
+                            "filename": "falcon2-11B-412.c",
+                            "probability": 0.3834744153446768
+                        },
+                        {
+                            "filename": "falcon2-11B-4312.c",
+                            "probability": 0.4695099880827746
+                        },
+                        {
+                            "filename": "falcon2-11B-4590.c",
+                            "probability": 0.379289572010293
+                        },
+                        {
+                            "filename": "falcon2-11B-4809.c",
+                            "probability": 0.4618834477389063
+                        },
+                        {
+                            "filename": "falcon2-11B-5238.c",
+                            "probability": 0.43284559362087643
+                        },
+                        {
+                            "filename": "falcon2-11B-5241.c",
+                            "probability": 0.46427187810502396
+                        },
+                        {
+                            "filename": "falcon2-11B-5473.c",
+                            "probability": 0.4868818068415316
+                        },
+                        {
+                            "filename": "falcon2-11B-5889.c",
+                            "probability": 0.15385619324615496
+                        },
+                        {
+                            "filename": "falcon2-11B-6237.c",
+                            "probability": 0.49417147388707133
+                        },
+                        {
+                            "filename": "falcon2-11B-6365.c",
+                            "probability": 0.45777060829685384
+                        },
+                        {
+                            "filename": "falcon2-11B-6391.c",
+                            "probability": 0.46241776953868086
+                        },
+                        {
+                            "filename": "falcon2-11B-7130.c",
+                            "probability": 0.42232534908744046
+                        },
+                        {
+                            "filename": "falcon2-11B-7402.c",
+                            "probability": 0.13878420942649602
+                        },
+                        {
+                            "filename": "falcon2-11B-7508.c",
+                            "probability": 0.4818946182253369
+                        },
+                        {
+                            "filename": "falcon2-11B-8312.c",
+                            "probability": 0.2083141150854816
+                        },
+                        {
+                            "filename": "falcon2-11B-8757.c",
+                            "probability": 0.43499720021954214
+                        },
+                        {
+                            "filename": "falcon2-11B-8763.c",
+                            "probability": 0.40332611321356576
+                        },
+                        {
+                            "filename": "falcon2-11B-8784.c",
+                            "probability": 0.4125486900957429
+                        },
+                        {
+                            "filename": "falcon2-11B-9136.c",
+                            "probability": 0.36937817284912255
+                        },
+                        {
+                            "filename": "falcon2-11B-9148.c",
+                            "probability": 0.46882701173113256
+                        },
+                        {
+                            "filename": "falcon2-11B-9382.c",
+                            "probability": 0.32941906273629334
+                        },
+                        {
+                            "filename": "falcon2-11B-9470.c",
+                            "probability": 0.31224058926831877
+                        },
+                        {
+                            "filename": "falcon2-11B-9695.c",
+                            "probability": 0.45924803271802006
+                        },
+                        {
+                            "filename": "falcon2-11B-9729.c",
+                            "probability": 0.46623008554331147
+                        }
+                    ]
+                },
+                "gemini_pro": {
+                    "accuracy": 0.95,
+                    "total_samples": 1000,
+                    "correct_predictions": 950,
+                    "incorrect_predictions": 50,
+                    "false_negatives": [
+                        {
+                            "filename": "gemini_pro-11193.c",
+                            "probability": 0.4702530194379031
+                        },
+                        {
+                            "filename": "gemini_pro-11425.c",
+                            "probability": 0.48077217113645293
+                        },
+                        {
+                            "filename": "gemini_pro-13088.c",
+                            "probability": 0.4618849966741144
+                        },
+                        {
+                            "filename": "gemini_pro-13106.c",
+                            "probability": 0.4905258693279685
+                        },
+                        {
+                            "filename": "gemini_pro-13342.c",
+                            "probability": 0.28176726320056533
+                        },
+                        {
+                            "filename": "gemini_pro-14339.c",
+                            "probability": 0.3895256624539154
+                        },
+                        {
+                            "filename": "gemini_pro-14538.c",
+                            "probability": 0.45512054263529533
+                        },
+                        {
+                            "filename": "gemini_pro-14771.c",
+                            "probability": 0.40315532709876917
+                        },
+                        {
+                            "filename": "gemini_pro-15524.c",
+                            "probability": 0.3613680394601677
+                        },
+                        {
+                            "filename": "gemini_pro-15712.c",
+                            "probability": 0.4903529449828973
+                        },
+                        {
+                            "filename": "gemini_pro-15729.c",
+                            "probability": 0.46237507114276355
+                        },
+                        {
+                            "filename": "gemini_pro-15926.c",
+                            "probability": 0.4251788206210746
+                        },
+                        {
+                            "filename": "gemini_pro-18016.c",
+                            "probability": 0.37842772371425953
+                        },
+                        {
+                            "filename": "gemini_pro-18464.c",
+                            "probability": 0.48608038775009105
+                        },
+                        {
+                            "filename": "gemini_pro-19058.c",
+                            "probability": 0.36027484650468383
+                        },
+                        {
+                            "filename": "gemini_pro-19346.c",
+                            "probability": 0.3737566046999914
+                        },
+                        {
+                            "filename": "gemini_pro-21461.c",
+                            "probability": 0.47257994933734165
+                        },
+                        {
+                            "filename": "gemini_pro-23004.c",
+                            "probability": 0.4892984126744985
+                        },
+                        {
+                            "filename": "gemini_pro-23322.c",
+                            "probability": 0.24156651277105332
+                        },
+                        {
+                            "filename": "gemini_pro-23540.c",
+                            "probability": 0.49454440572470854
+                        },
+                        {
+                            "filename": "gemini_pro-24886.c",
+                            "probability": 0.36907730874005396
+                        },
+                        {
+                            "filename": "gemini_pro-25254.c",
+                            "probability": 0.4538212237822257
+                        },
+                        {
+                            "filename": "gemini_pro-26975.c",
+                            "probability": 0.42065889877447826
+                        },
+                        {
+                            "filename": "gemini_pro-2766.c",
+                            "probability": 0.49588562473524966
+                        },
+                        {
+                            "filename": "gemini_pro-28803.c",
+                            "probability": 0.486308133701193
+                        },
+                        {
+                            "filename": "gemini_pro-29069.c",
+                            "probability": 0.44715577520574046
+                        },
+                        {
+                            "filename": "gemini_pro-29490.c",
+                            "probability": 0.47616315893670835
+                        },
+                        {
+                            "filename": "gemini_pro-2982.c",
+                            "probability": 0.33816493434042544
+                        },
+                        {
+                            "filename": "gemini_pro-30099.c",
+                            "probability": 0.47778210446209546
+                        },
+                        {
+                            "filename": "gemini_pro-30967.c",
+                            "probability": 0.31568756074682497
+                        },
+                        {
+                            "filename": "gemini_pro-32157.c",
+                            "probability": 0.22260036437862268
+                        },
+                        {
+                            "filename": "gemini_pro-32319.c",
+                            "probability": 0.4338870146627817
+                        },
+                        {
+                            "filename": "gemini_pro-32808.c",
+                            "probability": 0.48713213523944027
+                        },
+                        {
+                            "filename": "gemini_pro-3428.c",
+                            "probability": 0.4771969400684613
+                        },
+                        {
+                            "filename": "gemini_pro-3511.c",
+                            "probability": 0.4201825058505479
+                        },
+                        {
+                            "filename": "gemini_pro-35302.c",
+                            "probability": 0.4820476856085151
+                        },
+                        {
+                            "filename": "gemini_pro-3536.c",
+                            "probability": 0.4315427115017467
+                        },
+                        {
+                            "filename": "gemini_pro-35406.c",
+                            "probability": 0.4763650573239129
+                        },
+                        {
+                            "filename": "gemini_pro-36177.c",
+                            "probability": 0.3133202483052366
+                        },
+                        {
+                            "filename": "gemini_pro-36231.c",
+                            "probability": 0.471329359124082
+                        },
+                        {
+                            "filename": "gemini_pro-3681.c",
+                            "probability": 0.32848948208896234
+                        },
+                        {
+                            "filename": "gemini_pro-3753.c",
+                            "probability": 0.4092280872925049
+                        },
+                        {
+                            "filename": "gemini_pro-37651.c",
+                            "probability": 0.30738920284585075
+                        },
+                        {
+                            "filename": "gemini_pro-39437.c",
+                            "probability": 0.42876381437044414
+                        },
+                        {
+                            "filename": "gemini_pro-4136.c",
+                            "probability": 0.48929446995593434
+                        },
+                        {
+                            "filename": "gemini_pro-4813.c",
+                            "probability": 0.48258550239964954
+                        },
+                        {
+                            "filename": "gemini_pro-859.c",
+                            "probability": 0.4827803252086547
+                        },
+                        {
+                            "filename": "gemini_pro-8712.c",
+                            "probability": 0.31782640152700264
+                        },
+                        {
+                            "filename": "gemini_pro-940.c",
+                            "probability": 0.44913407035855507
+                        },
+                        {
+                            "filename": "gemini_pro-9947.c",
+                            "probability": 0.4977940303683075
+                        }
+                    ]
+                },
+                "gemma7b": {
+                    "accuracy": 0.724,
+                    "total_samples": 1000,
+                    "correct_predictions": 724,
+                    "incorrect_predictions": 276,
+                    "false_negatives": [
+                        {
+                            "filename": "gemma7b-10382.c",
+                            "probability": 0.45003146461444515
+                        },
+                        {
+                            "filename": "gemma7b-107.c",
+                            "probability": 0.41991841496719395
+                        },
+                        {
+                            "filename": "gemma7b-11242.c",
+                            "probability": 0.4762030544059216
+                        },
+                        {
+                            "filename": "gemma7b-11425.c",
+                            "probability": 0.46869933191863405
+                        },
+                        {
+                            "filename": "gemma7b-11463.c",
+                            "probability": 0.4611300686431169
+                        },
+                        {
+                            "filename": "gemma7b-11467.c",
+                            "probability": 0.28229396715787974
+                        },
+                        {
+                            "filename": "gemma7b-11586.c",
+                            "probability": 0.25967141807200356
+                        },
+                        {
+                            "filename": "gemma7b-11848.c",
+                            "probability": 0.3731548452107254
+                        },
+                        {
+                            "filename": "gemma7b-12124.c",
+                            "probability": 0.4335840873606196
+                        },
+                        {
+                            "filename": "gemma7b-12343.c",
+                            "probability": 0.26291065379790524
+                        },
+                        {
+                            "filename": "gemma7b-12362.c",
+                            "probability": 0.2710539377329377
+                        },
+                        {
+                            "filename": "gemma7b-12410.c",
+                            "probability": 0.3818892396312782
+                        },
+                        {
+                            "filename": "gemma7b-1279.c",
+                            "probability": 0.3808734266916569
+                        },
+                        {
+                            "filename": "gemma7b-12929.c",
+                            "probability": 0.4354971994427829
+                        },
+                        {
+                            "filename": "gemma7b-12942.c",
+                            "probability": 0.24048652566491313
+                        },
+                        {
+                            "filename": "gemma7b-13169.c",
+                            "probability": 0.44220086642914236
+                        },
+                        {
+                            "filename": "gemma7b-13201.c",
+                            "probability": 0.40880819671608504
+                        },
+                        {
+                            "filename": "gemma7b-13275.c",
+                            "probability": 0.2290183936960967
+                        },
+                        {
+                            "filename": "gemma7b-13329.c",
+                            "probability": 0.40500081935619286
+                        },
+                        {
+                            "filename": "gemma7b-14436.c",
+                            "probability": 0.46952220299776903
+                        },
+                        {
+                            "filename": "gemma7b-14582.c",
+                            "probability": 0.47064275037410386
+                        },
+                        {
+                            "filename": "gemma7b-14664.c",
+                            "probability": 0.45767309113839966
+                        },
+                        {
+                            "filename": "gemma7b-14834.c",
+                            "probability": 0.46010023916744996
+                        },
+                        {
+                            "filename": "gemma7b-15151.c",
+                            "probability": 0.3570397282882649
+                        },
+                        {
+                            "filename": "gemma7b-15169.c",
+                            "probability": 0.2650879065442039
+                        },
+                        {
+                            "filename": "gemma7b-1519.c",
+                            "probability": 0.23781629277498562
+                        },
+                        {
+                            "filename": "gemma7b-15230.c",
+                            "probability": 0.2692562057363753
+                        },
+                        {
+                            "filename": "gemma7b-15570.c",
+                            "probability": 0.37908342253644145
+                        },
+                        {
+                            "filename": "gemma7b-15579.c",
+                            "probability": 0.3255453446652455
+                        },
+                        {
+                            "filename": "gemma7b-15665.c",
+                            "probability": 0.49806073465161727
+                        },
+                        {
+                            "filename": "gemma7b-16054.c",
+                            "probability": 0.3809383592887485
+                        },
+                        {
+                            "filename": "gemma7b-16091.c",
+                            "probability": 0.4768111749041342
+                        },
+                        {
+                            "filename": "gemma7b-16439.c",
+                            "probability": 0.24956465333617028
+                        },
+                        {
+                            "filename": "gemma7b-16733.c",
+                            "probability": 0.3726455250158876
+                        },
+                        {
+                            "filename": "gemma7b-16775.c",
+                            "probability": 0.327748993478487
+                        },
+                        {
+                            "filename": "gemma7b-16974.c",
+                            "probability": 0.4783352794876227
+                        },
+                        {
+                            "filename": "gemma7b-17013.c",
+                            "probability": 0.47306110765876513
+                        },
+                        {
+                            "filename": "gemma7b-17282.c",
+                            "probability": 0.3024420432949592
+                        },
+                        {
+                            "filename": "gemma7b-17402.c",
+                            "probability": 0.2543409367870137
+                        },
+                        {
+                            "filename": "gemma7b-1750.c",
+                            "probability": 0.49626366317024795
+                        },
+                        {
+                            "filename": "gemma7b-17671.c",
+                            "probability": 0.4239814260919864
+                        },
+                        {
+                            "filename": "gemma7b-17694.c",
+                            "probability": 0.36880056649149895
+                        },
+                        {
+                            "filename": "gemma7b-18003.c",
+                            "probability": 0.4776400471988716
+                        },
+                        {
+                            "filename": "gemma7b-18014.c",
+                            "probability": 0.4316147754032505
+                        },
+                        {
+                            "filename": "gemma7b-18018.c",
+                            "probability": 0.4834564364584041
+                        },
+                        {
+                            "filename": "gemma7b-18084.c",
+                            "probability": 0.49109456302933563
+                        },
+                        {
+                            "filename": "gemma7b-18138.c",
+                            "probability": 0.41035980719660087
+                        },
+                        {
+                            "filename": "gemma7b-18145.c",
+                            "probability": 0.4873878501988626
+                        },
+                        {
+                            "filename": "gemma7b-18223.c",
+                            "probability": 0.34639500952042024
+                        },
+                        {
+                            "filename": "gemma7b-18273.c",
+                            "probability": 0.46865517510460347
+                        },
+                        {
+                            "filename": "gemma7b-18345.c",
+                            "probability": 0.46317042300467476
+                        },
+                        {
+                            "filename": "gemma7b-18609.c",
+                            "probability": 0.4492846459799575
+                        },
+                        {
+                            "filename": "gemma7b-18638.c",
+                            "probability": 0.4687947407342993
+                        },
+                        {
+                            "filename": "gemma7b-18683.c",
+                            "probability": 0.40278790648844753
+                        },
+                        {
+                            "filename": "gemma7b-18723.c",
+                            "probability": 0.47194327017757814
+                        },
+                        {
+                            "filename": "gemma7b-19018.c",
+                            "probability": 0.4609120659653715
+                        },
+                        {
+                            "filename": "gemma7b-19103.c",
+                            "probability": 0.25788027503927363
+                        },
+                        {
+                            "filename": "gemma7b-19161.c",
+                            "probability": 0.13830862063714314
+                        },
+                        {
+                            "filename": "gemma7b-19553.c",
+                            "probability": 0.4106975088814664
+                        },
+                        {
+                            "filename": "gemma7b-19837.c",
+                            "probability": 0.4818402989446408
+                        },
+                        {
+                            "filename": "gemma7b-19885.c",
+                            "probability": 0.33772612640199523
+                        },
+                        {
+                            "filename": "gemma7b-19902.c",
+                            "probability": 0.4233797555753359
+                        },
+                        {
+                            "filename": "gemma7b-19930.c",
+                            "probability": 0.41015812287304143
+                        },
+                        {
+                            "filename": "gemma7b-2036.c",
+                            "probability": 0.28412997040731797
+                        },
+                        {
+                            "filename": "gemma7b-20403.c",
+                            "probability": 0.19025417401914935
+                        },
+                        {
+                            "filename": "gemma7b-20467.c",
+                            "probability": 0.3054822251376723
+                        },
+                        {
+                            "filename": "gemma7b-2055.c",
+                            "probability": 0.3339130191883797
+                        },
+                        {
+                            "filename": "gemma7b-20813.c",
+                            "probability": 0.4075047525803319
+                        },
+                        {
+                            "filename": "gemma7b-21061.c",
+                            "probability": 0.33440617560136976
+                        },
+                        {
+                            "filename": "gemma7b-21146.c",
+                            "probability": 0.44088364288681486
+                        },
+                        {
+                            "filename": "gemma7b-21286.c",
+                            "probability": 0.24556468397485678
+                        },
+                        {
+                            "filename": "gemma7b-21463.c",
+                            "probability": 0.48207206810794445
+                        },
+                        {
+                            "filename": "gemma7b-21542.c",
+                            "probability": 0.4697181201761518
+                        },
+                        {
+                            "filename": "gemma7b-21546.c",
+                            "probability": 0.2857716933944133
+                        },
+                        {
+                            "filename": "gemma7b-21656.c",
+                            "probability": 0.44375299188368766
+                        },
+                        {
+                            "filename": "gemma7b-21691.c",
+                            "probability": 0.4425775895114645
+                        },
+                        {
+                            "filename": "gemma7b-21945.c",
+                            "probability": 0.45456998719273306
+                        },
+                        {
+                            "filename": "gemma7b-22049.c",
+                            "probability": 0.48174284347309887
+                        },
+                        {
+                            "filename": "gemma7b-22074.c",
+                            "probability": 0.4660993223855442
+                        },
+                        {
+                            "filename": "gemma7b-22274.c",
+                            "probability": 0.20030222937003853
+                        },
+                        {
+                            "filename": "gemma7b-22288.c",
+                            "probability": 0.33376656289368906
+                        },
+                        {
+                            "filename": "gemma7b-22372.c",
+                            "probability": 0.12890535486449897
+                        },
+                        {
+                            "filename": "gemma7b-22436.c",
+                            "probability": 0.4251466490040323
+                        },
+                        {
+                            "filename": "gemma7b-23217.c",
+                            "probability": 0.4978028004659765
+                        },
+                        {
+                            "filename": "gemma7b-23477.c",
+                            "probability": 0.1922766925878452
+                        },
+                        {
+                            "filename": "gemma7b-23543.c",
+                            "probability": 0.4743788149855946
+                        },
+                        {
+                            "filename": "gemma7b-23733.c",
+                            "probability": 0.2563531577357715
+                        },
+                        {
+                            "filename": "gemma7b-23917.c",
+                            "probability": 0.3495082332667828
+                        },
+                        {
+                            "filename": "gemma7b-24103.c",
+                            "probability": 0.49154660867309263
+                        },
+                        {
+                            "filename": "gemma7b-24236.c",
+                            "probability": 0.22534424006029277
+                        },
+                        {
+                            "filename": "gemma7b-24370.c",
+                            "probability": 0.4806243240853904
+                        },
+                        {
+                            "filename": "gemma7b-24422.c",
+                            "probability": 0.25527961076642786
+                        },
+                        {
+                            "filename": "gemma7b-24454.c",
+                            "probability": 0.4350706719605397
+                        },
+                        {
+                            "filename": "gemma7b-24490.c",
+                            "probability": 0.48323963898364736
+                        },
+                        {
+                            "filename": "gemma7b-24508.c",
+                            "probability": 0.3942181487596791
+                        },
+                        {
+                            "filename": "gemma7b-25030.c",
+                            "probability": 0.330074393291987
+                        },
+                        {
+                            "filename": "gemma7b-25044.c",
+                            "probability": 0.47211671042970893
+                        },
+                        {
+                            "filename": "gemma7b-25053.c",
+                            "probability": 0.4376939281324248
+                        },
+                        {
+                            "filename": "gemma7b-25391.c",
+                            "probability": 0.4339143836662224
+                        },
+                        {
+                            "filename": "gemma7b-25925.c",
+                            "probability": 0.43538046364193617
+                        },
+                        {
+                            "filename": "gemma7b-25982.c",
+                            "probability": 0.4430830385005667
+                        },
+                        {
+                            "filename": "gemma7b-26237.c",
+                            "probability": 0.42707120371730733
+                        },
+                        {
+                            "filename": "gemma7b-26456.c",
+                            "probability": 0.35012894244580084
+                        },
+                        {
+                            "filename": "gemma7b-26557.c",
+                            "probability": 0.4492790429737306
+                        },
+                        {
+                            "filename": "gemma7b-26730.c",
+                            "probability": 0.42119283777841293
+                        },
+                        {
+                            "filename": "gemma7b-26732.c",
+                            "probability": 0.4615619931772452
+                        },
+                        {
+                            "filename": "gemma7b-26976.c",
+                            "probability": 0.36526749551823917
+                        },
+                        {
+                            "filename": "gemma7b-27687.c",
+                            "probability": 0.4579522359072444
+                        },
+                        {
+                            "filename": "gemma7b-27936.c",
+                            "probability": 0.3765637058492214
+                        },
+                        {
+                            "filename": "gemma7b-28030.c",
+                            "probability": 0.27503667277893507
+                        },
+                        {
+                            "filename": "gemma7b-28148.c",
+                            "probability": 0.418913602535732
+                        },
+                        {
+                            "filename": "gemma7b-28168.c",
+                            "probability": 0.3759864792024936
+                        },
+                        {
+                            "filename": "gemma7b-28301.c",
+                            "probability": 0.4395826000269067
+                        },
+                        {
+                            "filename": "gemma7b-28590.c",
+                            "probability": 0.3926485083231577
+                        },
+                        {
+                            "filename": "gemma7b-2870.c",
+                            "probability": 0.49267582027872125
+                        },
+                        {
+                            "filename": "gemma7b-28738.c",
+                            "probability": 0.4222631311042095
+                        },
+                        {
+                            "filename": "gemma7b-28807.c",
+                            "probability": 0.4732447399455295
+                        },
+                        {
+                            "filename": "gemma7b-28836.c",
+                            "probability": 0.4558716991833202
+                        },
+                        {
+                            "filename": "gemma7b-29273.c",
+                            "probability": 0.4149995995827833
+                        },
+                        {
+                            "filename": "gemma7b-29590.c",
+                            "probability": 0.4762001972848013
+                        },
+                        {
+                            "filename": "gemma7b-29665.c",
+                            "probability": 0.493606794501848
+                        },
+                        {
+                            "filename": "gemma7b-29922.c",
+                            "probability": 0.3249732672667756
+                        },
+                        {
+                            "filename": "gemma7b-29952.c",
+                            "probability": 0.23581603978983784
+                        },
+                        {
+                            "filename": "gemma7b-29960.c",
+                            "probability": 0.4987327493096157
+                        },
+                        {
+                            "filename": "gemma7b-300.c",
+                            "probability": 0.1962719219736988
+                        },
+                        {
+                            "filename": "gemma7b-30002.c",
+                            "probability": 0.46741681833331794
+                        },
+                        {
+                            "filename": "gemma7b-30342.c",
+                            "probability": 0.33585342348444774
+                        },
+                        {
+                            "filename": "gemma7b-30422.c",
+                            "probability": 0.40525359628731894
+                        },
+                        {
+                            "filename": "gemma7b-30438.c",
+                            "probability": 0.4568358430843694
+                        },
+                        {
+                            "filename": "gemma7b-30593.c",
+                            "probability": 0.41758049581308737
+                        },
+                        {
+                            "filename": "gemma7b-30699.c",
+                            "probability": 0.2949505489692551
+                        },
+                        {
+                            "filename": "gemma7b-30863.c",
+                            "probability": 0.28286465669284605
+                        },
+                        {
+                            "filename": "gemma7b-30913.c",
+                            "probability": 0.40993607075611227
+                        },
+                        {
+                            "filename": "gemma7b-30979.c",
+                            "probability": 0.41245003121015594
+                        },
+                        {
+                            "filename": "gemma7b-31004.c",
+                            "probability": 0.4889878052613178
+                        },
+                        {
+                            "filename": "gemma7b-31007.c",
+                            "probability": 0.4486960073038897
+                        },
+                        {
+                            "filename": "gemma7b-31039.c",
+                            "probability": 0.4945486004402608
+                        },
+                        {
+                            "filename": "gemma7b-31046.c",
+                            "probability": 0.4813944320911708
+                        },
+                        {
+                            "filename": "gemma7b-31096.c",
+                            "probability": 0.49598745118207993
+                        },
+                        {
+                            "filename": "gemma7b-31242.c",
+                            "probability": 0.3858863608733683
+                        },
+                        {
+                            "filename": "gemma7b-31529.c",
+                            "probability": 0.4352749426107563
+                        },
+                        {
+                            "filename": "gemma7b-31578.c",
+                            "probability": 0.4635140197937728
+                        },
+                        {
+                            "filename": "gemma7b-31724.c",
+                            "probability": 0.3563520815195044
+                        },
+                        {
+                            "filename": "gemma7b-31769.c",
+                            "probability": 0.2604375428548775
+                        },
+                        {
+                            "filename": "gemma7b-31835.c",
+                            "probability": 0.45800335901230305
+                        },
+                        {
+                            "filename": "gemma7b-32034.c",
+                            "probability": 0.4853829351286917
+                        },
+                        {
+                            "filename": "gemma7b-32127.c",
+                            "probability": 0.2170383197943571
+                        },
+                        {
+                            "filename": "gemma7b-32259.c",
+                            "probability": 0.44271501106671896
+                        },
+                        {
+                            "filename": "gemma7b-32268.c",
+                            "probability": 0.33928377701515183
+                        },
+                        {
+                            "filename": "gemma7b-32446.c",
+                            "probability": 0.4919811169989646
+                        },
+                        {
+                            "filename": "gemma7b-32510.c",
+                            "probability": 0.4372593311414092
+                        },
+                        {
+                            "filename": "gemma7b-32561.c",
+                            "probability": 0.2675489483582693
+                        },
+                        {
+                            "filename": "gemma7b-32578.c",
+                            "probability": 0.3470226685165911
+                        },
+                        {
+                            "filename": "gemma7b-32743.c",
+                            "probability": 0.38136846027156723
+                        },
+                        {
+                            "filename": "gemma7b-32789.c",
+                            "probability": 0.4359624135669137
+                        },
+                        {
+                            "filename": "gemma7b-32830.c",
+                            "probability": 0.49661335601801215
+                        },
+                        {
+                            "filename": "gemma7b-32932.c",
+                            "probability": 0.4421054506943025
+                        },
+                        {
+                            "filename": "gemma7b-33353.c",
+                            "probability": 0.45913868031354665
+                        },
+                        {
+                            "filename": "gemma7b-33416.c",
+                            "probability": 0.30488995077102715
+                        },
+                        {
+                            "filename": "gemma7b-33651.c",
+                            "probability": 0.4610462966334422
+                        },
+                        {
+                            "filename": "gemma7b-33786.c",
+                            "probability": 0.48139000380145264
+                        },
+                        {
+                            "filename": "gemma7b-33826.c",
+                            "probability": 0.43898160682142456
+                        },
+                        {
+                            "filename": "gemma7b-34299.c",
+                            "probability": 0.36095879170938755
+                        },
+                        {
+                            "filename": "gemma7b-34415.c",
+                            "probability": 0.25287981908192897
+                        },
+                        {
+                            "filename": "gemma7b-34650.c",
+                            "probability": 0.3040049823380611
+                        },
+                        {
+                            "filename": "gemma7b-34699.c",
+                            "probability": 0.4731112825877732
+                        },
+                        {
+                            "filename": "gemma7b-34863.c",
+                            "probability": 0.4292537201890557
+                        },
+                        {
+                            "filename": "gemma7b-34900.c",
+                            "probability": 0.48842031439582817
+                        },
+                        {
+                            "filename": "gemma7b-35125.c",
+                            "probability": 0.4972769639757417
+                        },
+                        {
+                            "filename": "gemma7b-35386.c",
+                            "probability": 0.3866037324759075
+                        },
+                        {
+                            "filename": "gemma7b-35410.c",
+                            "probability": 0.36982868411574016
+                        },
+                        {
+                            "filename": "gemma7b-35513.c",
+                            "probability": 0.4668424672274662
+                        },
+                        {
+                            "filename": "gemma7b-35643.c",
+                            "probability": 0.3823929448710348
+                        },
+                        {
+                            "filename": "gemma7b-35683.c",
+                            "probability": 0.46128667607663243
+                        },
+                        {
+                            "filename": "gemma7b-35715.c",
+                            "probability": 0.3297430784580459
+                        },
+                        {
+                            "filename": "gemma7b-35753.c",
+                            "probability": 0.16136396878950526
+                        },
+                        {
+                            "filename": "gemma7b-3579.c",
+                            "probability": 0.319854160482381
+                        },
+                        {
+                            "filename": "gemma7b-35830.c",
+                            "probability": 0.4892330240735755
+                        },
+                        {
+                            "filename": "gemma7b-35939.c",
+                            "probability": 0.29939319074779547
+                        },
+                        {
+                            "filename": "gemma7b-36332.c",
+                            "probability": 0.4970469861008785
+                        },
+                        {
+                            "filename": "gemma7b-36723.c",
+                            "probability": 0.3408347259613919
+                        },
+                        {
+                            "filename": "gemma7b-36771.c",
+                            "probability": 0.3620398782292052
+                        },
+                        {
+                            "filename": "gemma7b-37.c",
+                            "probability": 0.43647271962713563
+                        },
+                        {
+                            "filename": "gemma7b-37312.c",
+                            "probability": 0.486329732647338
+                        },
+                        {
+                            "filename": "gemma7b-3733.c",
+                            "probability": 0.47987986194321575
+                        },
+                        {
+                            "filename": "gemma7b-37366.c",
+                            "probability": 0.2757632639830081
+                        },
+                        {
+                            "filename": "gemma7b-38222.c",
+                            "probability": 0.41878117581752333
+                        },
+                        {
+                            "filename": "gemma7b-38398.c",
+                            "probability": 0.3789857958759301
+                        },
+                        {
+                            "filename": "gemma7b-38474.c",
+                            "probability": 0.4155192745716694
+                        },
+                        {
+                            "filename": "gemma7b-38609.c",
+                            "probability": 0.47324745655968553
+                        },
+                        {
+                            "filename": "gemma7b-38676.c",
+                            "probability": 0.4774249142737216
+                        },
+                        {
+                            "filename": "gemma7b-38689.c",
+                            "probability": 0.4888852315768356
+                        },
+                        {
+                            "filename": "gemma7b-38906.c",
+                            "probability": 0.4860394885419214
+                        },
+                        {
+                            "filename": "gemma7b-38991.c",
+                            "probability": 0.33197851071205403
+                        },
+                        {
+                            "filename": "gemma7b-39015.c",
+                            "probability": 0.3805044733565373
+                        },
+                        {
+                            "filename": "gemma7b-39170.c",
+                            "probability": 0.35761535628027813
+                        },
+                        {
+                            "filename": "gemma7b-39625.c",
+                            "probability": 0.4709482071574833
+                        },
+                        {
+                            "filename": "gemma7b-39796.c",
+                            "probability": 0.4533312052315434
+                        },
+                        {
+                            "filename": "gemma7b-39963.c",
+                            "probability": 0.4634397077167218
+                        },
+                        {
+                            "filename": "gemma7b-40131.c",
+                            "probability": 0.39702721011187453
+                        },
+                        {
+                            "filename": "gemma7b-40206.c",
+                            "probability": 0.3803197925443288
+                        },
+                        {
+                            "filename": "gemma7b-40221.c",
+                            "probability": 0.45501454193694657
+                        },
+                        {
+                            "filename": "gemma7b-40243.c",
+                            "probability": 0.4853322001234473
+                        },
+                        {
+                            "filename": "gemma7b-40289.c",
+                            "probability": 0.24250797262201626
+                        },
+                        {
+                            "filename": "gemma7b-40363.c",
+                            "probability": 0.4991444276098366
+                        },
+                        {
+                            "filename": "gemma7b-40445.c",
+                            "probability": 0.20850304256635843
+                        },
+                        {
+                            "filename": "gemma7b-40487.c",
+                            "probability": 0.4079189189562105
+                        },
+                        {
+                            "filename": "gemma7b-40649.c",
+                            "probability": 0.4867946775352212
+                        },
+                        {
+                            "filename": "gemma7b-40651.c",
+                            "probability": 0.4680493015494569
+                        },
+                        {
+                            "filename": "gemma7b-40994.c",
+                            "probability": 0.4586859605013298
+                        },
+                        {
+                            "filename": "gemma7b-4109.c",
+                            "probability": 0.48094318061343805
+                        },
+                        {
+                            "filename": "gemma7b-41176.c",
+                            "probability": 0.4245022139730461
+                        },
+                        {
+                            "filename": "gemma7b-41296.c",
+                            "probability": 0.3734202163895696
+                        },
+                        {
+                            "filename": "gemma7b-4135.c",
+                            "probability": 0.4291328124386776
+                        },
+                        {
+                            "filename": "gemma7b-41377.c",
+                            "probability": 0.4279582836463043
+                        },
+                        {
+                            "filename": "gemma7b-41589.c",
+                            "probability": 0.4778931027042765
+                        },
+                        {
+                            "filename": "gemma7b-41678.c",
+                            "probability": 0.48147993373412185
+                        },
+                        {
+                            "filename": "gemma7b-41719.c",
+                            "probability": 0.45729041010755433
+                        },
+                        {
+                            "filename": "gemma7b-41915.c",
+                            "probability": 0.42581308191279904
+                        },
+                        {
+                            "filename": "gemma7b-42143.c",
+                            "probability": 0.4207251035931962
+                        },
+                        {
+                            "filename": "gemma7b-42882.c",
+                            "probability": 0.21128944600320076
+                        },
+                        {
+                            "filename": "gemma7b-43049.c",
+                            "probability": 0.47996139792706277
+                        },
+                        {
+                            "filename": "gemma7b-43123.c",
+                            "probability": 0.3815758369440066
+                        },
+                        {
+                            "filename": "gemma7b-43141.c",
+                            "probability": 0.42664307718810424
+                        },
+                        {
+                            "filename": "gemma7b-43381.c",
+                            "probability": 0.36399930759703303
+                        },
+                        {
+                            "filename": "gemma7b-43723.c",
+                            "probability": 0.4763066727230039
+                        },
+                        {
+                            "filename": "gemma7b-43946.c",
+                            "probability": 0.23061241797644366
+                        },
+                        {
+                            "filename": "gemma7b-43974.c",
+                            "probability": 0.4249463399174189
+                        },
+                        {
+                            "filename": "gemma7b-44099.c",
+                            "probability": 0.4687906938216191
+                        },
+                        {
+                            "filename": "gemma7b-44338.c",
+                            "probability": 0.40764627474410414
+                        },
+                        {
+                            "filename": "gemma7b-4447.c",
+                            "probability": 0.36204676377848927
+                        },
+                        {
+                            "filename": "gemma7b-4455.c",
+                            "probability": 0.4219633693674398
+                        },
+                        {
+                            "filename": "gemma7b-44568.c",
+                            "probability": 0.4958370202260509
+                        },
+                        {
+                            "filename": "gemma7b-44612.c",
+                            "probability": 0.3497378413891584
+                        },
+                        {
+                            "filename": "gemma7b-44652.c",
+                            "probability": 0.4885058144040435
+                        },
+                        {
+                            "filename": "gemma7b-44673.c",
+                            "probability": 0.4970123371141379
+                        },
+                        {
+                            "filename": "gemma7b-44825.c",
+                            "probability": 0.2942866320536018
+                        },
+                        {
+                            "filename": "gemma7b-45039.c",
+                            "probability": 0.4842565011853791
+                        },
+                        {
+                            "filename": "gemma7b-45353.c",
+                            "probability": 0.24502047807270794
+                        },
+                        {
+                            "filename": "gemma7b-45388.c",
+                            "probability": 0.45995125271247306
+                        },
+                        {
+                            "filename": "gemma7b-45459.c",
+                            "probability": 0.4268153796896896
+                        },
+                        {
+                            "filename": "gemma7b-45474.c",
+                            "probability": 0.2375543956954458
+                        },
+                        {
+                            "filename": "gemma7b-45620.c",
+                            "probability": 0.441934613309941
+                        },
+                        {
+                            "filename": "gemma7b-45958.c",
+                            "probability": 0.40824237444248995
+                        },
+                        {
+                            "filename": "gemma7b-45973.c",
+                            "probability": 0.4812836139180091
+                        },
+                        {
+                            "filename": "gemma7b-46099.c",
+                            "probability": 0.4751713827381217
+                        },
+                        {
+                            "filename": "gemma7b-46179.c",
+                            "probability": 0.40906354951436025
+                        },
+                        {
+                            "filename": "gemma7b-46685.c",
+                            "probability": 0.47496994707645757
+                        },
+                        {
+                            "filename": "gemma7b-4762.c",
+                            "probability": 0.4888192618766701
+                        },
+                        {
+                            "filename": "gemma7b-4938.c",
+                            "probability": 0.46408728125518667
+                        },
+                        {
+                            "filename": "gemma7b-5038.c",
+                            "probability": 0.3851861117254039
+                        },
+                        {
+                            "filename": "gemma7b-5185.c",
+                            "probability": 0.2450077682859363
+                        },
+                        {
+                            "filename": "gemma7b-5894.c",
+                            "probability": 0.44590803422392034
+                        },
+                        {
+                            "filename": "gemma7b-5940.c",
+                            "probability": 0.4065325401005765
+                        },
+                        {
+                            "filename": "gemma7b-5945.c",
+                            "probability": 0.4112471355603891
+                        },
+                        {
+                            "filename": "gemma7b-6567.c",
+                            "probability": 0.37174916062855623
+                        },
+                        {
+                            "filename": "gemma7b-6709.c",
+                            "probability": 0.4065235820252073
+                        },
+                        {
+                            "filename": "gemma7b-7095.c",
+                            "probability": 0.4597874101253751
+                        },
+                        {
+                            "filename": "gemma7b-7345.c",
+                            "probability": 0.311802511982119
+                        },
+                        {
+                            "filename": "gemma7b-7353.c",
+                            "probability": 0.3599933138199255
+                        },
+                        {
+                            "filename": "gemma7b-7478.c",
+                            "probability": 0.43100415069005826
+                        },
+                        {
+                            "filename": "gemma7b-7970.c",
+                            "probability": 0.4820408910043046
+                        },
+                        {
+                            "filename": "gemma7b-8112.c",
+                            "probability": 0.29900020624656015
+                        },
+                        {
+                            "filename": "gemma7b-8181.c",
+                            "probability": 0.46707865171673946
+                        },
+                        {
+                            "filename": "gemma7b-8268.c",
+                            "probability": 0.4656653358615885
+                        },
+                        {
+                            "filename": "gemma7b-8347.c",
+                            "probability": 0.4985448725646297
+                        },
+                        {
+                            "filename": "gemma7b-8378.c",
+                            "probability": 0.41270721918501524
+                        },
+                        {
+                            "filename": "gemma7b-8564.c",
+                            "probability": 0.400194101496892
+                        },
+                        {
+                            "filename": "gemma7b-8598.c",
+                            "probability": 0.3901372841019279
+                        },
+                        {
+                            "filename": "gemma7b-8819.c",
+                            "probability": 0.2613443730305903
+                        },
+                        {
+                            "filename": "gemma7b-9257.c",
+                            "probability": 0.4222889639421928
+                        },
+                        {
+                            "filename": "gemma7b-9283.c",
+                            "probability": 0.43498897312856466
+                        },
+                        {
+                            "filename": "gemma7b-9504.c",
+                            "probability": 0.3570823574541295
+                        },
+                        {
+                            "filename": "gemma7b-9593.c",
+                            "probability": 0.23890888598765556
+                        },
+                        {
+                            "filename": "gemma7b-9678.c",
+                            "probability": 0.41738284226740685
+                        },
+                        {
+                            "filename": "gemma7b-9888.c",
+                            "probability": 0.3855924629062688
+                        }
+                    ]
+                },
+                "gpt35": {
+                    "accuracy": 0.877,
+                    "total_samples": 1000,
+                    "correct_predictions": 877,
+                    "incorrect_predictions": 123,
+                    "false_negatives": [
+                        {
+                            "filename": "gpt35-1071.c",
+                            "probability": 0.4767214260351388
+                        },
+                        {
+                            "filename": "gpt35-10987.c",
+                            "probability": 0.4162803062975389
+                        },
+                        {
+                            "filename": "gpt35-11134.c",
+                            "probability": 0.2515866567773306
+                        },
+                        {
+                            "filename": "gpt35-12294.c",
+                            "probability": 0.3970498171613745
+                        },
+                        {
+                            "filename": "gpt35-12454.c",
+                            "probability": 0.47522990560778094
+                        },
+                        {
+                            "filename": "gpt35-13124.c",
+                            "probability": 0.2581716523478324
+                        },
+                        {
+                            "filename": "gpt35-13255.c",
+                            "probability": 0.34818420100606173
+                        },
+                        {
+                            "filename": "gpt35-13701.c",
+                            "probability": 0.3881191969741572
+                        },
+                        {
+                            "filename": "gpt35-15105.c",
+                            "probability": 0.4870439642535564
+                        },
+                        {
+                            "filename": "gpt35-15496.c",
+                            "probability": 0.4228050958861598
+                        },
+                        {
+                            "filename": "gpt35-15533.c",
+                            "probability": 0.35565907986872874
+                        },
+                        {
+                            "filename": "gpt35-16062.c",
+                            "probability": 0.237260685096744
+                        },
+                        {
+                            "filename": "gpt35-16352.c",
+                            "probability": 0.45616252378167627
+                        },
+                        {
+                            "filename": "gpt35-16472.c",
+                            "probability": 0.4888139679825695
+                        },
+                        {
+                            "filename": "gpt35-16755.c",
+                            "probability": 0.4863185428701819
+                        },
+                        {
+                            "filename": "gpt35-16930.c",
+                            "probability": 0.36799173908535343
+                        },
+                        {
+                            "filename": "gpt35-17200.c",
+                            "probability": 0.43951248169788026
+                        },
+                        {
+                            "filename": "gpt35-17234.c",
+                            "probability": 0.49468115949920666
+                        },
+                        {
+                            "filename": "gpt35-17669.c",
+                            "probability": 0.4888865996009137
+                        },
+                        {
+                            "filename": "gpt35-18383.c",
+                            "probability": 0.25353731531577134
+                        },
+                        {
+                            "filename": "gpt35-19759.c",
+                            "probability": 0.489139186402066
+                        },
+                        {
+                            "filename": "gpt35-19857.c",
+                            "probability": 0.2708647823649648
+                        },
+                        {
+                            "filename": "gpt35-20880.c",
+                            "probability": 0.482923513168835
+                        },
+                        {
+                            "filename": "gpt35-21024.c",
+                            "probability": 0.299488477568961
+                        },
+                        {
+                            "filename": "gpt35-21690.c",
+                            "probability": 0.09657245800588256
+                        },
+                        {
+                            "filename": "gpt35-22197.c",
+                            "probability": 0.4569130714213291
+                        },
+                        {
+                            "filename": "gpt35-22377.c",
+                            "probability": 0.3757236143812339
+                        },
+                        {
+                            "filename": "gpt35-22499.c",
+                            "probability": 0.4096947392179646
+                        },
+                        {
+                            "filename": "gpt35-22748.c",
+                            "probability": 0.4141660186399459
+                        },
+                        {
+                            "filename": "gpt35-2327.c",
+                            "probability": 0.4938495219767524
+                        },
+                        {
+                            "filename": "gpt35-2339.c",
+                            "probability": 0.3107411862177805
+                        },
+                        {
+                            "filename": "gpt35-23771.c",
+                            "probability": 0.4685739470850041
+                        },
+                        {
+                            "filename": "gpt35-23811.c",
+                            "probability": 0.38011375544089226
+                        },
+                        {
+                            "filename": "gpt35-2540.c",
+                            "probability": 0.46182320081221095
+                        },
+                        {
+                            "filename": "gpt35-26163.c",
+                            "probability": 0.36891391274922225
+                        },
+                        {
+                            "filename": "gpt35-26206.c",
+                            "probability": 0.47122403903758026
+                        },
+                        {
+                            "filename": "gpt35-27238.c",
+                            "probability": 0.47110963135436873
+                        },
+                        {
+                            "filename": "gpt35-2801.c",
+                            "probability": 0.4974642826202325
+                        },
+                        {
+                            "filename": "gpt35-2900.c",
+                            "probability": 0.3301010796498866
+                        },
+                        {
+                            "filename": "gpt35-29003.c",
+                            "probability": 0.4281582252566171
+                        },
+                        {
+                            "filename": "gpt35-29640.c",
+                            "probability": 0.4036828430727866
+                        },
+                        {
+                            "filename": "gpt35-30662.c",
+                            "probability": 0.38721024782955527
+                        },
+                        {
+                            "filename": "gpt35-31903.c",
+                            "probability": 0.45592237901283256
+                        },
+                        {
+                            "filename": "gpt35-3292.c",
+                            "probability": 0.10226841713777196
+                        },
+                        {
+                            "filename": "gpt35-34243.c",
+                            "probability": 0.38984908504211596
+                        },
+                        {
+                            "filename": "gpt35-34287.c",
+                            "probability": 0.425500706644963
+                        },
+                        {
+                            "filename": "gpt35-34681.c",
+                            "probability": 0.3720769936315459
+                        },
+                        {
+                            "filename": "gpt35-35009.c",
+                            "probability": 0.47641782880054734
+                        },
+                        {
+                            "filename": "gpt35-35504.c",
+                            "probability": 0.4763846786713031
+                        },
+                        {
+                            "filename": "gpt35-35613.c",
+                            "probability": 0.3626308743345626
+                        },
+                        {
+                            "filename": "gpt35-35835.c",
+                            "probability": 0.45581123483587455
+                        },
+                        {
+                            "filename": "gpt35-36626.c",
+                            "probability": 0.40100703950417815
+                        },
+                        {
+                            "filename": "gpt35-36916.c",
+                            "probability": 0.4267065155765033
+                        },
+                        {
+                            "filename": "gpt35-37222.c",
+                            "probability": 0.49727480029390186
+                        },
+                        {
+                            "filename": "gpt35-37352.c",
+                            "probability": 0.4064386464458453
+                        },
+                        {
+                            "filename": "gpt35-37652.c",
+                            "probability": 0.48713317133903816
+                        },
+                        {
+                            "filename": "gpt35-38198.c",
+                            "probability": 0.3878621707389732
+                        },
+                        {
+                            "filename": "gpt35-38466.c",
+                            "probability": 0.47990165359262915
+                        },
+                        {
+                            "filename": "gpt35-38891.c",
+                            "probability": 0.4985793971246455
+                        },
+                        {
+                            "filename": "gpt35-39558.c",
+                            "probability": 0.45951361123066287
+                        },
+                        {
+                            "filename": "gpt35-41995.c",
+                            "probability": 0.49306443839977193
+                        },
+                        {
+                            "filename": "gpt35-42888.c",
+                            "probability": 0.42849967688924767
+                        },
+                        {
+                            "filename": "gpt35-43147.c",
+                            "probability": 0.4290246658098917
+                        },
+                        {
+                            "filename": "gpt35-4359.c",
+                            "probability": 0.48927134802693817
+                        },
+                        {
+                            "filename": "gpt35-44208.c",
+                            "probability": 0.3222043657609244
+                        },
+                        {
+                            "filename": "gpt35-44412.c",
+                            "probability": 0.3613975383575401
+                        },
+                        {
+                            "filename": "gpt35-45479.c",
+                            "probability": 0.24872310576441847
+                        },
+                        {
+                            "filename": "gpt35-46226.c",
+                            "probability": 0.48442737205993924
+                        },
+                        {
+                            "filename": "gpt35-46425.c",
+                            "probability": 0.2161194528521743
+                        },
+                        {
+                            "filename": "gpt35-46760.c",
+                            "probability": 0.2572576798563759
+                        },
+                        {
+                            "filename": "gpt35-46986.c",
+                            "probability": 0.4774217975591408
+                        },
+                        {
+                            "filename": "gpt35-47160.c",
+                            "probability": 0.4094661391356542
+                        },
+                        {
+                            "filename": "gpt35-47256.c",
+                            "probability": 0.49304039368640123
+                        },
+                        {
+                            "filename": "gpt35-47774.c",
+                            "probability": 0.3896734308643421
+                        },
+                        {
+                            "filename": "gpt35-48493.c",
+                            "probability": 0.4848801904405027
+                        },
+                        {
+                            "filename": "gpt35-48615.c",
+                            "probability": 0.49440694930904205
+                        },
+                        {
+                            "filename": "gpt35-49106.c",
+                            "probability": 0.49395966814838044
+                        },
+                        {
+                            "filename": "gpt35-49276.c",
+                            "probability": 0.42419165642163653
+                        },
+                        {
+                            "filename": "gpt35-50279.c",
+                            "probability": 0.4789520486904841
+                        },
+                        {
+                            "filename": "gpt35-50590.c",
+                            "probability": 0.38115556115222693
+                        },
+                        {
+                            "filename": "gpt35-50945.c",
+                            "probability": 0.43140660630689853
+                        },
+                        {
+                            "filename": "gpt35-52013.c",
+                            "probability": 0.3560113104300032
+                        },
+                        {
+                            "filename": "gpt35-53997.c",
+                            "probability": 0.1562757280331852
+                        },
+                        {
+                            "filename": "gpt35-54708.c",
+                            "probability": 0.24616447949252068
+                        },
+                        {
+                            "filename": "gpt35-55003.c",
+                            "probability": 0.2874225308013965
+                        },
+                        {
+                            "filename": "gpt35-56038.c",
+                            "probability": 0.25856320986944076
+                        },
+                        {
+                            "filename": "gpt35-56389.c",
+                            "probability": 0.46771202465352785
+                        },
+                        {
+                            "filename": "gpt35-57159.c",
+                            "probability": 0.47844206397313127
+                        },
+                        {
+                            "filename": "gpt35-58007.c",
+                            "probability": 0.47802618874708497
+                        },
+                        {
+                            "filename": "gpt35-58157.c",
+                            "probability": 0.4827978571108653
+                        },
+                        {
+                            "filename": "gpt35-60115.c",
+                            "probability": 0.32702615676523245
+                        },
+                        {
+                            "filename": "gpt35-60183.c",
+                            "probability": 0.17222528541286775
+                        },
+                        {
+                            "filename": "gpt35-60665.c",
+                            "probability": 0.4915301870238334
+                        },
+                        {
+                            "filename": "gpt35-60913.c",
+                            "probability": 0.2510781322485009
+                        },
+                        {
+                            "filename": "gpt35-61114.c",
+                            "probability": 0.49054108576555144
+                        },
+                        {
+                            "filename": "gpt35-61461.c",
+                            "probability": 0.40777637544698236
+                        },
+                        {
+                            "filename": "gpt35-61918.c",
+                            "probability": 0.29991796096087275
+                        },
+                        {
+                            "filename": "gpt35-62008.c",
+                            "probability": 0.3991898216232725
+                        },
+                        {
+                            "filename": "gpt35-62860.c",
+                            "probability": 0.43310417486485703
+                        },
+                        {
+                            "filename": "gpt35-64352.c",
+                            "probability": 0.4694272447958352
+                        },
+                        {
+                            "filename": "gpt35-65168.c",
+                            "probability": 0.4861211762716916
+                        },
+                        {
+                            "filename": "gpt35-65829.c",
+                            "probability": 0.35304021177583694
+                        },
+                        {
+                            "filename": "gpt35-66525.c",
+                            "probability": 0.4898730772808846
+                        },
+                        {
+                            "filename": "gpt35-67144.c",
+                            "probability": 0.36378269858168055
+                        },
+                        {
+                            "filename": "gpt35-67487.c",
+                            "probability": 0.46880419556197317
+                        },
+                        {
+                            "filename": "gpt35-67785.c",
+                            "probability": 0.48227001149690524
+                        },
+                        {
+                            "filename": "gpt35-70192.c",
+                            "probability": 0.36259488328187756
+                        },
+                        {
+                            "filename": "gpt35-70669.c",
+                            "probability": 0.3094458811944865
+                        },
+                        {
+                            "filename": "gpt35-70743.c",
+                            "probability": 0.3522039042225552
+                        },
+                        {
+                            "filename": "gpt35-71775.c",
+                            "probability": 0.4891401423473852
+                        },
+                        {
+                            "filename": "gpt35-72101.c",
+                            "probability": 0.45642119152282534
+                        },
+                        {
+                            "filename": "gpt35-73892.c",
+                            "probability": 0.4224487309845954
+                        },
+                        {
+                            "filename": "gpt35-74943.c",
+                            "probability": 0.43944880933070124
+                        },
+                        {
+                            "filename": "gpt35-76169.c",
+                            "probability": 0.32407122998545485
+                        },
+                        {
+                            "filename": "gpt35-76425.c",
+                            "probability": 0.20016836804695098
+                        },
+                        {
+                            "filename": "gpt35-76578.c",
+                            "probability": 0.33441640890449414
+                        },
+                        {
+                            "filename": "gpt35-76656.c",
+                            "probability": 0.28352187944142426
+                        },
+                        {
+                            "filename": "gpt35-76925.c",
+                            "probability": 0.4073976812487876
+                        },
+                        {
+                            "filename": "gpt35-7698.c",
+                            "probability": 0.44586597226192465
+                        },
+                        {
+                            "filename": "gpt35-77233.c",
+                            "probability": 0.2378902518986205
+                        },
+                        {
+                            "filename": "gpt35-77497.c",
+                            "probability": 0.4908659711105407
+                        },
+                        {
+                            "filename": "gpt35-8483.c",
+                            "probability": 0.45026986681311704
+                        },
+                        {
+                            "filename": "gpt35-9801.c",
+                            "probability": 0.27479536410144284
+                        }
+                    ]
+                },
+                "gpt4o_mini": {
+                    "accuracy": 0.988,
+                    "total_samples": 1000,
+                    "correct_predictions": 988,
+                    "incorrect_predictions": 12,
+                    "false_negatives": [
+                        {
+                            "filename": "gpt4o_mini-12176.c",
+                            "probability": 0.49034874419433655
+                        },
+                        {
+                            "filename": "gpt4o_mini-13118.c",
+                            "probability": 0.3402543295499573
+                        },
+                        {
+                            "filename": "gpt4o_mini-17814.c",
+                            "probability": 0.3580458599795058
+                        },
+                        {
+                            "filename": "gpt4o_mini-24805.c",
+                            "probability": 0.49578661978598415
+                        },
+                        {
+                            "filename": "gpt4o_mini-28701.c",
+                            "probability": 0.4950559106645711
+                        },
+                        {
+                            "filename": "gpt4o_mini-37802.c",
+                            "probability": 0.41895953674469577
+                        },
+                        {
+                            "filename": "gpt4o_mini-5901.c",
+                            "probability": 0.48142088685482576
+                        },
+                        {
+                            "filename": "gpt4o_mini-6632.c",
+                            "probability": 0.4942332528427133
+                        },
+                        {
+                            "filename": "gpt4o_mini-6755.c",
+                            "probability": 0.4838740979803609
+                        },
+                        {
+                            "filename": "gpt4o_mini-7372.c",
+                            "probability": 0.3783457602953976
+                        },
+                        {
+                            "filename": "gpt4o_mini-8186.c",
+                            "probability": 0.4957260074695834
+                        },
+                        {
+                            "filename": "gpt4o_mini-8758.c",
+                            "probability": 0.4372249736177276
+                        }
+                    ]
+                },
+                "llama2-13B": {
+                    "accuracy": 0.994,
+                    "total_samples": 1000,
+                    "correct_predictions": 994,
+                    "incorrect_predictions": 6,
+                    "false_negatives": [
+                        {
+                            "filename": "llama2-13B-10434.c",
+                            "probability": 0.4840878189943309
+                        },
+                        {
+                            "filename": "llama2-13B-11682.c",
+                            "probability": 0.3203710193728119
+                        },
+                        {
+                            "filename": "llama2-13B-1272.c",
+                            "probability": 0.20193631698177258
+                        },
+                        {
+                            "filename": "llama2-13B-16553.c",
+                            "probability": 0.4489103233124179
+                        },
+                        {
+                            "filename": "llama2-13B-17368.c",
+                            "probability": 0.4935502718763679
+                        },
+                        {
+                            "filename": "llama2-13B-8809.c",
+                            "probability": 0.49943354819498637
+                        }
+                    ]
+                },
+                "mistral_7b": {
+                    "accuracy": 0.996,
+                    "total_samples": 1000,
+                    "correct_predictions": 996,
+                    "incorrect_predictions": 4,
+                    "false_negatives": [
+                        {
+                            "filename": "mistral_7b-2132.c",
+                            "probability": 0.4779238902272971
+                        },
+                        {
+                            "filename": "mistral_7b-5926.c",
+                            "probability": 0.4855527545391767
+                        },
+                        {
+                            "filename": "mistral_7b-7147.c",
+                            "probability": 0.4092632377177833
+                        },
+                        {
+                            "filename": "mistral_7b-8903.c",
+                            "probability": 0.35471675833444993
+                        }
+                    ]
+                }
+            }
+        },
+        "XGBoost": {
+            "overall_accuracy": 0.9789,
+            "total_samples": 10000,
+            "correct_predictions": 9789,
+            "incorrect_predictions": 211,
+            "source_breakdown": {
+                "FromAI-v1": {
+                    "accuracy": 0.964,
+                    "total_samples": 1000,
+                    "correct_predictions": 964,
+                    "incorrect_predictions": 36,
+                    "false_negatives": [
+                        {
+                            "filename": "FormAI_102169.cpp",
+                            "probability": 0.45302149653434753
+                        },
+                        {
+                            "filename": "FormAI_102995.cpp",
+                            "probability": 0.46453535556793213
+                        },
+                        {
+                            "filename": "FormAI_103224.cpp",
+                            "probability": 0.31816405057907104
+                        },
+                        {
+                            "filename": "FormAI_110964.cpp",
+                            "probability": 0.4284006953239441
+                        },
+                        {
+                            "filename": "FormAI_12958.cpp",
+                            "probability": 0.3709835708141327
+                        },
+                        {
+                            "filename": "FormAI_13824.cpp",
+                            "probability": 0.3123107850551605
+                        },
+                        {
+                            "filename": "FormAI_13943.cpp",
+                            "probability": 0.12192629277706146
+                        },
+                        {
+                            "filename": "FormAI_14986.cpp",
+                            "probability": 0.07026133686304092
+                        },
+                        {
+                            "filename": "FormAI_18982.cpp",
+                            "probability": 0.1804436594247818
+                        },
+                        {
+                            "filename": "FormAI_25108.cpp",
+                            "probability": 0.29194915294647217
+                        },
+                        {
+                            "filename": "FormAI_27210.cpp",
+                            "probability": 0.3478661775588989
+                        },
+                        {
+                            "filename": "FormAI_29262.cpp",
+                            "probability": 0.4053056538105011
+                        },
+                        {
+                            "filename": "FormAI_29345.cpp",
+                            "probability": 0.31290528178215027
+                        },
+                        {
+                            "filename": "FormAI_29785.cpp",
+                            "probability": 0.21105454862117767
+                        },
+                        {
+                            "filename": "FormAI_32414.cpp",
+                            "probability": 0.45931798219680786
+                        },
+                        {
+                            "filename": "FormAI_3508.cpp",
+                            "probability": 0.4515143930912018
+                        },
+                        {
+                            "filename": "FormAI_37976.cpp",
+                            "probability": 0.3141179084777832
+                        },
+                        {
+                            "filename": "FormAI_39275.cpp",
+                            "probability": 0.2048119157552719
+                        },
+                        {
+                            "filename": "FormAI_4601.cpp",
+                            "probability": 0.4267617464065552
+                        },
+                        {
+                            "filename": "FormAI_53583.cpp",
+                            "probability": 0.2749360203742981
+                        },
+                        {
+                            "filename": "FormAI_5469.cpp",
+                            "probability": 0.360625684261322
+                        },
+                        {
+                            "filename": "FormAI_60813.cpp",
+                            "probability": 0.4939667284488678
+                        },
+                        {
+                            "filename": "FormAI_62390.cpp",
+                            "probability": 0.26343202590942383
+                        },
+                        {
+                            "filename": "FormAI_69759.cpp",
+                            "probability": 0.4860188663005829
+                        },
+                        {
+                            "filename": "FormAI_73400.cpp",
+                            "probability": 0.2317827045917511
+                        },
+                        {
+                            "filename": "FormAI_75939.cpp",
+                            "probability": 0.3565535247325897
+                        },
+                        {
+                            "filename": "FormAI_80221.cpp",
+                            "probability": 0.4940214157104492
+                        },
+                        {
+                            "filename": "FormAI_81878.cpp",
+                            "probability": 0.2852463722229004
+                        },
+                        {
+                            "filename": "FormAI_82540.cpp",
+                            "probability": 0.3757130205631256
+                        },
+                        {
+                            "filename": "FormAI_82672.cpp",
+                            "probability": 0.4042121469974518
+                        },
+                        {
+                            "filename": "FormAI_83343.cpp",
+                            "probability": 0.11513964086771011
+                        },
+                        {
+                            "filename": "FormAI_85492.cpp",
+                            "probability": 0.4910561442375183
+                        },
+                        {
+                            "filename": "FormAI_92037.cpp",
+                            "probability": 0.4165925979614258
+                        },
+                        {
+                            "filename": "FormAI_93829.cpp",
+                            "probability": 0.2998645007610321
+                        },
+                        {
+                            "filename": "FormAI_94540.cpp",
+                            "probability": 0.35978829860687256
+                        },
+                        {
+                            "filename": "FormAI_98393.cpp",
+                            "probability": 0.2470020353794098
+                        }
+                    ]
+                },
+                "codellama_13b": {
+                    "accuracy": 0.993,
+                    "total_samples": 1000,
+                    "correct_predictions": 993,
+                    "incorrect_predictions": 7,
+                    "false_negatives": [
+                        {
+                            "filename": "codellama_13b-1479.c",
+                            "probability": 0.270367294549942
+                        },
+                        {
+                            "filename": "codellama_13b-2689.c",
+                            "probability": 0.44387561082839966
+                        },
+                        {
+                            "filename": "codellama_13b-366.c",
+                            "probability": 0.37289169430732727
+                        },
+                        {
+                            "filename": "codellama_13b-5025.c",
+                            "probability": 0.23139485716819763
+                        },
+                        {
+                            "filename": "codellama_13b-5605.c",
+                            "probability": 0.4298535883426666
+                        },
+                        {
+                            "filename": "codellama_13b-5688.c",
+                            "probability": 0.4665704369544983
+                        },
+                        {
+                            "filename": "codellama_13b-8315.c",
+                            "probability": 0.4119791090488434
+                        }
+                    ]
+                },
+                "falcon180b": {
+                    "accuracy": 0.993,
+                    "total_samples": 1000,
+                    "correct_predictions": 993,
+                    "incorrect_predictions": 7,
+                    "false_negatives": [
+                        {
+                            "filename": "falcon180b-21139.c",
+                            "probability": 0.31293848156929016
+                        },
+                        {
+                            "filename": "falcon180b-25643.c",
+                            "probability": 0.14824795722961426
+                        },
+                        {
+                            "filename": "falcon180b-37824.c",
+                            "probability": 0.208759605884552
+                        },
+                        {
+                            "filename": "falcon180b-53402.c",
+                            "probability": 0.42005881667137146
+                        },
+                        {
+                            "filename": "falcon180b-56628.c",
+                            "probability": 0.4641101062297821
+                        },
+                        {
+                            "filename": "falcon180b-57995.c",
+                            "probability": 0.26034796237945557
+                        },
+                        {
+                            "filename": "falcon180b-59336.c",
+                            "probability": 0.3715709149837494
+                        }
+                    ]
+                },
+                "falcon2-11B": {
+                    "accuracy": 0.981,
+                    "total_samples": 1000,
+                    "correct_predictions": 981,
+                    "incorrect_predictions": 19,
+                    "false_negatives": [
+                        {
+                            "filename": "falcon2-11B-10203.c",
+                            "probability": 0.22260625660419464
+                        },
+                        {
+                            "filename": "falcon2-11B-10368.c",
+                            "probability": 0.22420060634613037
+                        },
+                        {
+                            "filename": "falcon2-11B-11258.c",
+                            "probability": 0.05016692355275154
+                        },
+                        {
+                            "filename": "falcon2-11B-11841.c",
+                            "probability": 0.361083447933197
+                        },
+                        {
+                            "filename": "falcon2-11B-1354.c",
+                            "probability": 0.49299201369285583
+                        },
+                        {
+                            "filename": "falcon2-11B-148.c",
+                            "probability": 0.34272995591163635
+                        },
+                        {
+                            "filename": "falcon2-11B-1527.c",
+                            "probability": 0.31408393383026123
+                        },
+                        {
+                            "filename": "falcon2-11B-1677.c",
+                            "probability": 0.15024824440479279
+                        },
+                        {
+                            "filename": "falcon2-11B-2170.c",
+                            "probability": 0.43121588230133057
+                        },
+                        {
+                            "filename": "falcon2-11B-2718.c",
+                            "probability": 0.4852276146411896
+                        },
+                        {
+                            "filename": "falcon2-11B-3056.c",
+                            "probability": 0.3851702809333801
+                        },
+                        {
+                            "filename": "falcon2-11B-4590.c",
+                            "probability": 0.4332497715950012
+                        },
+                        {
+                            "filename": "falcon2-11B-5338.c",
+                            "probability": 0.3062598407268524
+                        },
+                        {
+                            "filename": "falcon2-11B-5889.c",
+                            "probability": 0.062235791236162186
+                        },
+                        {
+                            "filename": "falcon2-11B-714.c",
+                            "probability": 0.3536568284034729
+                        },
+                        {
+                            "filename": "falcon2-11B-7402.c",
+                            "probability": 0.07444369792938232
+                        },
+                        {
+                            "filename": "falcon2-11B-7508.c",
+                            "probability": 0.1654425859451294
+                        },
+                        {
+                            "filename": "falcon2-11B-8312.c",
+                            "probability": 0.15344074368476868
+                        },
+                        {
+                            "filename": "falcon2-11B-8784.c",
+                            "probability": 0.35907647013664246
+                        }
+                    ]
+                },
+                "gemini_pro": {
+                    "accuracy": 0.984,
+                    "total_samples": 1000,
+                    "correct_predictions": 984,
+                    "incorrect_predictions": 16,
+                    "false_negatives": [
+                        {
+                            "filename": "gemini_pro-13342.c",
+                            "probability": 0.28232067823410034
+                        },
+                        {
+                            "filename": "gemini_pro-14538.c",
+                            "probability": 0.261701375246048
+                        },
+                        {
+                            "filename": "gemini_pro-14771.c",
+                            "probability": 0.19293314218521118
+                        },
+                        {
+                            "filename": "gemini_pro-18016.c",
+                            "probability": 0.12343045324087143
+                        },
+                        {
+                            "filename": "gemini_pro-19058.c",
+                            "probability": 0.3216245770454407
+                        },
+                        {
+                            "filename": "gemini_pro-21058.c",
+                            "probability": 0.2433289885520935
+                        },
+                        {
+                            "filename": "gemini_pro-23004.c",
+                            "probability": 0.4671853482723236
+                        },
+                        {
+                            "filename": "gemini_pro-23322.c",
+                            "probability": 0.1441604495048523
+                        },
+                        {
+                            "filename": "gemini_pro-29069.c",
+                            "probability": 0.4927799105644226
+                        },
+                        {
+                            "filename": "gemini_pro-30967.c",
+                            "probability": 0.2498529851436615
+                        },
+                        {
+                            "filename": "gemini_pro-32157.c",
+                            "probability": 0.3027786910533905
+                        },
+                        {
+                            "filename": "gemini_pro-3681.c",
+                            "probability": 0.41676339507102966
+                        },
+                        {
+                            "filename": "gemini_pro-37651.c",
+                            "probability": 0.05318798869848251
+                        },
+                        {
+                            "filename": "gemini_pro-8712.c",
+                            "probability": 0.14659443497657776
+                        },
+                        {
+                            "filename": "gemini_pro-940.c",
+                            "probability": 0.333814412355423
+                        },
+                        {
+                            "filename": "gemini_pro-9947.c",
+                            "probability": 0.47934025526046753
+                        }
+                    ]
+                },
+                "gemma7b": {
+                    "accuracy": 0.917,
+                    "total_samples": 1000,
+                    "correct_predictions": 917,
+                    "incorrect_predictions": 83,
+                    "false_negatives": [
+                        {
+                            "filename": "gemma7b-11425.c",
+                            "probability": 0.3074639141559601
+                        },
+                        {
+                            "filename": "gemma7b-11467.c",
+                            "probability": 0.2993224263191223
+                        },
+                        {
+                            "filename": "gemma7b-11586.c",
+                            "probability": 0.08515191078186035
+                        },
+                        {
+                            "filename": "gemma7b-11848.c",
+                            "probability": 0.420684278011322
+                        },
+                        {
+                            "filename": "gemma7b-12343.c",
+                            "probability": 0.3093492388725281
+                        },
+                        {
+                            "filename": "gemma7b-12362.c",
+                            "probability": 0.24681581556797028
+                        },
+                        {
+                            "filename": "gemma7b-12942.c",
+                            "probability": 0.2503437399864197
+                        },
+                        {
+                            "filename": "gemma7b-13201.c",
+                            "probability": 0.2327042669057846
+                        },
+                        {
+                            "filename": "gemma7b-13275.c",
+                            "probability": 0.35308852791786194
+                        },
+                        {
+                            "filename": "gemma7b-15151.c",
+                            "probability": 0.4788050949573517
+                        },
+                        {
+                            "filename": "gemma7b-15169.c",
+                            "probability": 0.34359124302864075
+                        },
+                        {
+                            "filename": "gemma7b-1519.c",
+                            "probability": 0.42636340856552124
+                        },
+                        {
+                            "filename": "gemma7b-15230.c",
+                            "probability": 0.4708974063396454
+                        },
+                        {
+                            "filename": "gemma7b-16439.c",
+                            "probability": 0.2537202537059784
+                        },
+                        {
+                            "filename": "gemma7b-16775.c",
+                            "probability": 0.33629536628723145
+                        },
+                        {
+                            "filename": "gemma7b-17282.c",
+                            "probability": 0.1912272870540619
+                        },
+                        {
+                            "filename": "gemma7b-17402.c",
+                            "probability": 0.3111288547515869
+                        },
+                        {
+                            "filename": "gemma7b-17694.c",
+                            "probability": 0.06491328030824661
+                        },
+                        {
+                            "filename": "gemma7b-18345.c",
+                            "probability": 0.48005571961402893
+                        },
+                        {
+                            "filename": "gemma7b-18683.c",
+                            "probability": 0.33652082085609436
+                        },
+                        {
+                            "filename": "gemma7b-19161.c",
+                            "probability": 0.1116916760802269
+                        },
+                        {
+                            "filename": "gemma7b-19759.c",
+                            "probability": 0.4490678310394287
+                        },
+                        {
+                            "filename": "gemma7b-19930.c",
+                            "probability": 0.4421415328979492
+                        },
+                        {
+                            "filename": "gemma7b-2036.c",
+                            "probability": 0.4445684254169464
+                        },
+                        {
+                            "filename": "gemma7b-20403.c",
+                            "probability": 0.31635189056396484
+                        },
+                        {
+                            "filename": "gemma7b-2055.c",
+                            "probability": 0.35492974519729614
+                        },
+                        {
+                            "filename": "gemma7b-21286.c",
+                            "probability": 0.40900200605392456
+                        },
+                        {
+                            "filename": "gemma7b-21546.c",
+                            "probability": 0.1252923458814621
+                        },
+                        {
+                            "filename": "gemma7b-21945.c",
+                            "probability": 0.400478333234787
+                        },
+                        {
+                            "filename": "gemma7b-22274.c",
+                            "probability": 0.19088482856750488
+                        },
+                        {
+                            "filename": "gemma7b-22372.c",
+                            "probability": 0.15423470735549927
+                        },
+                        {
+                            "filename": "gemma7b-23477.c",
+                            "probability": 0.15093772113323212
+                        },
+                        {
+                            "filename": "gemma7b-23733.c",
+                            "probability": 0.3470275402069092
+                        },
+                        {
+                            "filename": "gemma7b-24236.c",
+                            "probability": 0.26616355776786804
+                        },
+                        {
+                            "filename": "gemma7b-24422.c",
+                            "probability": 0.009669914841651917
+                        },
+                        {
+                            "filename": "gemma7b-25053.c",
+                            "probability": 0.37788763642311096
+                        },
+                        {
+                            "filename": "gemma7b-25391.c",
+                            "probability": 0.2414035201072693
+                        },
+                        {
+                            "filename": "gemma7b-25634.c",
+                            "probability": 0.394888699054718
+                        },
+                        {
+                            "filename": "gemma7b-26456.c",
+                            "probability": 0.40530887246131897
+                        },
+                        {
+                            "filename": "gemma7b-27261.c",
+                            "probability": 0.40192535519599915
+                        },
+                        {
+                            "filename": "gemma7b-28030.c",
+                            "probability": 0.49576571583747864
+                        },
+                        {
+                            "filename": "gemma7b-28168.c",
+                            "probability": 0.4052893817424774
+                        },
+                        {
+                            "filename": "gemma7b-29952.c",
+                            "probability": 0.188714861869812
+                        },
+                        {
+                            "filename": "gemma7b-300.c",
+                            "probability": 0.22052522003650665
+                        },
+                        {
+                            "filename": "gemma7b-30342.c",
+                            "probability": 0.45534035563468933
+                        },
+                        {
+                            "filename": "gemma7b-30863.c",
+                            "probability": 0.32894954085350037
+                        },
+                        {
+                            "filename": "gemma7b-30913.c",
+                            "probability": 0.4490986168384552
+                        },
+                        {
+                            "filename": "gemma7b-31242.c",
+                            "probability": 0.4293237328529358
+                        },
+                        {
+                            "filename": "gemma7b-31769.c",
+                            "probability": 0.36960792541503906
+                        },
+                        {
+                            "filename": "gemma7b-31835.c",
+                            "probability": 0.47998085618019104
+                        },
+                        {
+                            "filename": "gemma7b-32127.c",
+                            "probability": 0.40124085545539856
+                        },
+                        {
+                            "filename": "gemma7b-32268.c",
+                            "probability": 0.35650330781936646
+                        },
+                        {
+                            "filename": "gemma7b-32561.c",
+                            "probability": 0.10316655784845352
+                        },
+                        {
+                            "filename": "gemma7b-32789.c",
+                            "probability": 0.4879831373691559
+                        },
+                        {
+                            "filename": "gemma7b-32830.c",
+                            "probability": 0.4866618514060974
+                        },
+                        {
+                            "filename": "gemma7b-34415.c",
+                            "probability": 0.09297209978103638
+                        },
+                        {
+                            "filename": "gemma7b-34650.c",
+                            "probability": 0.45535871386528015
+                        },
+                        {
+                            "filename": "gemma7b-35386.c",
+                            "probability": 0.20088158547878265
+                        },
+                        {
+                            "filename": "gemma7b-35715.c",
+                            "probability": 0.44744133949279785
+                        },
+                        {
+                            "filename": "gemma7b-35753.c",
+                            "probability": 0.10866117477416992
+                        },
+                        {
+                            "filename": "gemma7b-3579.c",
+                            "probability": 0.4152236878871918
+                        },
+                        {
+                            "filename": "gemma7b-35939.c",
+                            "probability": 0.3652784526348114
+                        },
+                        {
+                            "filename": "gemma7b-36723.c",
+                            "probability": 0.381114661693573
+                        },
+                        {
+                            "filename": "gemma7b-38398.c",
+                            "probability": 0.40615537762641907
+                        },
+                        {
+                            "filename": "gemma7b-39170.c",
+                            "probability": 0.48674240708351135
+                        },
+                        {
+                            "filename": "gemma7b-40289.c",
+                            "probability": 0.2650737166404724
+                        },
+                        {
+                            "filename": "gemma7b-40445.c",
+                            "probability": 0.1955711841583252
+                        },
+                        {
+                            "filename": "gemma7b-41296.c",
+                            "probability": 0.4974028766155243
+                        },
+                        {
+                            "filename": "gemma7b-42882.c",
+                            "probability": 0.1327725648880005
+                        },
+                        {
+                            "filename": "gemma7b-43123.c",
+                            "probability": 0.4073745608329773
+                        },
+                        {
+                            "filename": "gemma7b-43946.c",
+                            "probability": 0.17885497212409973
+                        },
+                        {
+                            "filename": "gemma7b-44825.c",
+                            "probability": 0.273365318775177
+                        },
+                        {
+                            "filename": "gemma7b-45353.c",
+                            "probability": 0.1333668828010559
+                        },
+                        {
+                            "filename": "gemma7b-45474.c",
+                            "probability": 0.2710939645767212
+                        },
+                        {
+                            "filename": "gemma7b-46685.c",
+                            "probability": 0.4930450916290283
+                        },
+                        {
+                            "filename": "gemma7b-5185.c",
+                            "probability": 0.31126484274864197
+                        },
+                        {
+                            "filename": "gemma7b-7478.c",
+                            "probability": 0.3228874206542969
+                        },
+                        {
+                            "filename": "gemma7b-8112.c",
+                            "probability": 0.22965408861637115
+                        },
+                        {
+                            "filename": "gemma7b-8598.c",
+                            "probability": 0.13297085464000702
+                        },
+                        {
+                            "filename": "gemma7b-8819.c",
+                            "probability": 0.1604308933019638
+                        },
+                        {
+                            "filename": "gemma7b-9283.c",
+                            "probability": 0.46323394775390625
+                        },
+                        {
+                            "filename": "gemma7b-9504.c",
+                            "probability": 0.44931814074516296
+                        },
+                        {
+                            "filename": "gemma7b-9593.c",
+                            "probability": 0.28845497965812683
+                        }
+                    ]
+                },
+                "gpt35": {
+                    "accuracy": 0.962,
+                    "total_samples": 1000,
+                    "correct_predictions": 962,
+                    "incorrect_predictions": 38,
+                    "false_negatives": [
+                        {
+                            "filename": "gpt35-11134.c",
+                            "probability": 0.0443933941423893
+                        },
+                        {
+                            "filename": "gpt35-11651.c",
+                            "probability": 0.05016092583537102
+                        },
+                        {
+                            "filename": "gpt35-13124.c",
+                            "probability": 0.05384209007024765
+                        },
+                        {
+                            "filename": "gpt35-13255.c",
+                            "probability": 0.4549826681613922
+                        },
+                        {
+                            "filename": "gpt35-15324.c",
+                            "probability": 0.40475425124168396
+                        },
+                        {
+                            "filename": "gpt35-15533.c",
+                            "probability": 0.41632479429244995
+                        },
+                        {
+                            "filename": "gpt35-16062.c",
+                            "probability": 0.4029911160469055
+                        },
+                        {
+                            "filename": "gpt35-16930.c",
+                            "probability": 0.3201887607574463
+                        },
+                        {
+                            "filename": "gpt35-18383.c",
+                            "probability": 0.23157146573066711
+                        },
+                        {
+                            "filename": "gpt35-19857.c",
+                            "probability": 0.3456979990005493
+                        },
+                        {
+                            "filename": "gpt35-21024.c",
+                            "probability": 0.4639555513858795
+                        },
+                        {
+                            "filename": "gpt35-21690.c",
+                            "probability": 0.05337459221482277
+                        },
+                        {
+                            "filename": "gpt35-22377.c",
+                            "probability": 0.4552822411060333
+                        },
+                        {
+                            "filename": "gpt35-31903.c",
+                            "probability": 0.30138418078422546
+                        },
+                        {
+                            "filename": "gpt35-3292.c",
+                            "probability": 0.05104402080178261
+                        },
+                        {
+                            "filename": "gpt35-35613.c",
+                            "probability": 0.2748200595378876
+                        },
+                        {
+                            "filename": "gpt35-37352.c",
+                            "probability": 0.3366367816925049
+                        },
+                        {
+                            "filename": "gpt35-44208.c",
+                            "probability": 0.4016392230987549
+                        },
+                        {
+                            "filename": "gpt35-45479.c",
+                            "probability": 0.3182641565799713
+                        },
+                        {
+                            "filename": "gpt35-45704.c",
+                            "probability": 0.1284341812133789
+                        },
+                        {
+                            "filename": "gpt35-46425.c",
+                            "probability": 0.3750661313533783
+                        },
+                        {
+                            "filename": "gpt35-47160.c",
+                            "probability": 0.4910561442375183
+                        },
+                        {
+                            "filename": "gpt35-49276.c",
+                            "probability": 0.4873274862766266
+                        },
+                        {
+                            "filename": "gpt35-52013.c",
+                            "probability": 0.24889792501926422
+                        },
+                        {
+                            "filename": "gpt35-53997.c",
+                            "probability": 0.1394043117761612
+                        },
+                        {
+                            "filename": "gpt35-54708.c",
+                            "probability": 0.1399311125278473
+                        },
+                        {
+                            "filename": "gpt35-55003.c",
+                            "probability": 0.15932418406009674
+                        },
+                        {
+                            "filename": "gpt35-60115.c",
+                            "probability": 0.17005571722984314
+                        },
+                        {
+                            "filename": "gpt35-60183.c",
+                            "probability": 0.0687723234295845
+                        },
+                        {
+                            "filename": "gpt35-60913.c",
+                            "probability": 0.17029699683189392
+                        },
+                        {
+                            "filename": "gpt35-64352.c",
+                            "probability": 0.4272285997867584
+                        },
+                        {
+                            "filename": "gpt35-70192.c",
+                            "probability": 0.3343152105808258
+                        },
+                        {
+                            "filename": "gpt35-70669.c",
+                            "probability": 0.2912871241569519
+                        },
+                        {
+                            "filename": "gpt35-70743.c",
+                            "probability": 0.1467171311378479
+                        },
+                        {
+                            "filename": "gpt35-76425.c",
+                            "probability": 0.131108820438385
+                        },
+                        {
+                            "filename": "gpt35-76578.c",
+                            "probability": 0.24597109854221344
+                        },
+                        {
+                            "filename": "gpt35-76656.c",
+                            "probability": 0.14537645876407623
+                        },
+                        {
+                            "filename": "gpt35-77233.c",
+                            "probability": 0.3363872468471527
+                        }
+                    ]
+                },
+                "gpt4o_mini": {
+                    "accuracy": 0.997,
+                    "total_samples": 1000,
+                    "correct_predictions": 997,
+                    "incorrect_predictions": 3,
+                    "false_negatives": [
+                        {
+                            "filename": "gpt4o_mini-13118.c",
+                            "probability": 0.31085389852523804
+                        },
+                        {
+                            "filename": "gpt4o_mini-13303.c",
+                            "probability": 0.24864311516284943
+                        },
+                        {
+                            "filename": "gpt4o_mini-7372.c",
+                            "probability": 0.4236770272254944
+                        }
+                    ]
+                },
+                "llama2-13B": {
+                    "accuracy": 0.998,
+                    "total_samples": 1000,
+                    "correct_predictions": 998,
+                    "incorrect_predictions": 2,
+                    "false_negatives": [
+                        {
+                            "filename": "llama2-13B-11682.c",
+                            "probability": 0.15271326899528503
+                        },
+                        {
+                            "filename": "llama2-13B-1272.c",
+                            "probability": 0.026440834626555443
+                        }
+                    ]
+                },
+                "mistral_7b": {
+                    "accuracy": 1.0,
+                    "total_samples": 1000,
+                    "correct_predictions": 1000,
+                    "incorrect_predictions": 0,
+                    "false_negatives": []
+                }
+            }
+        }
+    }
+}

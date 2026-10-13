@@ -1,19 +1,111 @@
-# 🕵️‍♂️ C++ AI Code Detector — Enterprise Backend & MLOps Platform
+# 🎓 Phát Hiện Mã Nguồn C++ Do AI Sinh Ra Bằng Mô Hình Học Sâu & Học Máy Giải Thích Được (XAI)
 
-## System Overview
+> **Khóa luận tốt nghiệp & Nghiên cứu Khoa học**  
+> *Đề tài: Nghiên cứu giải pháp phát hiện lạm dụng trí tuệ nhân tạo trong bài tập lập trình C++ bằng mô hình học sâu và học máy giải thích được*
 
-**Mục tiêu:** Xây dựng hệ thống Backend/MLOps cấp doanh nghiệp để phát hiện mã nguồn C++ do AI sinh ra. Hệ thống nhận đầu vào là đoạn mã C++ thô, trả về kết quả phân tích dạng JSON với điểm AI Score, nhãn phân loại, điểm Perplexity, và giải thích chi tiết (XAI).
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Serving%20SSE-009688.svg?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Django](https://img.shields.io/badge/Django-5.x%20Dashboard-092E20.svg?logo=django)](https://www.djangoproject.com/)
+[![LightGBM](https://img.shields.io/badge/LightGBM-32%20Features-green.svg)](https://lightgbm.readthedocs.io/)
+[![GraphCodeBERT](https://img.shields.io/badge/GraphCodeBERT-10--Fold%20Ensemble-orange.svg)](https://huggingface.co/microsoft/graphcodebert-base)
+[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED.svg?logo=docker)](https://www.docker.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16%20Gold%20Layer-4169E1.svg?logo=postgresql)](https://www.postgresql.org/)
 
-### Input/Output Cốt lõi
+---
 
-| | Mô tả | Ví dụ |
-|---|---|---|
-| **Input** | Code C++ thô (Base64-encoded qua API) | `#include <iostream>\nint main() { ... }` |
-| **Output** | JSON chứa prediction + explainability | `{ "final_pred": "AI GENERATED", "final_score": 0.8742, ... }` |
+## 📌 Mục Lục
+1. [Giới Thiệu Đề Tài & Mục Tiêu](#-giới-thiệu-đề-tài--mục-tiêu)
+2. [Đóng Góp Phương Pháp Luận Cốt Lõi](#-đóng-góp-phương-pháp-luận-cốt-lõi)
+3. [Kết Quả Thực Nghiệm Nổi Bật](#-kết-quả-thực-nghiệm-nổi-bật)
+4. [Kiến Trúc Nền Tảng & Hệ Thống MLOps](#-kiến-trúc-nền-tảng--hệ-thống-mlops)
+5. [Cấu Trúc Thư Mục Repository](#-cấu-trúc-thư-mục-repository)
+6. [Giao Diện & Tính Năng XAI (Explainable AI)](#-giao-diện--tính-năng-xai-explainable-ai)
+7. [Hướng Dẫn Cài Đặt & Khởi Chạy Nhanh](#-hướng-dẫn-cài-đặt--khởi-chạy-nhanh)
+8. [Tái Hiện Thực Nghiệm Nghiên Cứu](#-tái-hiện-thực-nghiệm-nghiên-cứu)
+9. [Tài Liệu Kỹ Thuật Bổ Sung](#-tài-liệu-kỹ-thuật-bổ-sung)
 
-### Kiến trúc Triển khai (Hybrid Local-Cloud)
+---
 
-Hệ thống được thiết kế linh hoạt chạy theo mô hình **Hybrid** để tối ưu hóa tài nguyên phần cứng, chia thành 4 dịch vụ cốt lõi:
+## 📖 Giới Thiệu Đề Tài & Mục Tiêu
+
+Sự bùng nổ của các mô hình ngôn ngữ lớn (LLMs như GPT-4o, Claude 3.5, DeepSeek, Gemini) khiến việc sinh mã nguồn giải bài tập lập trình trở nên phổ biến, đặt ra thách thức nghiêm trọng đối với giáo dục đại học trong việc đánh giá thực lực sinh viên.
+
+Hệ thống này được nghiên cứu và xây dựng nhằm giải quyết hai bài toán lớn:
+1. **Độ chính xác cao & Khả năng tổng quát hóa (Generalization)**: Phát hiện mã do AI sinh ra trên cả bài tập lập trình C++ cơ bản (Basic) lẫn lập trình hướng đối tượng (OOP), đồng thời chống chịu tốt trước mã ngoại miền (Out-of-Distribution - OOD) từ các LLM mới nhất.
+2. **Khả năng giải thích minh bạch (Explainable AI - XAI)**: Cung cấp bằng chứng định lượng rõ ràng cho giảng viên (thẻ điểm phong cách lập trình, đối sánh đặc trưng SHAP, cảnh báo bất thường) nhằm tránh tối đa việc kết luận oan cho sinh viên.
+
+---
+
+## 💡 Đóng Góp Phương Pháp Luận Cốt Lõi
+
+```text
+               ┌────────────────────────────────────────────────────────┐
+               │                  MÃ NGUỒN C++ ĐẦU VÀO                  │
+               └──────────────────────────┬─────────────────────────────┘
+                                          │
+                  ┌───────────────────────┴────────────────────────┐
+                  ▼                                                ▼
+     ┌─────────────────────────┐                      ┌─────────────────────────┐
+     │   NHÁNH HỌC MÁY (ML)    │                      │   NHÁNH HỌC SÂU (DL)    │
+     │  Bộ trích xuất 32 ĐT    │                      │     GraphCodeBERT       │
+     │    (Stylometry & OOP)   │                      │  10-Fold LOGO Ensemble  │
+     │      LightGBM Model     │                      │   Token Semantic & DFG  │
+     └────────────┬────────────┘                      └────────────┬────────────┘
+                  │ P_ML                                           │ P_DL
+                  └───────────────────────┬────────────────────────┘
+                                          ▼
+                       ┌─────────────────────────────────────┐
+                       │      MÔ HÌNH KẾT HỢP LAI (HYBRID)   │
+                       │    P_final = 0.50*P_DL + 0.50*P_ML  │
+                       │      Accuracy ID: 95.90% (F1: 0.959)│
+                       └──────────────────┬──────────────────┘
+                                          ▼
+                       ┌─────────────────────────────────────┐
+                       │     GIẢI THÍCH MINH BẠCH (XAI)      │
+                       │ • SHAP Feature Attribution          │
+                       │ • Contrastive Analysis (AI vs Human)│
+                       │ • Behavioral Coding Scorecard       │
+                       └─────────────────────────────────────┘
+```
+
+1. **Quy trình Lọc Đặc Trưng 3 Tầng (3-Stage Feature Selection Pipeline)**:
+   - Từ 44 đặc trưng ban đầu (bố cục, định danh, độ phức tạp cấu trúc, thói quen viết mã C++, hướng đối tượng OOP), áp dụng:
+     - **Tầng 1 (Pearson Correlation Filter)**: Loại bỏ đa cộng tuyến ($|r| > 0.85$).
+     - **Tầng 2 (SelectKBest Mutual Information)**: Quét điểm uốn $k=5 \dots 40$, chọn $k=33$ tối ưu thông tin phi tuyến.
+     - **Tầng 3 (Lasso L1 Regularization)**: Ép trọng số dư thừa về 0, giữ lại tập **32 đặc trưng tinh gọn nhất**.
+2. **Mô Hình Học Sâu GraphCodeBERT với 10-Fold Leave-One-Group-Out (LOGO)**:
+   - Phân tách theo từng mô hình AI sinh mã để huấn luyện và kiểm định chéo, đảm bảo mô hình không bị phụ thuộc vào phân phối của một LLM cụ thể.
+3. **Thuật Toán Kết Hợp Lai Tối Ưu (Optimal Hybrid Routing)**:
+   - Quét lưới (Grid Search) hệ số lai $\alpha \in [0.0, 1.0]$. Giá trị tối ưu được xác lập tại **$\alpha = 0.50$**, chứng minh sự đóng góp cân bằng hoàn hảo giữa nhánh ngữ nghĩa mã (GraphCodeBERT) và nhánh phong cách cú pháp (LightGBM).
+4. **Chiến Lược Thích Nghi Miền (Domain Adaptation)**:
+   - Bổ sung các mẫu đại diện ngoại miền giúp tỷ lệ phát hiện trên tập OOD tăng vượt bậc từ **22.53% lên 88.01%** trên tập C++.
+
+---
+
+## 📊 Kết Quả Thực Nghiệm Nổi Bật
+
+### 1. Hiệu Năng Trên Các Tập Dữ Liệu Nội Miền (In-Distribution - ID)
+
+| Phương pháp | Basic C++ (500 mẫu) | OOP C++ (500 mẫu) | Hợp nhất (1,000 mẫu) | Macro F1 |
+| :--- | :---: | :---: | :---: | :---: |
+| **LightGBM Standalone** (32 đặc trưng) | 88.40% | 87.40% | 87.90% | 0.8789 |
+| **GraphCodeBERT Ensemble** (10 Folds) | 89.20% | 96.60% | 92.90% | 0.9288 |
+| 🏆 **Mô hình Lai đề xuất (Hybrid $\alpha=0.50$)** | **93.80%** | **98.00%** | **95.90%** | **0.9590** |
+
+### 2. Kiểm Thử Ngoại Miền (Out-of-Distribution - OOD) Trên Gần 40,000 File
+
+Được đánh giá trên tập dữ liệu ngoại miền khổng lồ từ **10 mô hình LLM hiện đại** (CodeMirage benchmark):
+
+| Tập kiểm thử | Số lượng mẫu | Tỷ lệ phát hiện AI (Sau Domain Adaptation) | True Negative Rate (Human Specificity) |
+| :--- | :---: | :---: | :---: |
+| **OOD C++** | 19,999 files | **88.01%** | **98.00%** (TNR trên mẫu Human) |
+| **OOD C** | 20,000 files | **83.45%** | **95.60%** (TNR trên mẫu Human) |
+
+---
+
+## 🏛️ Kiến Trúc Nền Tảng & Hệ Thống MLOps
+
+Hệ thống được thiết kế theo tiêu chuẩn công nghiệp nhằm phục vụ triển khai thực tế trong nhà trường:
 
 ```text
 ┌────────────────────────────────────────────────────────────────────┐
@@ -38,306 +130,175 @@ Hệ thống được thiết kế linh hoạt chạy theo mô hình **Hybrid** 
 │                                                                │   │
 │  ┌──────────────────────────────────────────────────────────┐  │   │
 │  │  🔧 LOCAL GPU SERVER (Port 8002) HOẶC COLAB FASTAPI       │  │   │
-│  │  LangGraph Agent │ RoBERTa Ensemble │ Qwen 2.5 │ SHAP/LIG│  │   │
-│  │  Model Weights (~14-16GB VRAM)                           │  │   │
+│  │  LangGraph Agent │ GraphCodeBERT Ensemble │ Qwen 2.5 Coder│  │   │
 │  └──────────────────────────────────────────────────────────┘  │   │
 └────────────────────────────────────────────────────────────────│───┘
-                                                                 │
-      DVC / MLflow Tracking ◄────────────────────────────────────┘
 ```
 
-> **Lưu ý:** Việc tách rời Orchestrator và GPU Runtime giúp Laptop (VRAM thấp) không bị treo do tràn bộ nhớ (OOM). Có thể chạy Local GPU Server nếu có sẵn GPU mạnh, hoặc dùng Google Colab (GPU T4/L4 miễn phí) cho phần xử lý nặng.
+- **Kiến trúc Dữ liệu Medallion (Data Lakehouse)**:
+  - 🥉 **Bronze Layer (DagsHub S3 + PostgreSQL)**: Lưu trữ mã nguồn thô của sinh viên dưới dạng JSONL bất biến.
+  - 🥈 **Silver Layer (DagsHub S3)**: Bảng đặc trưng đã tiền xử lý (32 đặc trưng số + 512 token IDs) dưới định dạng `.parquet`.
+  - 🥇 **Gold Layer (PostgreSQL)**: Kết quả suy luận, giải thích XAI, dữ liệu phân tích phục vụ Dashboard.
+- **Microservices & Công nghệ sử dụng**:
+  - **Django 5.x**: Web portal cho giảng viên, quản lý người dùng, xem báo cáo chi tiết.
+  - **FastAPI**: Serving AI microservice hỗ trợ Server-Sent Events (SSE) để truyền kết quả streaming thời gian thực.
+  - **Celery & Redis**: Xử lý background jobs (ETL, cập nhật chỉ số ngầm).
+  - **LangGraph Multi-Agent**: Điều phối 4 nút xử lý (*Router → Analyzer → Judge → Critique*).
 
 ---
 
-## Tech Stack & Architecture Decisions
+## 📁 Cấu Trúc Thư Mục Repository
 
-| Layer | Công nghệ | Lý do chọn |
-|-------|-----------|-------------|
-| **Web & Admin** | Django 5.x + Django ORM | CRUD chuẩn ACID, MLOps Dashboard (6 views) |
-| **AI Orchestration**| FastAPI (Async) + Pydantic v2 | Điều phối pipeline AI, SSE streaming realtime |
-| **AI Runtime** | ONNX Runtime + PyTorch | ONNX cho production (2-5x faster), PyTorch cho dev |
-| **LLM Router** | LangGraph + Qwen 2.5 Coder 7B | Agentic workflow 4 node: Router → Analyzer → Judge → Critique |
-| **Database** | PostgreSQL 16 | ACID, JSON field cho Gold layer prediction |
-| **Broker** | Redis & Redpanda | Redis (Celery broker), Redpanda (Event streaming) |
-| **Background Jobs** | Celery | Async ETL (Bronze → Silver), S3 Push |
-| **Data Lake** | DagsHub S3-compatible | Offload dữ liệu, DVC versioning + MLflow tracking |
-| **Feature Store** | Parquet trên DagsHub S3 | Lưu ML features & DL tokens, tối ưu cho training |
-| **XAI** | SHAP + Layer Integrated Gradients | Giải thích Feature (SHAP) & Token (LIG) |
-| **Container/K8s** | Docker Compose / MicroK8s | DB/Broker chạy Docker, Production K8s hỗ trợ GPU |
-
-### Quyết định quan trọng: Medallion Data Architecture
-
-Hệ thống áp dụng kiến trúc dữ liệu 3 tầng (Medallion) để xử lý lượng lớn dữ liệu huấn luyện:
-- **🥉 Bronze (DagsHub S3 + PostgreSQL):** Lưu mã nguồn thô (JSONL).
-- **🥈 Silver (DagsHub S3):** Lưu đặc trưng đã trích xuất (32 Features cho ML, 512 Tokens cho DL) dưới dạng `.parquet`.
-- **🥇 Gold (PostgreSQL):** Lưu kết quả dự đoán cuối cùng (Predictions, XAI Fingerprints) phục vụ Dashboard thống kê.
-
----
-
-## Project Structure
+Kho lưu trữ được cấu trúc rõ ràng, tách bạch giữa mã nguồn hệ thống sản phẩm và mã nguồn nghiên cứu khoa học:
 
 ```text
-LVTN-main/
-|
-|-- README.md                                 # Tai lieu tong quan du an
-|-- ARCHITECTURE_MAP.md                       # Ban do kien truc va dieu huong thu muc
-|-- metadata_implementation_plan.md           # Ke hoach Medallion Data Architecture
-|-- requirements.txt                          # Python dependencies
-|-- docker-compose.yml                        # PostgreSQL, Redis, Redpanda
-|-- Makefile                                  # Lenh khoi dong moi truong dev
-|-- dev.sh                                    # Script startup tmux 2x2
-|-- manage.py                                 # Django entrypoint
-|-- app.py                                    # Entrypoint/phu tro local run
-|
-|-- src/                                      # Source code chinh
-|   |-- django_web/                           # Django web app va dashboard
-|   |   |-- apps/
-|   |   |   |-- accounts/                     # Auth, profile
-|   |   |   |-- submissions/                  # Submission/Bronze CRUD
-|   |   |   `-- dashboard/                    # Admin dashboard va metrics
-|   |   |-- templates/
-|   |   |-- static/
-|   |   |-- settings.py
-|   |   |-- urls.py
-|   |   `-- wsgi.py
-|   |
-|   |-- fastapi_service/                      # FastAPI orchestrator
-|   |   |-- core/
-|   |   |-- engine/
-|   |   |-- repositories/
-|   |   |-- routers/                          # API endpoints, SSE, health
-|   |   |-- schemas/
-|   |   |-- services/
-|   |   |   `-- agent_service.py              # LangGraph pipeline
-|   |   `-- main.py
-|   |
-|   |-- local_gpu_server/                     # GPU inference server
-|   |   |-- engine.py
-|   |   |-- hybrid_evaluator.py
-|   |   `-- server.py
-|   |
-|   |-- local_gpu_agent/                      # Local hybrid agent runtime
-|   |-- local_agent/                          # Local orchestrator / remote client
-|   |-- colab_runtime/                        # Runtime offload len Colab
-|   |   `-- scripts/
-|   |-- colab_qwen_worker/                    # Worker chay Qwen tren Colab
-|   |
-|   |-- celery_workers/                       # Background jobs
-|   |   `-- tasks/                            # bronze/silver/gold/retraining tasks
-|   |
-|   |-- data_pipeline/                        # ETL Bronze -> Silver -> Gold
-|   |   |-- bronze_to_silver/
-|   |   |-- silver_to_gold/
-|   |   `-- retraining/
-|   |
-|   `-- shared/                               # Config, DB, broker, contracts
-|       |-- config.py
-|       |-- database.py
-|       |-- data_contracts.py
-|       |-- logger.py
-|       |-- message_broker.py
-|       `-- s3_client.py
-|
-|-- data_lake/                                # Du lieu local mo phong data lake
-|   `-- bronze/
-|
-|-- System architecture/                      # Tai lieu kien truc noi bo
-|   |-- 00_system_overview.md
-|   |-- 01_mlops_pipeline.md
-|   |-- 02_admin_dashboard.md
-|   |-- 03_shared_infrastructure.md
-|   `-- 04_operations.md
-|
-|-- tests/                                    # Unit, integration, E2E
-|   |-- django_web/
-|   |-- fastapi_service/
-|   |-- celery_workers/
-|   `-- e2e/
-|
-|-- infrastructure/                           # Ha tang/deployment
-|-- monitoring/                               # Monitoring stack
-|-- static/                                   # Static assets root-level
-|-- design_mockups/                           # Tai nguyen mockup giao dien
-|-- docx_review/                              # Tai lieu/danh gia docx
-`-- Extract feature/                          # Thu muc nghien cuu/thu nghiem feature extraction
+LVTN-Main/
+├── README.md                                 # Tài liệu tổng quan dự án (tài liệu này)
+├── ARCHITECTURE_MAP.md                       # Bản đồ định tuyến kiến trúc chi tiết
+├── SETUP_AND_RUN.md                          # Cẩm nang cài đặt và chạy hệ thống từng bước
+├── requirements.txt                          # Toàn bộ thư viện phụ thuộc Python
+├── docker-compose.yml                        # Docker stack: PostgreSQL, Redis, Redpanda
+├── Makefile / dev.sh                         # Lệnh tự động hóa khởi động môi trường dev
+├── manage.py / app.py                        # Entrypoints chạy Django Web và FastAPI
+│
+├── Tong hop script/                          # 🧪 MÃ NGUỒN NGHIÊN CỨU & THỰC NGHIỆM TỔNG HỢP
+│   ├── README.md                             # Hướng dẫn chi tiết 5 phần thực nghiệm
+│   ├── 1. Feature_Selection_and_Extraction/  # Lọc đặc trưng 3 tầng (find_optimal_k.py)
+│   ├── 2. ML_Training_and_Inference/         # Huấn luyện ML, CV 5-fold, SHAP, inference
+│   ├── 3. Deep_Learning_and_Hybrid/          # GraphCodeBERT 10-fold, Grid Search Alpha
+│   ├── 4. Reports_and_Visualizations/        # Báo cáo Markdown & biểu đồ nghiên cứu
+│   └── 5. Datasets/                          # Các tập dữ liệu benchmark JSONL chuẩn hóa
+│
+├── data_splits/                              # 📊 TẬP DỮ LIỆU CHUẨN HÓA (JSONL)
+│   ├── train_set/                            # Tập train Basic C++ & OOP C++
+│   ├── test_set_ID/                          # Tập test nội miền (basic_test, oop_test)
+│   └── test_set_unified/                     # Tập test thống nhất 1,000 mẫu
+│
+├── src/                                      # 🚀 MÃ NGUỒN HỆ THỐNG CHÍNH (ENTERPRISE BACKEND)
+│   ├── django_web/                           # Web App Django & MLOps Admin Dashboard
+│   ├── fastapi_service/                      # FastAPI Orchestrator, AI Engine & XAI
+│   ├── celery_workers/                       # Background Jobs & Medallion ETL Pipeline
+│   ├── data_pipeline/                        # Pipeline Bronze -> Silver -> Gold
+│   ├── local_gpu_server/                     # Standalone GPU Inference Server
+│   ├── local_gpu_agent/                      # Local Hybrid Agent Runtime
+│   └── shared/                               # Config, Database sessions, Contracts, S3
+│
+├── System architecture/                      # 📐 TÀI LIỆU THIẾT KẾ KIẾN TRÚC KỸ THUẬT
+│   ├── 00_system_overview.md                 # Tổng quan toàn hệ thống
+│   ├── 01_mlops_pipeline.md                  # Chi tiết pipeline MLOps & LangGraph
+│   ├── 02_admin_dashboard.md                 # Thiết kế các màn hình quản trị
+│   ├── 03_shared_infrastructure.md           # Thiết kế hạ tầng dùng chung
+│   └── 04_operations.md                      # Vận hành, giám sát và xử lý sự cố
+│
+├── infrastructure/                           # Kubernetes manifests & Ansible playbooks
+├── monitoring/                               # Cấu hình Prometheus & Alerting Rules
+├── design_mockups/                           # Bản mẫu giao diện HTML tĩnh
+└── tests/                                    # Unit tests, integration tests & E2E tests
 ```
 
 ---
 
-## Pipeline Architecture — Luồng Dữ liệu Tổng thể
+## 🎨 Giao Diện & Tính Năng XAI (Explainable AI)
 
-```text
-┌─────────────────────────────────────────────────────────────────────────┐
-│                          👤 USER INPUT                                   │
-│                  Paste/Upload C++ code (.cpp/.c)                         │
-└──────────────────────────────┬──────────────────────────────────────────┘
-                               │
-                               ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│  🌐 DJANGO WEB                                                          │
-│                                                                          │
-│  1. User Authentication (Session/JWT)                                    │
-│  2. Validate Input → Base64 encode                                       │
-│  3. BronzeRepository.save() → PostgreSQL (bronze_submissions)            │
-│  4. Publish message to Broker: `code.submitted`                          │
-│                                                                          │
-└──────────────────────────────┬──────────────────────────────────────────┘
-                               │
-                 ┌─────────────┼─────────────┐
-                 │             │             │
-                 ▼             ▼             ▼
-┌────────────────────┐ ┌─────────────┐ ┌─────────────────────────┐
-│  ⚡ FASTAPI         │ │ 🔄 CELERY   │ │  📦 REDIS/REDPANDA      │
-│  ORCHESTRATOR       │ │  WORKER     │ │  Message Broker         │
-│                     │ │             │ │                         │
-│  ┌───────────────┐  │ │ Task 1:     │ │  Topics:                │
-│  │ LangGraph     │  │ │ Push raw    │ │  • code.submitted       │
-│  │ Agent Flow:   │  │ │ code to     │ │  • prediction.completed │
-│  │               │  │ │ DagsHub S3  │ │  • retrain.trigger      │
-│  │ ① Router      │  │ │ (Bronze)    │ │                         │
-│  │   ↓           │  │ │             │ │  Cache Layer:           │
-│  │ ② Analyzer    │  │ │ Task 2:     │ │  • code_hash → result   │
-│  │   (Local GPU  │  │ │ Extract     │ │    (TTL: 24h)           │
-│  │    hoặc Colab)│  │ │ features →  │ └─────────────────────────┘
-│  │   ↓           │  │ │ Push to     │
-│  │ ③ Judge       │  │ │ DagsHub S3  │
-│  │   (Self-      │  │ │ (Silver)    │
-│  │    Correct)   │  │ │             │
-│  │   ↓           │  │ │ Task 3:     │
-│  │ ④ Critique    │  │ │ Write Gold  │
-│  │   (Map-Reduce │  │ │ prediction  │
-│  │    LLM)       │  │ │ to Postgres │
-│  └───────────────┘  │ └─────────────┘
-│                     │
-│  SSE Streaming      │
-│  Response → User    │
-└─────────┬───────────┘
-          │
-          ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                     📊 DATA FLOW (MEDALLION)                            │
-│                                                                         │
-│  🥉 BRONZE (DagsHub S3)          🥈 SILVER (DagsHub S3)                │
-│  ┌─────────────────────┐         ┌─────────────────────────┐           │
-│  │ raw_code.jsonl       │    ──►  │ Silver-ML: 32 features  │           │
-│  │ + metadata           │    ──►  │ Silver-DL: 512 tokens   │           │
-│  │ + code_hash          │         │ (.parquet format)        │           │
-│  └─────────────────────┘         └─────────────────────────┘           │
-│                                           │                             │
-│                                           ▼                             │
-│                              🥇 GOLD (PostgreSQL)                       │
-│                              ┌──────────────────────┐                   │
-│                              │ Predictions + SHAP    │                   │
-│                              │ Model Performance     │                   │
-│                              │ User Analytics        │                   │
-│                              └──────────────────────┘                   │
-│                                           │                             │
-│                                           ▼                             │
-│                              📈 DASHBOARD (Django)                      │
-│                              ┌──────────────────────┐                   │
-│                              │ Charts, Stats, Export │                   │
-│                              └──────────────────────┘                   │
-└────────────────────────────────────────────────────────────────────────┘
-```
+Giao diện phân tích hỗ trợ đắc lực cho người chấm bài thông qua 3 bảng điều khiển trực quan:
 
-### Closed-Loop Retraining Pipeline
-
-```text
-DagsHub S3 (Silver Parquet)
-        │
-        ▼
-┌─────────────────────────────┐
-│  🔁 Retraining Pipeline     │
-│                              │
-│  1. DVC pull Silver data     │
-│  2. Train LightGBM + BERT   │
-│  3. Evaluate on holdout set  │
-│  4. Log metrics to MLflow    │
-│  5. If improved → Export     │
-│     ONNX → Push to Registry  │
-│  6. Redpanda: retrain.done   │
-│  7. API Server hot-reload    │
-└─────────────────────────────┘
-```
+1. **Thẻ Điểm Hành Vi Lập Trình (Behavioral Coding Scorecard)**:
+   - Nhóm 32 đặc trưng thành 5 khía cạnh lập trình:
+     - 📐 *Bố cục & Thụt lề (Layout & Formatting)*
+     - 🏷️ *Quy ước Đặt tên (Naming Conventions)*
+     - 🧩 *Độ phức tạp Cấu trúc (Structural Complexity)*
+     - ☕ *Thói quen Viết mã C++ (Coding Habits)*
+     - 🏛️ *Cấu trúc Hướng đối tượng (OOP Structure)*
+   - Đánh giá độ thiên lệch theo thang điểm phần trăm trực quan.
+2. **Bảng Đối Sánh Tương Phản (Contrastive XAI Panel)**:
+   - Hiển thị giá trị thực tế của mã nguồn sinh viên đặt cạnh khoảng giá trị đặc trưng thông thường của Người và AI để chỉ ra điểm dị biệt.
+3. **Huy Hiệu Cảnh Báo Xung Đột (Conflict Badges)**:
+   - Tự động phát hiện và cảnh báo khi có sự mâu thuẫn giữa phong cách cục bộ (vd: đặt tên chuẩn AI nhưng cấu trúc lồng nhau kiểu sinh viên).
 
 ---
 
-## Output JSON Schema
+## ⚡ Hướng Dẫn Cài Đặt & Khởi Chạy Nhanh
 
-Dữ liệu trả về từ API (SSE Streaming) và được lưu vào Gold layer:
+### 1. Yêu cầu môi trường
+- Hệ điều hành: Windows / Linux / macOS
+- **Python**: 3.10 hoặc 3.11
+- **Docker & Docker Compose** (để chạy cơ sở dữ liệu và message broker)
 
-```json
-{
-  "final_pred": "AI GENERATED",
-  "final_score": 0.8742,
-  "model_used": "C++ OOP Model",
-  "dl_score": 0.91,
-  "ml_score": 0.72,
-  "hybrid_score": 0.83,
-  "perplexity": 2.34,
-  "max_ppl": 15.42,
-  "burstiness": 3.85,
-  "is_ambiguous": false,
-  "total_tokens": 1024,
-  "total_chunks": 2,
-  "global_critique": "The code exhibits consistent AI-generated patterns...",
-  "chunks": [
-    {
-      "index": 1,
-      "score": 0.9123,
-      "label": "AI",
-      "top_ai": ["iostream", "endl", "return"],
-      "top_hu": ["ptr", "idx"],
-      "snippet": "#include <iostream>...",
-      "critique": "This chunk shows typical AI-generated boilerplate..."
-    }
-  ],
-  "fingerprint": { 
-      "features": [...],
-      "shap_values": [...]
-  }
-}
+### 2. Cài đặt các thư viện cần thiết
+```bash
+# Tạo và kích hoạt môi trường ảo
+python -m venv .venv
+source .venv/bin/activate    # Trên Linux/macOS
+# .venv\Scripts\activate     # Trên Windows
+
+# Cài đặt dependencies
+pip install -r requirements.txt
 ```
 
----
+### 3. Khởi chạy hệ thống cơ sở hạ tầng (Docker)
+```bash
+docker-compose up -d
+```
+Lệnh này sẽ khởi chạy:
+- **PostgreSQL 16** (Port 5432)
+- **Redis** (Port 6379)
+- **Redpanda / Kafka** (Port 9092)
 
-## Quick Start (Local Development)
+### 4. Khởi chạy Ứng dụng Web & API Serving
+```bash
+# Cách 1: Chạy toàn bộ bằng script tự động (Linux/macOS với tmux)
+make dev
+# Hoặc: ./dev.sh
 
-### Yêu cầu tiên quyết
-- Python 3.10+, Conda/Mamba
-- Docker & Docker Compose
-- Tmux (cho `dev.sh`)
+# Cách 2: Chạy độc lập từng dịch vụ (Windows / Manual)
+# Terminal 1: Chạy Django Web Dashboard
+python manage.py migrate
+python manage.py runserver 0.0.0.0:8000
 
-### Khởi động (Chỉ 2 bước)
+# Terminal 2: Chạy FastAPI AI Serving
+uvicorn src.fastapi_service.main:app --host 0.0.0.0 --port 8001 --reload
+```
 
-1. **Khởi động DB & Brokers (Docker):**
-   ```bash
-   docker-compose up -d
-   ```
-
-2. **Khởi động toàn bộ dịch vụ (Tmux 2x2 pane):**
-   ```bash
-   make dev
-   # Hoặc chạy script bash: ./dev.sh
-   ```
-
-`make dev` sẽ tự động tạo một phiên Tmux với 4 cửa sổ chạy song song:
-- **Pane 0**: FastAPI Orchestrator (Port 8001)
-- **Pane 1**: Django Web Dashboard (Port 8000)
-- **Pane 2**: Celery Worker (Background tasks)
-- **Pane 3**: Local GPU Server (Port 8002)
-
-> Truy cập **http://localhost:8000** để xem giao diện web và **http://localhost:8000/dashboard/** cho MLOps Admin.
+- **Giao diện Người dùng & Phân tích**: [http://localhost:8000](http://localhost:8000)
+- **Bảng điều khiển Quản trị MLOps**: [http://localhost:8000/dashboard/](http://localhost:8000/dashboard/)
+- **API Swagger Documentation**: [http://localhost:8001/docs](http://localhost:8001/docs)
 
 ---
 
-## Hệ thống Tài liệu Nội bộ
+## 🔬 Tái Hiện Thực Nghiệm Nghiên Cứu
 
-Vui lòng tham khảo các thư mục và file tài liệu sau để nắm bắt chi tiết:
-1. `System architecture/00_system_overview.md` - Tổng quan kiến trúc Hybrid & Medallion.
-2. `System architecture/01_mlops_pipeline.md` - Chi tiết LangGraph 4-node và các model (RoBERTa, Qwen, LightGBM).
-3. `System architecture/02_admin_dashboard.md` - Hệ thống Dashboard (Metrics, Infra, VRAM Monitoring).
-4. `System architecture/03_shared_infrastructure.md` - Core Utils (Logger, DB Session, Config, Broker).
-5. `System architecture/04_operations.md` - Vận hành, Debugging và Deployment.
-6. `metadata_implementation_plan.md` - (Gốc) Kế hoạch triển khai Medallion Data Architecture ban đầu.
+Tất cả các thực nghiệm trong đề tài đều được đóng gói độc lập trong thư mục [`Tong hop script/`](file:///c:/Users/2/Desktop/WORKSPACE/LVTN-Main/Tong%20hop%20script):
+
+### 1. Tuyển chọn đặc trưng tối ưu (Feature Selection)
+```bash
+python "Tong hop script/1. Feature_Selection_and_Extraction/find_optimal_k.py"
+```
+*Tự động thực hiện quy trình 3 tầng (Correlation -> Mutual Information -> Lasso L1), xuất kết quả ra file markdown và vẽ biểu đồ.*
+
+### 2. Huấn luyện mô hình ML & Đánh giá Stratified K-Fold
+```bash
+python "Tong hop script/2. ML_Training_and_Inference/retrain_improved.py"
+```
+*Chạy kiểm định chéo 5-fold trên LightGBM, XGBoost, Random Forest, tính toán SHAP values và lưu trữ scaler cùng danh sách 32 đặc trưng.*
+
+### 3. Chạy thực nghiệm Mô hình Lai (Ensemble DL + ML Hybrid)
+```bash
+python "Tong hop script/3. Deep_Learning_and_Hybrid/run_ensemble_hybrid_experiment.py"
+```
+*Thực hiện Grid Search tìm hệ số alpha, đánh giá so sánh ID/OOD và xuất toàn bộ các bảng số liệu tương ứng.*
+
+---
+
+## 📚 Tài Liệu Kỹ Thuật Bổ Sung
+
+Để tìm hiểu sâu hơn về kiến trúc kỹ thuật nội bộ, vui lòng tham khảo các tài liệu liên kết:
+- 🗺️ [**ARCHITECTURE_MAP.md**](file:///c:/Users/2/Desktop/WORKSPACE/LVTN-Main/ARCHITECTURE_MAP.md): Bản đồ định vị và điều hướng toàn bộ module.
+- ⚙️ [**SETUP_AND_RUN.md**](file:///c:/Users/2/Desktop/WORKSPACE/LVTN-Main/SETUP_AND_RUN.md): Hướng dẫn chi tiết cấu hình biến môi trường và chạy cụm dịch vụ.
+- 📐 [**System architecture/**](file:///c:/Users/2/Desktop/WORKSPACE/LVTN-Main/System%20architecture): Bộ tài liệu 5 phần về kiến trúc tổng thể, MLOps, Dashboard, Hạ tầng và Vận hành.
+- 🧪 [**Tong hop script/README.md**](file:///c:/Users/2/Desktop/WORKSPACE/LVTN-Main/Tong%20hop%20script/README.md): Báo cáo chi tiết từng script nghiên cứu và giải thích công thức các đặc trưng.
+
+---
+
+<div align="center">
+  <sub>Đồ án Tốt nghiệp & Công trình Nghiên cứu Khoa học — Phát triển với tính minh bạch, chuẩn mực và khả năng ứng dụng thực tiễn cao.</sub>
+</div>

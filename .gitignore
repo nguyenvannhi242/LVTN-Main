@@ -1,10 +1,11 @@
-# Python
+# ==============================================================================
+# Byte-compiled / optimized / DLL files (Python)
+# ==============================================================================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -21,37 +22,117 @@ wheels/
 .installed.cfg
 *.egg
 
-# Django
+# ==============================================================================
+# Testing & Code Quality Caches
+# ==============================================================================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ==============================================================================
+# Environment & Secrets
+# ==============================================================================
+.env
+.env.*
+!.env.example
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==============================================================================
+# Web & Database Frameworks
+# ==============================================================================
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media/
 staticfiles/
 
-# Environment
-.env
-.venv
-venv/
-ENV/
+# Node / JS dependencies
+node_modules/
 
-# IDEs
+# ==============================================================================
+# Backup & Temporary files
+*.bak
+*.backup
+*_backup.*
+# ==============================================================================
 .vscode/
 .idea/
-
-# OS
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
+ehthumbs.db
 
-# Logs
+# ==============================================================================
+# Academic Thesis & Documents (Local only - do not push to GitHub)
+# ==============================================================================
+thesis_documents/
+*.docx
+*.pdf
+*.pptx
+*.doc
+*.ppt
+
+# ==============================================================================
+# Office & Temporary Lock Files
+# ==============================================================================
+~$*.docx
+~$*.pptx
+~$*.xlsx
+~$*.doc
+~$*.ppt
+
+# ==============================================================================
+# Logs & Scratch / Temporary Testing Folders
+# ==============================================================================
 *.log
 logs/
+scratch/
 
-# Data/Models (often large)
+# ==============================================================================
+# Heavy Machine Learning Weights & Checkpoints (Exceeds GitHub limits)
+# ==============================================================================
 *.h5
 *.pth
-*.pkl
+*.pt
+*.bin
+*.onnx
 *.safetensors
-models/
+*.pkl
+*.joblib
+*.weights
+
+# Model checkpoint directories
+DL models/
 local_models/
-data/
-datasets/
+models/
+retrain ML models/saved_models*/
+
+# ==============================================================================
+# Large Datasets & Raw Code Archives (>50MB / 100,000 files)
+# ==============================================================================
+# Raw 100k cpp dataset (must never be tracked in git)
+testing ML models/cpp_100k_samples/
+testing ML models/FromAI-Dataset/
+
+# Out-of-Distribution Large Datasets & 21k cpp sample files (>80MB each, close to 100MB hard limit)
+data_splits/test_set_OOD/
+Tong hop script/5. Datasets/test_set_OOD/
+
+# Raw C/C++ individual sample directories (Thousands of tiny raw code files)
+data_splits/test_set_ID/Basic_C++/
+data_splits/test_set_ID/OOP_C++/
+
+# Compressed Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z

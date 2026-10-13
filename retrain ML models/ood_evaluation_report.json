@@ -1,0 +1,98 @@
+{
+    "overall": {
+        "total_files": 12598,
+        "accuracy": 0.5426258136212098,
+        "f1_score": 0.6874254095692741,
+        "precision": 0.9844623990055935,
+        "recall": 0.5280880146691115,
+        "confusion_matrix": [
+            [
+                500,
+                100
+            ],
+            [
+                5662,
+                6336
+            ]
+        ]
+    },
+    "by_source": {
+        "Human": {
+            "expected_label": "Human (0)",
+            "total_files": 600,
+            "correct_predictions": 500,
+            "incorrect_predictions": 100,
+            "accuracy": 0.8333333333333334
+        },
+        "claude-3.5-haiku": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 796,
+            "incorrect_predictions": 404,
+            "accuracy": 0.6633333333333333
+        },
+        "deepseek-r1": {
+            "expected_label": "AI (1)",
+            "total_files": 1198,
+            "correct_predictions": 568,
+            "incorrect_predictions": 630,
+            "accuracy": 0.4741235392320534
+        },
+        "deepseek-v3": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 684,
+            "incorrect_predictions": 516,
+            "accuracy": 0.57
+        },
+        "gemini-2.0-flash": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 562,
+            "incorrect_predictions": 638,
+            "accuracy": 0.4683333333333333
+        },
+        "gemini-2.0-flash-thinking-exp": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 606,
+            "incorrect_predictions": 594,
+            "accuracy": 0.505
+        },
+        "gemini-2.0-pro-exp": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 438,
+            "incorrect_predictions": 762,
+            "accuracy": 0.365
+        },
+        "gpt-4o-mini": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 794,
+            "incorrect_predictions": 406,
+            "accuracy": 0.6616666666666666
+        },
+        "llama3.3-70b": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 864,
+            "incorrect_predictions": 336,
+            "accuracy": 0.72
+        },
+        "o3-mini": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 416,
+            "incorrect_predictions": 784,
+            "accuracy": 0.3466666666666667
+        },
+        "qwen2.5-coder": {
+            "expected_label": "AI (1)",
+            "total_files": 1200,
+            "correct_predictions": 608,
+            "incorrect_predictions": 592,
+            "accuracy": 0.5066666666666667
+        }
+    }
+}

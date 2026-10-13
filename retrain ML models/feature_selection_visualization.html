@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trực quan hóa Bộ lọc Đặc trưng & Thử nghiệm Grid Search</title>
+    <meta name="description" content="Trực quan hóa tương tác và lời giảng quy trình tuyển chọn đặc trưng và thử nghiệm Grid Search tìm k=33 cho mô hình C++ AI Code Detection.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: rgba(20, 30, 55, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            
+            --color-input: #4facfe;
+            --color-stage1: #00f2fe;
+            --color-stage2: #38ef7d;
+            --color-stage3: #ec008c;
+            --color-final: #11998e;
+            
+            --gradient-input: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-stage1: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --gradient-stage2: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --gradient-stage3: linear-gradient(135deg, #ec008c 0%, #fc6767 100%);
+            --gradient-final: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(79, 172, 254, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(236, 0, 140, 0.03) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px 15px 20px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #00f2fe, #4facfe, #38ef7d, #ec008c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Top Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 15px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-btn.active {
+            color: #ffffff;
+            background: rgba(79, 172, 254, 0.15);
+            border-color: #4facfe;
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.25);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .tab-content {
+            display: none;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        /* Controls Area */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--gradient-input);
+            border: none;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .btn-active {
+            border-color: #38ef7d !important;
+            box-shadow: 0 0 10px rgba(56, 239, 125, 0.3);
+        }
+
+        /* Pipeline Visual Elements */
+        .pipeline-wrapper {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .pipeline-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .flow-arrow {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            min-width: 40px;
+            max-width: 80px;
+        }
+
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -6px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 12px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .flow-arrow.active {
+            background: #4facfe;
+        }
+
+        .flow-arrow.active::after {
+            border-left-color: #4facfe;
+        }
+
+        .stage-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 20px;
+            width: 220px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .stage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            border-radius: 18px 18px 0 0;
+            background: transparent;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .stage-card.active {
+            background: rgba(20, 40, 80, 0.5);
+            transform: scale(1.03) translateY(-5px);
+        }
+
+        .card-input::before { background: var(--gradient-input); }
+        .card-stage1::before { background: var(--gradient-stage1); }
+        .card-stage2::before { background: var(--gradient-stage2); }
+        .card-stage3::before { background: var(--gradient-stage3); }
+        .card-final::before { background: var(--gradient-final); }
+
+        .card-input.active { border-color: var(--color-input); box-shadow: 0 0 15px rgba(79, 172, 254, 0.3); }
+        .card-stage1.active { border-color: var(--color-stage1); box-shadow: 0 0 20px rgba(0, 242, 254, 0.4); }
+        .card-stage2.active { border-color: var(--color-stage2); box-shadow: 0 0 20px rgba(56, 239, 125, 0.4); }
+        .card-stage3.active { border-color: var(--color-stage3); box-shadow: 0 0 20px rgba(236, 0, 140, 0.4); }
+        .card-final.active { border-color: var(--color-final); box-shadow: 0 0 15px rgba(17, 153, 142, 0.3); }
+
+        .stage-num {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .stage-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .stage-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .card-input .stage-badge { color: var(--color-input); background: rgba(79, 172, 254, 0.15); }
+        .card-stage1 .stage-badge { color: var(--color-stage1); background: rgba(0, 242, 254, 0.15); }
+        .card-stage2 .stage-badge { color: var(--color-stage2); background: rgba(56, 239, 125, 0.15); }
+        .card-stage3 .stage-badge { color: var(--color-stage3); background: rgba(236, 0, 140, 0.15); }
+        .card-final .stage-badge { color: var(--color-final); background: rgba(17, 153, 142, 0.15); }
+
+        /* Panels Grid */
+        .panels-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 25px;
+        }
+
+        .panel-left, .panel-right {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .panel-right {
+            border-left: 4px solid var(--color-input);
+            background: linear-gradient(135deg, rgba(20, 30, 60, 0.5) 0%, rgba(10, 15, 30, 0.7) 100%);
+            position: relative;
+        }
+
+        .panel-right::after {
+            content: 'LỜI GIẢNG GỢI Ý';
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 800;
+            color: var(--text-muted);
+            border: 1px solid var(--card-border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .panel-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 12px;
+        }
+
+        .panel-title-badge {
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        /* Tech Details */
+        .info-section {
+            margin-bottom: 20px;
+        }
+
+        .info-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #4facfe;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #ff7f0e;
+            overflow-x: auto;
+            color: #fbd38d;
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Presenter speech */
+        .speech-content {
+            font-size: 1.06rem;
+            line-height: 1.8;
+            color: #e5e7eb;
+            white-space: pre-wrap;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px dashed rgba(255, 255, 255, 0.15);
+        }
+
+        .speech-highlight {
+            background: rgba(255, 215, 0, 0.1);
+            border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+            padding: 2px 4px;
+            font-weight: 500;
+            color: #fffbdf;
+        }
+
+        .speaker-hint {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #ffb703;
+            background: rgba(255, 183, 3, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 3px solid #ffb703;
+        }
+
+        .feature-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .feature-badge {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feature-badge.dropped {
+            text-decoration: line-through;
+            opacity: 0.4;
+            color: #fc6767;
+            background: rgba(252, 103, 103, 0.05);
+            border-color: rgba(252, 103, 103, 0.1);
+        }
+
+        .feature-badge span {
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        /* Grid Search Tab Styling */
+        .grid-dashboard {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 25px;
+        }
+
+        .chart-card {
+            background: rgba(10, 15, 30, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .grid-stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #38ef7d;
+        }
+
+        .stat-box.highlighted {
+            border-color: #38ef7d;
+            background: rgba(56, 239, 125, 0.05);
+        }
+
+        .stat-box.highlighted .stat-value {
+            text-shadow: 0 0 10px rgba(56, 239, 125, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .grid-steps-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-num-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #4facfe;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-text h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+
+        .step-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .panels-grid, .grid-dashboard {
+                grid-template-columns: 1fr;
+            }
+            .pipeline-flow {
+                flex-direction: column;
+            }
+            .flow-arrow {
+                width: 4px;
+                height: 40px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="main-heading">Feature Selection Pipeline & Tuning</h1>
+        <p class="subtitle">Trực quan hóa quy trình lọc đặc trưng 3 tầng và thí nghiệm Grid Search tìm giá trị tối ưu k = 33.</p>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('tab-pipeline')">1. Quy trình 3 Tầng Lọc</button>
+        <button class="tab-btn" onclick="switchTab('tab-gridsearch')">2. Nghiên cứu Grid Search (k = 33)</button>
+    </div>
+
+    <div class="container">
+
+        <!-- TAB 1: 3-STAGE PIPELINE -->
+        <div class="tab-content active" id="tab-pipeline">
+            <!-- Controls Area -->
+            <div class="controls">
+                <button class="btn btn-primary" id="btn-autoplay" onclick="toggleAutoplay()">
+                    <span id="autoplay-icon">▶</span> <span id="autoplay-text">Trình Chiếu Tự Động</span>
+                </button>
+                <button class="btn" id="btn-prev" onclick="prevStage()">◀ Quay Lại</button>
+                <button class="btn" id="btn-next" onclick="nextStage()">Tiếp Tục ▶</button>
+            </div>
+
+            <!-- Pipeline Flow Visualizer -->
+            <div class="pipeline-wrapper">
+                <div class="pipeline-flow">
+                    <!-- Raw Features -->
+                    <div class="stage-card card-input active" id="card-0" onclick="selectStage(0)">
+                        <div class="stage-num">Khởi Đầu</div>
+                        <div class="stage-title">Raw Features</div>
+                        <div class="stage-badge">44 Đặc trưng</div>
+                    </div>
+                    <div class="flow-arrow active" id="arrow-0"></div>
+
+                    <!-- Stage 1 -->
+                    <div class="stage-card card-stage1" id="card-1" onclick="selectStage(1)">
+                        <div class="stage-num">Tầng Lọc 1</div>
+                        <div class="stage-title">Correlation Filter</div>
+                        <div class="stage-badge">Lọc Đa Cộng Tuyến</div>
+                    </div>
+                    <div class="flow-arrow" id="arrow-1"></div>
+
+                    <!-- Stage 2 -->
+                    <div class="stage-card card-stage2" id="card-2" onclick="selectStage(2)">
+                        <div class="stage-num">Tầng Lọc 2</div>
+                        <div class="stage-title">SelectKBest</div>
+                        <div class="stage-badge">Mutual Information</div>
+                    </div>
+                    <div class="flow-arrow" id="arrow-2"></div>
+
+                    <!-- Stage 3 -->
+                    <div class="stage-card card-stage3" id="card-3" onclick="selectStage(3)">
+                        <div class="stage-num">Tầng Lọc 3</div>
+                        <div class="stage-title">Lasso L1</div>
+                        <div class="stage-badge">Triệt Tiêu Hệ Số</div>
+                    </div>
+                    <div class="flow-arrow" id="arrow-3"></div>
+
+                    <!-- Final Output -->
+                    <div class="stage-card card-final" id="card-4" onclick="selectStage(4)">
+                        <div class="stage-num">Kết Quả</div>
+                        <div class="stage-title">Final Gold Features</div>
+                        <div class="stage-badge">30 Đặc trưng Tinh túy</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split panels for tech details and speech script -->
+            <div class="panels-grid">
+                
+                <!-- Left panel: Tech Details -->
+                <div class="panel-left" id="panel-details">
+                    <h2 class="panel-title" id="detail-title">
+                        Raw Features
+                    </h2>
+                    
+                    <div class="info-section">
+                        <div class="info-title">💡 Mô Tả Quy Trình</div>
+                        <div class="info-card" id="detail-desc">
+                            Hệ thống trích xuất tĩnh 44 đặc trưng cấu trúc từ mã nguồn C++.
+                        </div>
+                    </div>
+
+                    <div class="info-section" id="section-formula">
+                        <div class="info-title">🧬 Cơ Sở Toán Học / Cơ Chế</div>
+                        <div class="info-card" id="detail-mechanism">
+                            Dùng parser và Regex.
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <div class="info-title" id="list-title">📋 Danh Sách Đặc Trưng</div>
+                        <div class="feature-list-grid" id="detail-features">
+                            <!-- Filled dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right panel: Speaker Script -->
+                <div class="panel-right" id="panel-speech">
+                    <h2 class="panel-title" style="color: #ffb703;">
+                        🎙️ Lời Giảng Cho Người Trình Bày
+                    </h2>
+                    
+                    <div class="speaker-hint" id="speech-hint">
+                        📌 <strong>Gợi ý cử chỉ:</strong> Tự tin mở đầu.
+                    </div>
+
+                    <div class="speech-content" id="speech-text">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: GRID SEARCH EXPLORATION -->
+        <div class="tab-content" id="tab-gridsearch">
+            <div class="grid-dashboard">
+                
+                <!-- Left Panel: Interactive Chart and Stats -->
+                <div class="panel-left">
+                    <h2 class="panel-title">
+                        📊 Đồ Thị Kết Quả Quét Tham Số k (Grid Search)
+                    </h2>
+                    
+                    <!-- Line Chart Container -->
+                    <div class="chart-card">
+                        <canvas id="gridChart"></canvas>
+                    </div>
+
+                    <!-- Statistics box -->
+                    <div class="grid-stats-container">
+                        <div class="stat-box">
+                            <div class="stat-value">0.9266</div>
+                            <div class="stat-label">LGB Val F1 (Mặc định k=20)</div>
+                        </div>
+                        <div class="stat-box highlighted">
+                            <div class="stat-value">0.9458</div>
+                            <div class="stat-label">LGB Val F1 (Tối ưu k=33)</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">+1.92%</div>
+                            <div class="stat-label">Hiệu Năng Tăng Thêm</div>
+                        </div>
+                    </div>
+
+                    <!-- Workflow Grid Search -->
+                    <div class="grid-steps-card">
+                        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: #4facfe;">
+                            🔄 Thuật Toán & Quy Trình Tìm Kiếm Grid Search:
+                        </h3>
+                        <div class="step-item">
+                            <div class="step-num-circle">1</div>
+                            <div class="step-text">
+                                <h4>Xác định không gian quét (Search Space)</h4>
+                                <p>Quét tham số k của SelectKBest từ 5 đến 40 (tối đa số đặc trưng) với bước nhảy là 2. Đảm bảo chèn thêm mốc k=20 mặc định để so sánh đối chứng trực tiếp.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num-circle">2</div>
+                            <div class="step-text">
+                                <h4>Chạy Vòng lặp Khép kín (Closed Loop evaluation)</h4>
+                                <p>Với mỗi k, hệ thống chạy lại bộ lọc SelectKBest ➔ Áp dụng mô hình Lasso L1 (C=0.5) ➔ Huấn luyện lại 3 mô hình học máy (LightGBM, XGBoost, Random Forest) với K-Fold CV.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num-circle">3</div>
+                            <div class="step-text">
+                                <h4>Đánh giá đa tiêu chí và lựa chọn đỉnh uốn (Elbow point)</h4>
+                                <p>Đo lường F1-score trên tập Validation để tìm đỉnh hiệu năng cao nhất, đồng thời giám sát độ chênh lệch F1 giữa tập Train và Val để kiểm soát rủi ro Overfitting.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Grid Search Speaker Script -->
+                <div class="panel-right" style="border-left-color: #38ef7d;">
+                    <h2 class="panel-title" style="color: #ffb703;">
+                        🎙️ Lời Giảng: Lý Giải Con Số k = 33
+                    </h2>
+                    
+                    <div class="speaker-hint">
+                        📌 <strong>Gợi ý cử chỉ:</strong> Chỉ tay lên biểu đồ đường. Hướng mắt về phía hội đồng, nhấn mạnh mốc hiệu năng tăng trưởng để thể hiện tính thuyết phục của thử nghiệm thực nghiệm.
+                    </div>
+
+                    <div class="speech-content">
+"Kính thưa các thầy cô trong Hội đồng, câu hỏi lớn đặt ra là: <span class='speech-highlight'>Tại sao con số k = 20 mặc định ban đầu chưa tối ưu, và tại sao k = 33 lại là con số có ý nghĩa thực nghiệm tốt nhất?</span>
+
+Để trả lời điều này, chúng em đã thực hiện một thí nghiệm <span class='speech-highlight'>Grid Search (Quét lưới tham số)</span>. Chúng em cho giá trị k chạy từ 5 tới tối đa là 40 đặc trưng với bước nhảy bằng 2, đo lường liên tục chỉ số F1-score của các mô hình trên tập Validation và tính toán khoảng cách chênh lệch Overfitting.
+
+Thầy cô có thể nhìn thấy rất rõ xu hướng trên đồ thị:
+1. **Ở vùng k nhỏ (k từ 5 đến 15)**: Chỉ số F1-score của các mô hình ở mức rất thấp, dao động dưới 0.90. Đây là hiện tượng <span class='speech-highlight'>Underfitting (thiếu học)</span>, do số lượng đặc trưng giữ lại quá ít, mô hình bị thiếu thông tin để phân biệt các thói quen viết code phức tạp.
+2. **Ở điểm mặc định k = 20**: LightGBM đạt F1-score là **0.9266**. Đây là mốc hiệu năng khá, nhưng chưa phải là tốt nhất.
+3. **Từ k = 21 đến 31**: Hiệu năng tiếp tục tăng đều khi ta bổ sung thêm các đặc trưng hữu ích về phong cách code và OOP nâng cao.
+4. **Tại đỉnh cực đại k = 33**: Mô hình LightGBM đạt F1-score đỉnh cao là <span class='speech-highlight'>0.9458</span>, tăng tới **1.92%** so với mốc k = 20 mặc định. Đồng thời, biên độ overfit (khoảng cách sai lệch F1 Train-Val) được khống chế ở mức rất thấp là **0.0516** (còn thấp hơn cả mức 0.0599 ở mốc k=20).
+5. **Ở vùng k lớn hơn (k từ 35 đến 40)**: Hiệu năng bắt đầu đi ngang và đi xuống (ví dụ k=37 giảm xuống còn 0.9430), đồng thời biên độ overfit có xu hướng tăng trở lại. Đây là do mô hình bị nạp quá nhiều đặc trưng nhiễu, dẫn tới học vẹt.
+
+Do đó, điểm **k = 33** chính là <span class='speech-highlight'>điểm uốn vàng (elbow point)</span> của quy trình tuyển chọn. Nó cân bằng hoàn hảo giữa việc tối đa hóa lượng thông tin tiếp nhận và việc triệt tiêu hiện tượng overfitting, mang lại cho mô hình độ chính xác cao nhất và tính tổng quát hóa tối ưu trên dữ liệu thực tế."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Hệ Thống Phát Hiện Lạm Dụng Trí Tuệ Nhân Tạo Trong Bài Tập Lập Trình C++ - LVTN 2026</p>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Data tabs
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(btn => btn.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Find active button
+            const activeBtn = Array.from(tabs).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            if (tabId === 'tab-gridsearch') {
+                // Render Chart.js when tab is active to prevent size issues
+                renderChart();
+            } else {
+                if (autoplayInterval) {
+                    toggleAutoplay(); // Stop autoplay if leaving tab 1
+                }
+            }
+        }
+
+        const stageData = [
+            {
+                // Raw Input
+                title: "Raw Features (Đặc trưng thô đầu vào)",
+                badge: "44 Features",
+                badgeColor: "#4facfe",
+                desc: "Bộ trích xuất <code>CppFeatureExtractorV8</code> thực hiện phân tích mã nguồn C++ tĩnh để sinh ra 44 đặc trưng thuộc 6 nhóm: Layout & Formatting (8 đặc trưng), Naming Conventions (5 đặc trưng), Structural Complexity (10 đặc trưng), Coding Habits & Idioms (8 đặc trưng), Information Theory (3 đặc trưng), và OOP & Advanced Habits (10 đặc trưng mới bổ sung để nâng tầm nhận biết).",
+                mechanism: "Trích xuất đặc trưng tĩnh bằng cách duyệt cây cú pháp thông qua thư viện <code>lizard</code> kết hợp các bộ lọc biểu thức chính quy (Regular Expressions) mạnh mẽ để định lượng hóa mã nguồn.",
+                formula: "# Ví dụ cấu trúc trích xuất một mẫu:\nfeatures = extractor.extract(clean_code)\nassert len(features) == 44",
+                listTitle: "📋 Danh Sách Đặc Trưng Đầu Vào (44)",
+                features: [
+                    { name: "comment_ratio", cat: "Layout" },
+                    { name: "empty_line_ratio", cat: "Layout" },
+                    { name: "emoji_marker_score", cat: "Layout" },
+                    { name: "avg_line_length", cat: "Layout" },
+                    { name: "max_line_length", cat: "Layout" },
+                    { name: "tab_vs_space_ratio", cat: "Layout" },
+                    { name: "trailing_space_ratio", cat: "Layout" },
+                    { name: "brace_style_consistency", cat: "Layout" },
+                    { name: "avg_identifier_length", cat: "Naming" },
+                    { name: "identifier_length_variance", cat: "Naming" },
+                    { name: "single_char_var_ratio", cat: "Naming" },
+                    { name: "unique_identifier_ratio", cat: "Naming" },
+                    { name: "keyword_to_identifier_ratio", cat: "Naming" },
+                    { name: "avg_cyclomatic_complexity", cat: "Complexity" },
+                    { name: "num_functions", cat: "Complexity" },
+                    { name: "avg_function_loc", cat: "Complexity" },
+                    { name: "halstead_volume", cat: "Complexity" },
+                    { name: "halstead_difficulty", cat: "Complexity" },
+                    { name: "halstead_effort", cat: "Complexity" },
+                    { name: "halstead_bugs", cat: "Complexity" },
+                    { name: "maintainability_index", cat: "Complexity" },
+                    { name: "code_to_comment_ratio", cat: "Complexity" },
+                    { name: "max_nesting_depth", cat: "Complexity" },
+                    { name: "total_includes", cat: "Habits" },
+                    { name: "has_bits_stdc", cat: "Habits" },
+                    { name: "macro_count", cat: "Habits" },
+                    { name: "modern_cpp_ratio", cat: "Habits" },
+                    { name: "const_usage_ratio", cat: "Habits" },
+                    { name: "has_fast_io", cat: "Habits" },
+                    { name: "newline_style_ratio", cat: "Habits" },
+                    { name: "shannon_entropy", cat: "Theory" },
+                    { name: "bigram_entropy", cat: "Theory" },
+                    { name: "whitespace_entropy", cat: "Theory" },
+                    { name: "class_count", cat: "OOP" },
+                    { name: "struct_count", cat: "OOP" },
+                    { name: "has_inheritance", cat: "OOP" },
+                    { name: "access_specifier_ratio", cat: "OOP" },
+                    { name: "virtual_override_ratio", cat: "OOP" },
+                    { name: "using_std_ratio", cat: "OOP" },
+                    { name: "try_catch_ratio", cat: "OOP" },
+                    { name: "raw_pointer_ratio", cat: "OOP" },
+                    { name: "getter_setter_ratio", cat: "OOP" },
+                    { name: "std_prefix_ratio", cat: "OOP" },
+                    { name: "cpp_cast_ratio", cat: "OOP" }
+                ],
+                hint: "📌 <strong>Gợi ý cử chỉ:</strong> Đứng thẳng, hướng về phía slide, tay mở rộng để bao quát toàn bộ sơ đồ kiến trúc thô.",
+                speech: "Kính thưa Hội đồng, để nhận diện chính xác mã nguồn C++ do AI tạo ra so với mã nguồn do Con người viết, mô hình của chúng em không đi theo hướng đọc text đơn thuần mà tập trung vào <span class='speech-highlight'>khai thác thói quen lập trình</span>.\n\nHệ thống bắt đầu bằng cách trích xuất tĩnh <span class='speech-highlight'>44 đặc trưng thô</span> từ mã nguồn C++. Các đặc trưng này bao phủ toàn diện từ phong cách bố cục dòng code, thói quen đặt tên định danh, độ phức tạp cấu trúc Halstead, cho tới các cấu trúc lập trình hướng đối tượng (OOP) nâng cao.\n\nTuy nhiên, việc sử dụng trực tiếp toàn bộ 44 đặc trưng thô này có thể gây ra hiện tượng <span class='speech-highlight'>Overfitting</span> nghiêm trọng và làm giảm tốc độ tính toán. Do đó, chúng em đã thiết kế một pipeline tuyển chọn gồm 3 tầng lọc vô cùng nghiêm ngặt mà em xin phép được trình bày chi tiết sau đây."
+            },
+            {
+                // Stage 1
+                title: "Tầng Lọc 1: Lọc Tương Quan Đa Cộng Tuyến (Correlation Filter)",
+                badge: "Stage 1",
+                badgeColor: "#00f2fe",
+                desc: "Tầng lọc đầu tiên tiến hành phân tích ma trận tương quan Pearson. Nếu hai đặc trưng có hệ số tương quan tuyến tính $|r| > 0.85$, chúng được xem là đa cộng tuyến (collinear) - mang thông tin trùng lặp gần như tuyệt đối. Bộ lọc sẽ tự động loại bỏ 1 trong 2 đặc trưng.",
+                mechanism: "Tính hệ số tương quan Pearson giữa các đặc trưng đầu vào sau khi scale:",
+                formula: "r = cov(X, Y) / (std_dev(X) * std_dev(Y))\n# Drop feature if |r| > 0.85",
+                listTitle: "📋 Kết Quả Lọc (Đỏ là bị loại do đa cộng tuyến)",
+                features: [
+                    { name: "comment_ratio", cat: "Layout" },
+                    { name: "empty_line_ratio", cat: "Layout" },
+                    { name: "emoji_marker_score", cat: "Layout" },
+                    { name: "avg_line_length", cat: "Layout" },
+                    { name: "max_line_length", cat: "Layout" },
+                    { name: "tab_vs_space_ratio", cat: "Layout" },
+                    { name: "trailing_space_ratio", cat: "Layout" },
+                    { name: "brace_style_consistency", cat: "Layout" },
+                    { name: "avg_identifier_length", cat: "Naming" },
+                    { name: "identifier_length_variance", cat: "Naming" },
+                    { name: "single_char_var_ratio", cat: "Naming" },
+                    { name: "unique_identifier_ratio", cat: "Naming" },
+                    { name: "keyword_to_identifier_ratio", cat: "Naming" },
+                    { name: "avg_cyclomatic_complexity", cat: "Complexity" },
+                    { name: "num_functions", cat: "Complexity" },
+                    { name: "avg_function_loc", cat: "Complexity" },
+                    { name: "halstead_volume", cat: "Complexity" },
+                    { name: "halstead_difficulty", cat: "Complexity" },
+                    { name: "halstead_effort", cat: "Complexity", dropped: true },
+                    { name: "halstead_bugs", cat: "Complexity", dropped: true },
+                    { name: "maintainability_index", cat: "Complexity" },
+                    { name: "code_to_comment_ratio", cat: "Complexity" },
+                    { name: "max_nesting_depth", cat: "Complexity" },
+                    { name: "total_includes", cat: "Habits" },
+                    { name: "has_bits_stdc", cat: "Habits" },
+                    { name: "macro_count", cat: "Habits" },
+                    { name: "modern_cpp_ratio", cat: "Habits" },
+                    { name: "const_usage_ratio", cat: "Habits" },
+                    { name: "has_fast_io", cat: "Habits", dropped: true },
+                    { name: "newline_style_ratio", cat: "Habits", dropped: true },
+                    { name: "shannon_entropy", cat: "Theory" },
+                    { name: "bigram_entropy", cat: "Theory" },
+                    { name: "whitespace_entropy", cat: "Theory" },
+                    { name: "class_count", cat: "OOP" },
+                    { name: "struct_count", cat: "OOP" },
+                    { name: "has_inheritance", cat: "OOP" },
+                    { name: "access_specifier_ratio", cat: "OOP" },
+                    { name: "virtual_override_ratio", cat: "OOP" },
+                    { name: "using_std_ratio", cat: "OOP" },
+                    { name: "try_catch_ratio", cat: "OOP" },
+                    { name: "raw_pointer_ratio", cat: "OOP" },
+                    { name: "getter_setter_ratio", cat: "OOP" },
+                    { name: "std_prefix_ratio", cat: "OOP" },
+                    { name: "cpp_cast_ratio", cat: "OOP" }
+                ],
+                hint: "📌 <strong>Gợi ý cử chỉ:</strong> Dùng lòng bàn tay hướng về phía ma trận tương quan trên slide, nhấn mạnh vào việc giảm tải sự trùng lặp.",
+                speech: "Tầng đầu tiên trong pipeline là <span class='speech-highlight'>Correlation Filter</span> - Bộ lọc tương quan đa cộng tuyến.\n\nKhi nghiên cứu dữ liệu, chúng em nhận thấy có những đặc trưng mang thông tin rất giống nhau. Ví dụ điển hình là cặp chỉ số độ phức tạp Halstead: `halstead_volume`, `halstead_effort` và `halstead_bugs` có độ tương quan tuyến tính Pearson cực kỳ lớn, tiệm cận r > 0.95. \n\nĐể giải quyết hiện tượng đa cộng tuyến, chúng em đặt ngưỡng lọc nghiêm ngặt là <span class='speech-highlight'>|r| > 0.85</span>. Hệ thống đã tự động phát hiện và loại bỏ <span class='speech-highlight'>4 đặc trưng trùng lặp nhiều nhất</span>, bao gồm các chỉ số phụ của Halstead và một số chỉ số thói quen xuống dòng dư thừa. Bước này giúp giảm tổng số đặc trưng từ 44 xuống còn <span class='speech-highlight'>40 đặc trưng</span>, bảo vệ mô hình khỏi sự phân tán trọng số không đáng có."
+            },
+            {
+                // Stage 2
+                title: "Tầng Lọc 2: Tuyển chọn K-Best Đặc Trưng qua Mutual Information",
+                badge: "Stage 2",
+                badgeColor: "#38ef7d",
+                desc: "Sử dụng điểm số Mutual Information (MI - Thông tin tương hỗ) để xếp hạng mức độ đóng góp thông tin của từng đặc trưng độc lập đối với nhãn lớp mục tiêu. Hệ thống sẽ giữ lại top k đặc trưng có điểm MI cao nhất. Quá trình Grid Search thực nghiệm đã chỉ ra giá trị tối ưu nhất là k = 33.",
+                mechanism: "Tính điểm thông tin tương hỗ phi tuyến giữa biến đặc trưng X và nhãn Y:",
+                formula: "I(X; Y) = H(X) + H(Y) - H(X, Y)\n# Chọn k = 33 làm ngưỡng uốn tối ưu",
+                listTitle: "📋 Kết Quả Lọc (Đỏ là bị loại do điểm MI nằm ngoài Top 33)",
+                features: [
+                    { name: "comment_ratio", cat: "Layout" },
+                    { name: "empty_line_ratio", cat: "Layout" },
+                    { name: "emoji_marker_score", cat: "Layout" },
+                    { name: "avg_line_length", cat: "Layout" },
+                    { name: "max_line_length", cat: "Layout" },
+                    { name: "tab_vs_space_ratio", cat: "Layout" },
+                    { name: "trailing_space_ratio", cat: "Layout" },
+                    { name: "brace_style_consistency", cat: "Layout" },
+                    { name: "avg_identifier_length", cat: "Naming" },
+                    { name: "identifier_length_variance", cat: "Naming" },
+                    { name: "single_char_var_ratio", cat: "Naming" },
+                    { name: "unique_identifier_ratio", cat: "Naming" },
+                    { name: "keyword_to_identifier_ratio", cat: "Naming" },
+                    { name: "avg_cyclomatic_complexity", cat: "Complexity", dropped: true },
+                    { name: "num_functions", cat: "Complexity", dropped: true },
+                    { name: "avg_function_loc", cat: "Complexity", dropped: true },
+                    { name: "halstead_volume", cat: "Complexity" },
+                    { name: "halstead_difficulty", cat: "Complexity" },
+                    { name: "maintainability_index", cat: "Complexity" },
+                    { name: "code_to_comment_ratio", cat: "Complexity" },
+                    { name: "max_nesting_depth", cat: "Complexity" },
+                    { name: "total_includes", cat: "Habits" },
+                    { name: "has_bits_stdc", cat: "Habits" },
+                    { name: "macro_count", cat: "Habits" },
+                    { name: "modern_cpp_ratio", cat: "Habits", dropped: true },
+                    { name: "const_usage_ratio", cat: "Habits" },
+                    { name: "shannon_entropy", cat: "Theory" },
+                    { name: "bigram_entropy", cat: "Theory", dropped: true },
+                    { name: "whitespace_entropy", cat: "Theory", dropped: true },
+                    { name: "class_count", cat: "OOP", dropped: true },
+                    { name: "struct_count", cat: "OOP" },
+                    { name: "has_inheritance", cat: "OOP", dropped: true },
+                    { name: "access_specifier_ratio", cat: "OOP", dropped: true },
+                    { name: "virtual_override_ratio", cat: "OOP" },
+                    { name: "using_std_ratio", cat: "OOP" },
+                    { name: "try_catch_ratio", cat: "OOP", dropped: true },
+                    { name: "raw_pointer_ratio", cat: "OOP" },
+                    { name: "getter_setter_ratio", cat: "OOP" },
+                    { name: "std_prefix_ratio", cat: "OOP" },
+                    { name: "cpp_cast_ratio", cat: "OOP" }
+                ],
+                hint: "📌 <strong>Gợi ý cử chỉ:</strong> Nhấn mạnh giọng nói khi giải thích về Grid Search, chỉ tay vào giá trị k=33 trên màn hình.",
+                speech: "Bước sang tầng lọc thứ hai, chúng em áp dụng giải pháp toán học nâng cao: <span class='speech-highlight'>SelectKBest thông qua Mutual Information (Thông tin tương hỗ)</span>.\n\nKhác với mối quan hệ tuyến tính ở tầng 1, Mutual Information đo lường sự tương quan phi tuyến giữa đặc trưng và nhãn. Ban đầu, hệ thống sử dụng một giá trị k = 20 theo cảm tính. Nhận thấy con số này chưa được tối ưu, chúng em đã triển khai thực nghiệm <span class='speech-highlight'>Grid Search quét giá trị k từ 5 đến 40</span> trên toàn bộ dữ liệu.\n\nKết quả thực nghiệm đã tìm thấy <span class='speech-highlight'>điểm uốn tối ưu tại k = 33</span>. Tại điểm này, chỉ số F1-score của mô hình LightGBM đạt mức cao nhất là **94.58%**, đồng thời chênh lệch sai số giữa Train và Validation là nhỏ nhất. Tầng lọc này giúp chúng em giữ lại đúng 33 đặc trưng có giá trị thông tin cao nhất và loại bỏ đi 7 đặc trưng không hiệu quả."
+            },
+            {
+                // Stage 3
+                title: "Tầng Lọc 3: Điều Hòa Lasso L1 (Lasso L1 Regularization)",
+                badge: "Stage 3",
+                badgeColor: "#ec008c",
+                desc: "Áp dụng mô hình Hồi quy Logistic tích hợp hàm phạt Lasso L1 (C = 0.5) đóng vai trò là một bộ lọc nhúng (embedded method). Hàm phạt L1 ép các hệ số của những đặc trưng ít quan trọng hoặc có tính chất nhiễu về chính xác mức 0, qua đó loại bỏ chúng ra khỏi tập đặc trưng cuối cùng.",
+                mechanism: "Hàm mục tiêu hồi quy phạt Lasso L1 (ép hệ số về 0):",
+                formula: "Loss = Error + lambda * sum(|w_i|)\n# Các đặc trưng có hệ số w_i = 0 sẽ bị loại bỏ",
+                listTitle: "📋 Kết Quả Lọc (Đỏ là bị loại do hệ số co về 0)",
+                features: [
+                    { name: "comment_ratio", cat: "Layout" },
+                    { name: "empty_line_ratio", cat: "Layout" },
+                    { name: "emoji_marker_score", cat: "Layout" },
+                    { name: "avg_line_length", cat: "Layout" },
+                    { name: "max_line_length", cat: "Layout" },
+                    { name: "tab_vs_space_ratio", cat: "Layout" },
+                    { name: "trailing_space_ratio", cat: "Layout" },
+                    { name: "brace_style_consistency", cat: "Layout" },
+                    { name: "avg_identifier_length", cat: "Naming" },
+                    { name: "identifier_length_variance", cat: "Naming" },
+                    { name: "single_char_var_ratio", cat: "Naming" },
+                    { name: "unique_identifier_ratio", cat: "Naming" },
+                    { name: "keyword_to_identifier_ratio", cat: "Naming" },
+                    { name: "halstead_volume", cat: "Complexity" },
+                    { name: "halstead_difficulty", cat: "Complexity" },
+                    { name: "maintainability_index", cat: "Complexity" },
+                    { name: "code_to_comment_ratio", cat: "Complexity" },
+                    { name: "max_nesting_depth", cat: "Complexity" },
+                    { name: "total_includes", cat: "Habits" },
+                    { name: "has_bits_stdc", cat: "Habits" },
+                    { name: "macro_count", cat: "Habits" },
+                    { name: "const_usage_ratio", cat: "Habits" },
+                    { name: "has_modern_cpp", cat: "Habits", dropped: true },
+                    { name: "shannon_entropy", cat: "Theory" },
+                    { name: "struct_count", cat: "OOP" },
+                    { name: "has_inheritance_ratio", cat: "OOP", dropped: true },
+                    { name: "virtual_override_ratio", cat: "OOP" },
+                    { name: "using_std_ratio", cat: "OOP" },
+                    { name: "raw_pointer_ratio", cat: "OOP" },
+                    { name: "getter_setter_ratio", cat: "OOP" },
+                    { name: "std_prefix_ratio", cat: "OOP" },
+                    { name: "cpp_cast_ratio", cat: "OOP" },
+                    { name: "try_catch_ratio", cat: "OOP", dropped: true }
+                ],
+                hint: "📌 <strong>Gợi ý cử chỉ:</strong> Làm động tác nắm tay khép lại để minh họa cho việc ép (co rút) trọng số, thể hiện sự chặt chẽ.",
+                speech: "Tầng lọc cuối cùng trước khi huấn luyện mô hình là <span class='speech-highlight'>Lasso L1 Regularization</span>.\n\nỞ tầng này, chúng em không dùng bộ lọc độc lập mà sử dụng bộ lọc nhúng (embedded filter) bằng mô hình Hồi quy Logistic tích hợp hàm phạt L1 với hệ số điều hòa <span class='speech-highlight'>C = 0.5</span>.\n\nCơ sở toán học của Lasso L1 là khả năng <span class='speech-highlight'>ép các hệ số hồi quy của những đặc trưng có ít tác dụng về chính xác bằng 0</span>. Khi hệ số bị co về 0, đặc trưng đó tự động bị loại bỏ hoàn toàn. Qua bước lọc nhúng này, hệ thống đã loại bỏ thêm <span class='speech-highlight'>3 đặc trưng có trọng số bằng 0</span>. Điều này giúp tinh giản tập đặc trưng xuống mức cô đọng nhất, giải quyết triệt để vấn đề nhiễu và đa cộng tuyến còn sót lại."
+            },
+            {
+                // Final Output
+                title: "Final Gold Features (Tập đặc trưng tinh túy cuối cùng)",
+                badge: "Output",
+                badgeColor: "#11998e",
+                desc: "Quy trình tuyển chọn 3 tầng lọc chốt hạ 30 đặc trưng tinh túy nhất để đưa vào huấn luyện mô hình chính. Các mô hình được huấn luyện trên tập đặc trưng này đạt hiệu năng vượt trội, hạn chế tối đa overfit.",
+                mechanism: "Tập đặc trưng tối ưu được lưu lại dưới dạng file <code>final_features.pkl</code> để đồng bộ hóa cho quá trình tiền xử lý và inference thời gian thực.",
+                formula: "X_train_final = X_train_scaled[final_features]\n# LGBM Test Set Accuracy: 95.16%",
+                listTitle: "📋 30 Đặc Trưng Tinh Túy Cuối Cùng Sử Dụng Để Huấn Luyện",
+                features: [
+                    { name: "comment_ratio", cat: "Layout" },
+                    { name: "empty_line_ratio", cat: "Layout" },
+                    { name: "emoji_marker_score", cat: "Layout" },
+                    { name: "avg_line_length", cat: "Layout" },
+                    { name: "max_line_length", cat: "Layout" },
+                    { name: "tab_vs_space_ratio", cat: "Layout" },
+                    { name: "trailing_space_ratio", cat: "Layout" },
+                    { name: "brace_style_consistency", cat: "Layout" },
+                    { name: "avg_identifier_length", cat: "Naming" },
+                    { name: "identifier_length_variance", cat: "Naming" },
+                    { name: "single_char_var_ratio", cat: "Naming" },
+                    { name: "unique_identifier_ratio", cat: "Naming" },
+                    { name: "keyword_to_identifier_ratio", cat: "Naming" },
+                    { name: "halstead_volume", cat: "Complexity" },
+                    { name: "halstead_difficulty", cat: "Complexity" },
+                    { name: "maintainability_index", cat: "Complexity" },
+                    { name: "code_to_comment_ratio", cat: "Complexity" },
+                    { name: "max_nesting_depth", cat: "Complexity" },
+                    { name: "total_includes", cat: "Habits" },
+                    { name: "has_bits_stdc", cat: "Habits" },
+                    { name: "macro_count", cat: "Habits" },
+                    { name: "const_usage_ratio", cat: "Habits" },
+                    { name: "shannon_entropy", cat: "Theory" },
+                    { name: "struct_count", cat: "OOP" },
+                    { name: "virtual_override_ratio", cat: "OOP" },
+                    { name: "using_std_ratio", cat: "OOP" },
+                    { name: "raw_pointer_ratio", cat: "OOP" },
+                    { name: "getter_setter_ratio", cat: "OOP" },
+                    { name: "std_prefix_ratio", cat: "OOP" },
+                    { name: "cpp_cast_ratio", cat: "OOP" }
+                ],
+                hint: "📌 <strong>Gợi ý cử chỉ:</strong> Tươi cười, giọng điệu phấn khởi, gật đầu nhẹ để kết thúc bài nói một cách thuyết phục.",
+                speech: "Kết quả cuối cùng, sau khi đi qua cả 3 tầng lọc nghiêm ngặt, từ 44 đặc trưng thô ban đầu, chúng em đã chọn lọc ra được <span class='speech-highlight'>30 đặc trưng tinh túy nhất</span>.\n\nTập 30 đặc trưng này sau đó đã được đưa vào để huấn luyện các thuật toán học máy chính là LightGBM, XGBoost và Random Forest. Nhờ quy trình tuyển chọn khoa học này, mô hình LightGBM tối ưu đã đạt hiệu năng cực kỳ ấn tượng trên tập kiểm thử độc lập với <span class='speech-highlight'>độ chính xác Accuracy đạt 95.16%</span> và F1-score đạt **95%**.\n\nQuan trọng nhất, sự chênh lệch độ chính xác giữa tập huấn luyện và tập kiểm định đã được thu hẹp về dưới mức 3%. Điều này chứng minh quy trình tuyển chọn đặc trưng của chúng em đã thành công trong việc loại bỏ nhiễu, chống overfit và mang lại khả năng tổng quát hóa rất cao cho mô hình thực tế. Em xin chân thành cảm ơn thầy cô đã lắng nghe."
+            }
+        ];
+
+        let currentStage = 0;
+        let autoplayInterval = null;
+
+        function selectStage(index) {
+            currentStage = index;
+            updateUI();
+        }
+
+        function prevStage() {
+            if (currentStage > 0) {
+                currentStage--;
+                updateUI();
+            }
+        }
+
+        function nextStage() {
+            if (currentStage < stageData.length - 1) {
+                currentStage++;
+                updateUI();
+            } else if (autoplayInterval) {
+                currentStage = 0;
+                updateUI();
+            }
+        }
+
+        function toggleAutoplay() {
+            const btn = document.getElementById("btn-autoplay");
+            const icon = document.getElementById("autoplay-icon");
+            const text = document.getElementById("autoplay-text");
+
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+                btn.classList.remove("btn-active");
+                icon.innerText = "▶";
+                text.innerText = "Trình Chiếu Tự Động";
+            } else {
+                btn.classList.add("btn-active");
+                icon.innerText = "⏸";
+                text.innerText = "Dừng Trình Chiếu";
+                autoplayInterval = setInterval(() => {
+                    nextStage();
+                }, 7000);
+            }
+        }
+
+        function updateUI() {
+            for (let i = 0; i < stageData.length; i++) {
+                const card = document.getElementById(`card-${i}`);
+                if (card) {
+                    if (i === currentStage) card.classList.add("active");
+                    else card.classList.remove("active");
+                }
+            }
+
+            for (let i = 0; i < stageData.length - 1; i++) {
+                const arrow = document.getElementById(`arrow-${i}`);
+                if (arrow) {
+                    if (i < currentStage) arrow.classList.add("active");
+                    else arrow.classList.remove("active");
+                }
+            }
+
+            const data = stageData[currentStage];
+            if (!data) return;
+
+            document.getElementById("detail-title").innerHTML = `
+                ${data.title} 
+                <span class="panel-title-badge" style="background: ${data.badgeColor}; color: #ffffff;">
+                    ${data.badge}
+                </span>
+            `;
+            document.getElementById("detail-desc").innerHTML = data.desc;
+            document.getElementById("detail-mechanism").innerHTML = `
+                ${data.mechanism}
+                <div class="formula">${data.formula}</div>
+            `;
+            document.getElementById("list-title").innerText = data.listTitle;
+
+            const listGrid = document.getElementById("detail-features");
+            listGrid.innerHTML = "";
+            data.features.forEach(feat => {
+                const badge = document.createElement("div");
+                badge.className = `feature-badge ${feat.dropped ? 'dropped' : ''}`;
+                badge.innerHTML = `
+                    <strong>${feat.name}</strong>
+                    <span>${feat.cat}</span>
+                `;
+                listGrid.appendChild(badge);
+            });
+
+            document.getElementById("speech-hint").innerHTML = data.hint;
+            document.getElementById("speech-text").innerHTML = data.speech;
+            document.getElementById("panel-speech").style.borderLeftColor = data.badgeColor;
+        }
+
+        // Initialize UI
+        updateUI();
+
+        // ChartJS logic
+        let chartInstance = null;
+        function renderChart() {
+            if (chartInstance) return; // Render only once
+            
+            const ctx = document.getElementById('gridChart').getContext('2d');
+            
+            // Grid search experiment data
+            const kValues = [5, 7, 9, 11, 13, 15, 17, 19, 20, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 40];
+            const lgbValF1 = [0.8694, 0.9044, 0.9074, 0.9106, 0.9126, 0.9207, 0.9166, 0.9255, 0.9266, 0.9225, 0.9334, 0.9277, 0.9385, 0.9372, 0.9456, 0.9458, 0.9457, 0.9430, 0.9444, 0.9444];
+            const xgbValF1 = [0.8754, 0.9080, 0.9081, 0.9127, 0.9074, 0.9226, 0.9193, 0.9277, 0.9231, 0.9258, 0.9317, 0.9283, 0.9350, 0.9339, 0.9461, 0.9450, 0.9424, 0.9462, 0.9445, 0.9445];
+            const overfitMargin = [0.0473, 0.0484, 0.0566, 0.0537, 0.0638, 0.0631, 0.0659, 0.0631, 0.0599, 0.0650, 0.0589, 0.0656, 0.0529, 0.0572, 0.0514, 0.0516, 0.0519, 0.0552, 0.0529, 0.0529];
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: kValues,
+                    datasets: [
+                        {
+                            label: 'LightGBM Val F1-score',
+                            data: lgbValF1,
+                            borderColor: '#38ef7d',
+                            backgroundColor: 'rgba(56, 239, 125, 0.1)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#38ef7d',
+                            pointRadius: 4,
+                            pointHoverRadius: 7,
+                            tension: 0.15,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'XGBoost Val F1-score',
+                            data: xgbValF1,
+                            borderColor: '#ff7f0e',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#ff7f0e',
+                            borderDash: [5, 5],
+                            pointRadius: 3,
+                            tension: 0.15,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Overfitting Margin (Train - Val)',
+                            data: overfitMargin,
+                            borderColor: '#ec008c',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#ec008c',
+                            pointRadius: 3,
+                            tension: 0.1,
+                            yAxisID: 'y2'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#f3f4f6',
+                                font: {
+                                    family: 'Inter',
+                                    size: 11
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw.toFixed(4);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Giá trị k trong SelectKBest',
+                                color: '#9ca3af'
+                            }
+                        },
+                        y: {
+                            position: 'left',
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            title: {
+                                display: true,
+                                text: 'F1-score',
+                                color: '#9ca3af'
+                            },
+                            min: 0.84,
+                            max: 0.96
+                        },
+                        y2: {
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false // prevent grid overlap
+                            },
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Overfit Margin',
+                                color: '#9ca3af'
+                            },
+                            min: 0.03,
+                            max: 0.08
+                        }
+                    }
+                },
+                plugins: [{
+                    afterDraw: chart => {
+                        // Draw vertical line at k=33 (index 15)
+                        const ctx = chart.ctx;
+                        const xAxis = chart.scales.x;
+                        const yAxis = chart.scales.y;
+                        const x = xAxis.getPixelForValue(33);
+                        const topY = yAxis.top;
+                        const bottomY = yAxis.bottom;
+                        
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.moveTo(x, topY);
+                        ctx.lineTo(x, bottomY);
+                        ctx.lineWidth = 2;
+                        ctx.strokeStyle = '#38ef7d';
+                        ctx.setLineDash([5, 5]);
+                        ctx.stroke();
+                        
+                        // Draw label "k=33 (Peak)"
+                        ctx.fillStyle = '#38ef7d';
+                        ctx.font = 'bold 11px Inter';
+                        ctx.fillText('k=33 (Peak)', x + 8, topY + 20);
+                        ctx.restore();
+                    }
+                }]
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+{
+    "dataset": "C:\\Users\\2\\Desktop\\WORKSPACE\\LVTN-Main\\testing ML models\\cpp_100k_samples",
+    "total_evaluated": 1000,
+    "results": {
+        "LightGBM": {
+            "accuracy": 0.99,
+            "total_samples": 1000,
+            "correct_predictions": 990,
+            "incorrect_predictions": 10,
+            "misclassified_samples": [
+                {
+                    "filename": "s000018975.cpp",
+                    "probability": 0.57474770724419
+                },
+                {
+                    "filename": "s000569425.cpp",
+                    "probability": 0.9828699704438164
+                },
+                {
+                    "filename": "s001998955.cpp",
+                    "probability": 0.9175498875341261
+                },
+                {
+                    "filename": "s002465697.cpp",
+                    "probability": 0.5030351909263422
+                },
+                {
+                    "filename": "s003523933.cpp",
+                    "probability": 0.8274677091322543
+                },
+                {
+                    "filename": "s003876395.cpp",
+                    "probability": 0.594408859378228
+                },
+                {
+                    "filename": "s005699298.cpp",
+                    "probability": 0.9917240690209196
+                },
+                {
+                    "filename": "s006003209.cpp",
+                    "probability": 0.929169301756053
+                },
+                {
+                    "filename": "s007138711.cpp",
+                    "probability": 0.9207964991758316
+                },
+                {
+                    "filename": "s007720459.cpp",
+                    "probability": 0.7570908374883437
+                }
+            ]
+        },
+        "RandomForest": {
+            "accuracy": 0.988,
+            "total_samples": 1000,
+            "correct_predictions": 988,
+            "incorrect_predictions": 12,
+            "misclassified_samples": [
+                {
+                    "filename": "s000018975.cpp",
+                    "probability": 0.6791435455055775
+                },
+                {
+                    "filename": "s000384492.cpp",
+                    "probability": 0.5012967609421587
+                },
+                {
+                    "filename": "s000569425.cpp",
+                    "probability": 0.8406916322882508
+                },
+                {
+                    "filename": "s001998955.cpp",
+                    "probability": 0.7788871184728925
+                },
+                {
+                    "filename": "s003523933.cpp",
+                    "probability": 0.7473441711811039
+                },
+                {
+                    "filename": "s004371911.cpp",
+                    "probability": 0.5024416384282137
+                },
+                {
+                    "filename": "s005002142.cpp",
+                    "probability": 0.5454127683242813
+                },
+                {
+                    "filename": "s005369263.cpp",
+                    "probability": 0.5007255727939959
+                },
+                {
+                    "filename": "s005699298.cpp",
+                    "probability": 0.8675060227730792
+                },
+                {
+                    "filename": "s006003209.cpp",
+                    "probability": 0.6874188093492513
+                },
+                {
+                    "filename": "s007138711.cpp",
+                    "probability": 0.5223384723579028
+                },
+                {
+                    "filename": "s007720459.cpp",
+                    "probability": 0.8102843090935025
+                }
+            ]
+        },
+        "XGBoost": {
+            "accuracy": 0.99,
+            "total_samples": 1000,
+            "correct_predictions": 990,
+            "incorrect_predictions": 10,
+            "misclassified_samples": [
+                {
+                    "filename": "s000569425.cpp",
+                    "probability": 0.9689295291900635
+                },
+                {
+                    "filename": "s001998955.cpp",
+                    "probability": 0.8584221601486206
+                },
+                {
+                    "filename": "s002465697.cpp",
+                    "probability": 0.6280378699302673
+                },
+                {
+                    "filename": "s003523933.cpp",
+                    "probability": 0.6862121820449829
+                },
+                {
+                    "filename": "s003876395.cpp",
+                    "probability": 0.519316554069519
+                },
+                {
+                    "filename": "s004974286.cpp",
+                    "probability": 0.6070195436477661
+                },
+                {
+                    "filename": "s005699298.cpp",
+                    "probability": 0.9865874648094177
+                },
+                {
+                    "filename": "s006003209.cpp",
+                    "probability": 0.892484188079834
+                },
+                {
+                    "filename": "s007138711.cpp",
+                    "probability": 0.8701033592224121
+                },
+                {
+                    "filename": "s007720459.cpp",
+                    "probability": 0.8044255375862122
+                }
+            ]
+        }
+    }
+}
